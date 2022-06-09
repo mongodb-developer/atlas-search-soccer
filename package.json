@@ -6,9 +6,17 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "i": "^0.3.7",
+    "npm": "^8.12.1",
     "react": "^18.1.0",
+    "react-datepicker": "^4.8.0",
     "react-dom": "^18.1.0",
+    "react-range": "^1.8.12",
     "react-scripts": "5.0.1",
+    "react-select": "^5.3.2",
+    "react-syntax-highlighter": "^15.5.0",
+    "slider": "^1.0.4",
+    "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -34,5 +42,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.0.24"
   }
 }
