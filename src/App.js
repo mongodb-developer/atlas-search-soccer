@@ -50,9 +50,10 @@ const App = () => {
     setClubs,
     dob,
     setDob,
+    setDreamTeam,
   } = useHomeFetch();
 
-  // SAVE TEAM TO LOCAL
+  // SAVE TEAM TO LOCAL FUNCTION
   const saveToLocalStorage = (items) => {
     localStorage.setItem("fifa-dream-team", JSON.stringify(items));
   };
@@ -73,8 +74,7 @@ const App = () => {
       },
     };
 
-    const URL_TO_POST_PLAYER =
-      "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/postPlayer";
+    const URL_TO_POST_PLAYER = "";
 
     const requestOptions = {
       method: "POST",
@@ -84,13 +84,13 @@ const App = () => {
       },
     };
 
-    fetch(URL_TO_POST_PLAYER, requestOptions).then(() => {
-      console.log("SUBMITTED PLAYER!!");
-      setHighlightCard(null);
-      setShowPlayerChoices(false);
-      setShowDreamTeam(true);
-      setSearchTerm("");
-    });
+    // fetch(URL_TO_POST_PLAYER, requestOptions).then(() => {
+    //   console.log("SUBMITTED PLAYER!!");
+    //   setHighlightCard(null);
+    //   setShowPlayerChoices(false);
+    //   setShowDreamTeam(true);
+    //   setSearchTerm("");
+    // });
   };
 
   //-------------------------------- END FUNCTION TO ADDPLAYER --------------------------------------------------------
@@ -98,15 +98,13 @@ const App = () => {
   const relegatePlayerFromTeam = async (pos) => {
     console.log(`Trying to remove player ${pos}.`);
 
-    const RELEGATE_PLAYER_URL = `https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/deletePlayer?pos=${pos}`;
+    const RELEGATE_PLAYER_URL = ``;
 
     setPosition2Fill(pos);
 
-    const response = await fetch(RELEGATE_PLAYER_URL);
+    //  const response = await fetch(RELEGATE_PLAYER_URL);
 
     setShowDreamTeam(true);
-
-    // insert BLURB2
   };
 
   return (

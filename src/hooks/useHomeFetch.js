@@ -98,8 +98,6 @@ export const useHomeFetch = () => {
 
       setPlayers(advancedSearchPlayers);
     }
-
-    // insert big BLURB here
   };
   // ------------------------END_GET_PLAYERS_ADVANCED-----------------------------
 
