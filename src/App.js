@@ -52,8 +52,6 @@ const App = () => {
     setDob,
   } = useHomeFetch();
 
-  // insert SAVE here
-
   //-------------------------------- FUNCTION TO ADDPLAYER --------------------------------------------------------
   const addPlayerToTeam = (player, spot) => {
     console.log("Trying to add player.");
