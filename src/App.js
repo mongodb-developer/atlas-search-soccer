@@ -108,7 +108,9 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-black">
-      <h2 className="text-center text-4xl text-white">Atlas Search Soccer</h2>
+      <h2 className="text-center text-4xl text-white pt-12">
+        Atlas Search Soccer
+      </h2>
       <div className="flex mx-20 w-full justify-evenly items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
