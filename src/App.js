@@ -52,7 +52,10 @@ const App = () => {
     setDob,
   } = useHomeFetch();
 
-  // insert SAVE here
+  // SAVE TEAM TO LOCAL
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem("fifa-dream-team", JSON.stringify(items));
+  };
 
   //-------------------------------- FUNCTION TO ADDPLAYER --------------------------------------------------------
   const addPlayerToTeam = (player, spot) => {
@@ -88,8 +91,6 @@ const App = () => {
       setShowDreamTeam(true);
       setSearchTerm("");
     });
-
-    // insert big BLURB here
   };
 
   //-------------------------------- END FUNCTION TO ADDPLAYER --------------------------------------------------------
@@ -97,9 +98,11 @@ const App = () => {
   const relegatePlayerFromTeam = async (pos) => {
     console.log(`Trying to remove player ${pos}.`);
 
+    const RELEGATE_PLAYER_URL = `https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/deletePlayer?pos=${pos}`;
+
     setPosition2Fill(pos);
-    const url = `https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/deletePlayer?pos=${pos}`;
-    const response = await fetch(url);
+
+    const response = await fetch(RELEGATE_PLAYER_URL);
 
     setShowDreamTeam(true);
 
