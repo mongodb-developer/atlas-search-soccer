@@ -12,8 +12,8 @@ const PlayerModal = ({
 
   const birthday = shortDate.toLocaleDateString();
   return (
-    <div className="fixed inset-0 z-20 p-20 flex justify-center bg-slate-700 ">
-      <div className="relative flex flex-col w-2/3 bg-gray-900 text-white border-2 border-white rounded pt-5">
+    <div className="fixed inset-0 z-20 p-20 flex justify-center bg-smoke-dark">
+      <div className="relative flex flex-col w-2/3 bg-gray-900 text-white border-2 border-slate-700 rounded pt-5">
         <div className="flex py-4 pl-2 pr-4">
           <div className="left flex flex-col w-1/2 justify-center items-center space-y-8">
             <img
