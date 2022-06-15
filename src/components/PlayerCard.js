@@ -27,7 +27,7 @@ const PlayerCard = ({
           className={
             parent === "PlayerGrid"
               ? "relative justify-center rounded-xl border border-gray-800 text-center shadow-xl p-6 text-white border-solid transition duration-500 transform hover:scale-110"
-              : "relative justify-center bg-opacity-50 border border-gray-800 text-center rounded-2xl text-white shadow-xl p-6 border-solid bg-black transition duration-500 transform hover:scale-110"
+              : "relative justify-center bg-opacity-75 border border-gray-800 text-center rounded-2xl text-white shadow-xl p-6 border-solid bg-black transition duration-500 transform hover:scale-110"
           }
         >
           <div className="">{player?.long_name}</div>
@@ -113,7 +113,7 @@ const PlayerCard = ({
             console.log("CLICKED POSITION: ", spot);
             if (highlightCard === spot) setHighlightCard(null);
             else setHighlightCard(spot);
-            console.log(highlightCard);
+            console.log("SETTING HIGHLIGHTCARD: ", highlightCard);
           }}
           className={
             highlightCard === spot

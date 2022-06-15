@@ -54,7 +54,7 @@ const App = () => {
 
   //-------------------------------- FUNCTION TO ADDPLAYER --------------------------------------------------------
   const addPlayerToTeam = (player, spot) => {
-    console.log("Trying to add player.");
+    console.log("Trying to add player: ", position2Fill);
     console.log("IN ADDING PLAYER FUNCTION:", spot);
 
     let position = getPosition(spot);
@@ -96,6 +96,7 @@ const App = () => {
     console.log(`Trying to remove player ${pos}.`);
 
     setPosition2Fill(pos);
+    console.log("POSITION TO FILL: ", position2Fill);
     const url = `https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/deletePlayer?pos=${pos}`;
     const response = await fetch(url);
 
