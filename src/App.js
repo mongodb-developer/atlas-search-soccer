@@ -85,6 +85,7 @@ const App = () => {
       setShowPlayerChoices(false);
       setShowDreamTeam(true);
       setSearchTerm("");
+      setShowAdvancedSearch(false);
     });
 
     // insert big BLURB here
@@ -139,6 +140,23 @@ const App = () => {
         />
       </div>
       <div classname="px-12">
+        <PlayerGrid
+          header={searchTerm ? null : "Player Search Results"}
+          players={players}
+          addPlayerToTeam={addPlayerToTeam}
+          position2Fill={position2Fill}
+          setPosition2Fill={setPosition2Fill}
+          setHighlightCard={setHighlightCard}
+          highlightCard={highlightCard}
+          dreamTeam={dreamTeam}
+          setShowPlayerChoices={setShowPlayerChoices}
+          showPlayerChoices={showPlayerChoices}
+          searchTerm={searchTerm}
+          operator={operator}
+          setPlayerIndex={setPlayerIndex}
+          setShowPlayerModal={setShowPlayerModal}
+          showAdvancedSearch={showAdvancedSearch}
+        />
         {showAdvancedSearch && (
           <AdvancedSearch
             salary={salary}
@@ -162,24 +180,6 @@ const App = () => {
             setDob={setDob}
           />
         )}
-
-        <PlayerGrid
-          header={searchTerm ? null : "Player Search Results"}
-          players={players}
-          addPlayerToTeam={addPlayerToTeam}
-          position2Fill={position2Fill}
-          setPosition2Fill={setPosition2Fill}
-          setHighlightCard={setHighlightCard}
-          highlightCard={highlightCard}
-          dreamTeam={dreamTeam}
-          setShowPlayerChoices={setShowPlayerChoices}
-          showPlayerChoices={showPlayerChoices}
-          searchTerm={searchTerm}
-          operator={operator}
-          setPlayerIndex={setPlayerIndex}
-          setShowPlayerModal={setShowPlayerModal}
-          showAdvancedSearch={showAdvancedSearch}
-        />
 
         <br></br>
         <hr
