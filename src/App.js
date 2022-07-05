@@ -7,6 +7,7 @@ import DreamTeamGrid from "./components/DreamTeamGrid";
 import SearchBar from "./components/SearchBar";
 import PlayerModal from "./components/PlayerModal";
 import AdvancedSearch from "./components/AdvancedSearch";
+import SpotSearch from "./images/SpotSearch.png";
 
 const App = () => {
   const [position2Fill, setPosition2Fill] = useState(100);
@@ -70,7 +71,6 @@ const App = () => {
 
     const URL_TO_POST_PLAYER =
       "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/postPlayer";
-    //  "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/postPlayer";
 
     const requestOptions = {
       method: "POST",
@@ -113,7 +113,13 @@ const App = () => {
         Atlas Search Soccer
       </h2>
       <div className="flex mx-20 w-full justify-evenly items-center">
-        <svg
+        <img
+          src={SpotSearch}
+          alt="advanced search"
+          className="rounded-lg w-40 object-contain"
+          onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
+        ></img>
+        {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-10 w-10 text-white mb-12"
           viewBox="0 0 20 20"
@@ -126,7 +132,7 @@ const App = () => {
             d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z"
             clipRule="evenodd"
           />
-        </svg>
+        </svg> */}
         <SearchBar
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}

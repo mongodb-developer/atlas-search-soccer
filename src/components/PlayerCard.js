@@ -25,7 +25,10 @@ const PlayerCard = ({
       {player.short_name ? (
         <div
           onClick={() => {
-            if (parent !== "PlayerGrid") relegatePlayerFromTeam(spot);
+            if (parent !== "PlayerGrid") {
+              relegatePlayerFromTeam(spot);
+              setHighlightCard(spot);
+            }
           }}
           className={
             parent === "PlayerGrid"
@@ -135,8 +138,6 @@ const PlayerCard = ({
             alt="player-face"
             className="rounded-full mt-2  mx-auto w-12"
           ></img>
-
-          {/* <div className="text-sm mt-2">{player.player_traits}</div> */}
 
           <div className="bottom-bar mt-4">
             <div className="absolute bottom-0 text-center my-2 pl-4">
