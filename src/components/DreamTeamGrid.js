@@ -3,7 +3,6 @@ import PlayerCard from "./PlayerCard";
 
 const DreamTeamGrid = ({
   players,
-
   relegatePlayerFromTeam,
   position2Fill,
   setPosition2Fill,

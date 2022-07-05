@@ -16,7 +16,10 @@ const AutoSuggestions = ({
         {players.length > 0 &&
           players.map((player) => {
             return (
-              <div className="flex py-2 border-b-1 border-slate-500">
+              <div
+                className="flex py-2 border-b-1 border-slate-500"
+                key={player._id}
+              >
                 <img
                   src={player?.player_face_url}
                   alt="player-face"
@@ -24,7 +27,6 @@ const AutoSuggestions = ({
                 ></img>
                 <div
                   className="pl-8 my-4 border-b border-gray-300 w-auto text-lg"
-                  key={player._id}
                   onClick={(e) => {
                     setShowAutocompletePlayers(false);
                     setSearchTerm("");

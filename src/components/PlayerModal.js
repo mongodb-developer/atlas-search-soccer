@@ -9,11 +9,15 @@ const PlayerModal = ({
   position2Fill,
 }) => {
   const shortDate = new Date(players[playerIndex].dob);
-
   const birthday = shortDate.toLocaleDateString();
+  let scoreString = "" + players[playerIndex]?.score;
+  scoreString = scoreString.slice(0, 5);
   return (
     <div className="fixed inset-0 z-20 p-20 flex justify-center bg-smoke-dark">
       <div className="relative flex flex-col w-2/3 bg-gray-900 text-white border-2 border-slate-700 rounded pt-5">
+        <div className="absolute -top-3 right-0 bg-red-600 rounded-full font-bold px-2 py-1  w-auto mx-auto">
+          Search Score: {scoreString}
+        </div>
         <div className="flex py-4 pl-2 pr-4">
           <div className="left flex flex-col w-1/2 justify-center items-center space-y-8">
             <img
@@ -47,12 +51,12 @@ const PlayerModal = ({
               </div>
             </div>
             <div className=" border border-green-400 rounded-full p-1  text-2xl w-1/4 mx-auto text-center">
-              {" "}
+              {"Overall "}
               {players[playerIndex]?.overall}
             </div>
           </div>
 
-          <div className="right flex flex-col ml-6 text-lg flex-grow space-y-8">
+          <div className="right flex flex-col ml-6 text-lg flex-grow space-y-6">
             <div className="font-bold text-2xl text-green-500">
               {" "}
               {players[playerIndex].long_name}
@@ -73,6 +77,9 @@ const PlayerModal = ({
                 borderColor: "green",
               }}
             />
+            <div>
+              Positions Played: {players[playerIndex]?.player_positions}
+            </div>
             <div>Date of Birth: {birthday}</div>
             <div className="text-green-500">
               Salary € {players[playerIndex].wage_eur}

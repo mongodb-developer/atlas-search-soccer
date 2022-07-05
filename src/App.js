@@ -7,6 +7,7 @@ import DreamTeamGrid from "./components/DreamTeamGrid";
 import SearchBar from "./components/SearchBar";
 import PlayerModal from "./components/PlayerModal";
 import AdvancedSearch from "./components/AdvancedSearch";
+import SpotSearch from "./images/SpotSearch.png";
 
 const App = () => {
   const [position2Fill, setPosition2Fill] = useState(100);
@@ -53,14 +54,9 @@ const App = () => {
     setDreamTeam,
   } = useHomeFetch();
 
-  // SAVE TEAM TO LOCAL FUNCTION
-  const saveToLocalStorage = (items) => {
-    localStorage.setItem("fifa-dream-team", JSON.stringify(items));
-  };
-
   //-------------------------------- FUNCTION TO ADDPLAYER --------------------------------------------------------
   const addPlayerToTeam = (player, spot) => {
-    console.log("Trying to add player.");
+    console.log("Trying to add player: ", position2Fill);
     console.log("IN ADDING PLAYER FUNCTION:", spot);
 
     let position = getPosition(spot);
@@ -74,7 +70,8 @@ const App = () => {
       },
     };
 
-    const URL_TO_POST_PLAYER = "";
+    const URL_TO_POST_PLAYER =
+      "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/postPlayer";
 
     const requestOptions = {
       method: "POST",
@@ -84,13 +81,16 @@ const App = () => {
       },
     };
 
-    // fetch(URL_TO_POST_PLAYER, requestOptions).then(() => {
-    //   console.log("SUBMITTED PLAYER!!");
-    //   setHighlightCard(null);
-    //   setShowPlayerChoices(false);
-    //   setShowDreamTeam(true);
-    //   setSearchTerm("");
-    // });
+    fetch(URL_TO_POST_PLAYER, requestOptions).then(() => {
+      console.log("SUBMITTED PLAYER!!");
+      setHighlightCard(null);
+      setShowPlayerChoices(false);
+      setShowDreamTeam(true);
+      setSearchTerm("");
+      setShowAdvancedSearch(false);
+    });
+
+    // insert big BLURB here
   };
 
   //-------------------------------- END FUNCTION TO ADDPLAYER --------------------------------------------------------
@@ -98,13 +98,14 @@ const App = () => {
   const relegatePlayerFromTeam = async (pos) => {
     console.log(`Trying to remove player ${pos}.`);
 
-    const RELEGATE_PLAYER_URL = ``;
-
     setPosition2Fill(pos);
-
-    //  const response = await fetch(RELEGATE_PLAYER_URL);
+    console.log("POSITION TO FILL: ", position2Fill);
+    const url = `https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/deletePlayer?pos=${pos}`;
+    const response = await fetch(url);
 
     setShowDreamTeam(true);
+
+    // insert BLURB2
   };
 
   return (
@@ -113,20 +114,18 @@ const App = () => {
         Atlas Search Soccer
       </h2>
       <div className="flex mx-20 w-full justify-evenly items-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-10 w-10 text-white mb-12"
-          viewBox="0 0 20 20"
-          fill="currentColor"
+        <div
+          className=" text-lg text-mongo-400 font-bold"
           onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
         >
-          <path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z" />
-          <path
-            fillRule="evenodd"
-            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z"
-            clipRule="evenodd"
-          />
-        </svg>
+          <img
+            src={SpotSearch}
+            alt="advanced search"
+            className="rounded-lg w-48 object-contain mb-4"
+          ></img>
+          {" Advanced Scouting "}
+        </div>
+
         <SearchBar
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
@@ -141,6 +140,23 @@ const App = () => {
         />
       </div>
       <div classname="px-12">
+        <PlayerGrid
+          header={searchTerm ? null : "Player Search Results"}
+          players={players}
+          addPlayerToTeam={addPlayerToTeam}
+          position2Fill={position2Fill}
+          setPosition2Fill={setPosition2Fill}
+          setHighlightCard={setHighlightCard}
+          highlightCard={highlightCard}
+          dreamTeam={dreamTeam}
+          setShowPlayerChoices={setShowPlayerChoices}
+          showPlayerChoices={showPlayerChoices}
+          searchTerm={searchTerm}
+          operator={operator}
+          setPlayerIndex={setPlayerIndex}
+          setShowPlayerModal={setShowPlayerModal}
+          showAdvancedSearch={showAdvancedSearch}
+        />
         {showAdvancedSearch && (
           <AdvancedSearch
             salary={salary}
@@ -164,24 +180,6 @@ const App = () => {
             setDob={setDob}
           />
         )}
-
-        <PlayerGrid
-          header={searchTerm ? null : "Player Search Results"}
-          players={players}
-          addPlayerToTeam={addPlayerToTeam}
-          position2Fill={position2Fill}
-          setPosition2Fill={setPosition2Fill}
-          setHighlightCard={setHighlightCard}
-          highlightCard={highlightCard}
-          dreamTeam={dreamTeam}
-          setShowPlayerChoices={setShowPlayerChoices}
-          showPlayerChoices={showPlayerChoices}
-          searchTerm={searchTerm}
-          operator={operator}
-          setPlayerIndex={setPlayerIndex}
-          setShowPlayerModal={setShowPlayerModal}
-          showAdvancedSearch={showAdvancedSearch}
-        />
 
         <br></br>
         <hr
