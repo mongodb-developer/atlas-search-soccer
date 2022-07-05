@@ -23,14 +23,14 @@ export const useHomeFetch = () => {
   const [positions, setPositions] = useState([]);
 
   const TextEndPoint =
-    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/players";
+    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/players";
   const WildcardEndPoint =
-    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/wildcard";
+    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/wildcard";
   const AutocompleteEndPoint =
-    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/autocomplete";
+    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/autocomplete";
 
   const URL_SEARCH_ADVANCED =
-    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/advancedSearch";
+    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/advancedSearch";
 
   const getPlayersAutocomplete = async () => {
     let API = AutocompleteEndPoint;
@@ -106,7 +106,7 @@ export const useHomeFetch = () => {
   const getTeam = async () => {
     const dreamPlayers = await (
       await fetch(
-        "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/getTeam"
+        "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/getTeam"
       )
     ).json();
     setDreamTeam(dreamPlayers);

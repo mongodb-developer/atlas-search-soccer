@@ -69,7 +69,8 @@ const App = () => {
     };
 
     const URL_TO_POST_PLAYER =
-      "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/postPlayer";
+      "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/postPlayer";
+    //  "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/postPlayer";
 
     const requestOptions = {
       method: "POST",
@@ -98,7 +99,7 @@ const App = () => {
 
     setPosition2Fill(pos);
     console.log("POSITION TO FILL: ", position2Fill);
-    const url = `https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/deletePlayer?pos=${pos}`;
+    const url = `https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/deletePlayer?pos=${pos}`;
     const response = await fetch(url);
 
     setShowDreamTeam(true);
