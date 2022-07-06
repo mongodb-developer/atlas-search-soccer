@@ -1,5 +1,5 @@
 // Dependencies
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHomeFetch } from "./hooks/useHomeFetch";
 import PlayerGrid from "./components/PlayerGrid";
 
@@ -54,6 +54,18 @@ const App = () => {
     setDreamTeam,
   } = useHomeFetch();
 
+  useEffect(() => {
+    const dreamTeamPlayers = JSON.parse(
+      localStorage.getItem("dream-team-players")
+    );
+    setDreamTeam(dreamTeamPlayers);
+    // eslint-disable-next-line
+  }, []);
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem("dream-team-players", JSON.stringify(items));
+  };
+
   //-------------------------------- FUNCTION TO ADDPLAYER --------------------------------------------------------
   const addPlayerToTeam = (player, spot) => {
     console.log("Trying to add player: ", position2Fill);
@@ -75,6 +87,7 @@ const App = () => {
     });
 
     setDreamTeam(newDreamTeam);
+    saveToLocalStorage(newDreamTeam);
 
     setHighlightCard(null);
     setShowPlayerChoices(false);
@@ -98,6 +111,7 @@ const App = () => {
       return a.spot - b.spot;
     });
     setDreamTeam(newDreamTeam);
+    saveToLocalStorage(newDreamTeam);
 
     setShowDreamTeam(true);
 
