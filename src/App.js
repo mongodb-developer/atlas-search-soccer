@@ -61,36 +61,26 @@ const App = () => {
 
     let position = getPosition(spot);
 
-    const data = {
-      position2Fill: spot,
-      newPlayer: {
-        spot: spot,
-        position: position,
-        player: player,
-      },
+    const newPlayer = {
+      spot: spot,
+      position: position,
+      player: player,
     };
 
-    const URL_TO_POST_PLAYER =
-      "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/postPlayer";
+    let newDreamTeam = dreamTeam.filter((player) => player.spot !== spot);
 
-    const requestOptions = {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    fetch(URL_TO_POST_PLAYER, requestOptions).then(() => {
-      console.log("SUBMITTED PLAYER!!");
-      setHighlightCard(null);
-      setShowPlayerChoices(false);
-      setShowDreamTeam(true);
-      setSearchTerm("");
-      setShowAdvancedSearch(false);
+    newDreamTeam.push(newPlayer);
+    newDreamTeam.sort(function (a, b) {
+      return a.spot - b.spot;
     });
 
-    // insert big BLURB here
+    setDreamTeam(newDreamTeam);
+
+    setHighlightCard(null);
+    setShowPlayerChoices(false);
+    setShowDreamTeam(true);
+    setSearchTerm("");
+    setShowAdvancedSearch(false);
   };
 
   //-------------------------------- END FUNCTION TO ADDPLAYER --------------------------------------------------------
@@ -98,10 +88,16 @@ const App = () => {
   const relegatePlayerFromTeam = async (pos) => {
     console.log(`Trying to remove player ${pos}.`);
 
-    setPosition2Fill(pos);
-    console.log("POSITION TO FILL: ", position2Fill);
-    const url = `https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/deletePlayer?pos=${pos}`;
-    const response = await fetch(url);
+    let newDreamTeam = dreamTeam.filter((player) => player.spot !== pos);
+    newDreamTeam.push({
+      spot: pos,
+      position: getPosition(pos),
+      player: {},
+    });
+    newDreamTeam.sort(function (a, b) {
+      return a.spot - b.spot;
+    });
+    setDreamTeam(newDreamTeam);
 
     setShowDreamTeam(true);
 

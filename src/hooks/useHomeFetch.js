@@ -103,15 +103,7 @@ export const useHomeFetch = () => {
   };
   // ------------------------END_GET_PLAYERS_ADVANCED-----------------------------
 
-  const getTeam = async () => {
-    const dreamPlayers = await (
-      await fetch(
-        "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/getTeam"
-      )
-    ).json();
-    setDreamTeam(dreamPlayers);
-  };
-
+  // -------------------------------- USE_EFFECTS ---------------------------
   useEffect(() => {
     if (operator !== "autocomplete") return;
 
@@ -124,7 +116,6 @@ export const useHomeFetch = () => {
     // eslint-disable-next-line
   }, [searchTerm]);
 
-  // -------------------------------- USE_EFFECTS ---------------------------
   useEffect(() => {
     if (!submitted) return;
     if (!showAdvancedSearch) {
@@ -139,13 +130,6 @@ export const useHomeFetch = () => {
     // eslint-disable-next-line
   }, [submitted]);
 
-  useEffect(() => {
-    if (!showDreamTeam) return;
-    getTeam();
-    setShowDreamTeam(false);
-
-    // eslint-disable-next-line
-  }, [showDreamTeam]);
   // ----------------------------END USE_EFFECTS ---------------------------
 
   return {
