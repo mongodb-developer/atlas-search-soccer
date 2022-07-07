@@ -9,6 +9,7 @@ const AdvancedSearch = ({
   salary,
   setSalary,
   searchTerm,
+  operator,
   age,
   setAge,
   overall,
@@ -34,7 +35,7 @@ const AdvancedSearch = ({
     <div className="flex flex-col w-full bg-black">
       <h2 className="text-center text-xl text-yellow-400">Advanced Scouting</h2>
 
-      <div className="flex mt-6 justify-evenly items-center">
+      <div className="flex mt-6 justify-evenly items-start">
         <div className="flex mt-8">
           <CheckboxGroup
             title="Select Country"
@@ -121,7 +122,7 @@ const AdvancedSearch = ({
           />
         </div>
         <div>
-          <SearchAggregation searchTerm={searchTerm} />
+          <SearchAggregation searchTerm={searchTerm} operator={operator} />
         </div>
       </div>
     </div>

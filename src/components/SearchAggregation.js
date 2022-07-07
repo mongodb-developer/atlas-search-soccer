@@ -1,18 +1,38 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const SearchAggregation = ({ searchTerm }) => {
-  let basicSearchObject = {
-    text: {
-      query: searchTerm,
-      path: "long_name",
-      fuzzy: {
-        maxEdits: 2,
+const SearchAggregation = ({ searchTerm, operator }) => {
+  let basicSearchObject = {};
+
+  if (operator === "text") {
+    basicSearchObject = {
+      text: {
+        query: searchTerm,
+        path: "long_name",
+        fuzzy: {
+          maxEdits: 2,
+        },
       },
-    },
-  };
+    };
+  } else if (operator === "wildcard") {
+    basicSearchObject = {
+      wildcard: {
+        query: searchTerm,
+        path: "long_name",
+        allowAnalyzedField: true,
+      },
+    };
+  } else if (operator === "autocomplete") {
+    basicSearchObject = {
+      wildcard: {
+        query: searchTerm,
+        path: "long_name",
+        allowAnalyzedField: true,
+      },
+    };
+  }
 
   const searchString = JSON.stringify(basicSearchObject, null, 2);
 
@@ -21,7 +41,7 @@ const SearchAggregation = ({ searchTerm }) => {
   let filterArray = []; // using filter for stars, borough, cuisine
 
   return (
-    <div className="flex flex-col w-96 rounded h-auto bg-black px-4 pt-10 text-sm">
+    <div className="flex flex-col w-96 rounded h-auto bg-black px-2 text-sm content-start">
       <>
         <pre className="text-fuchsia-400 font-mono text-sm py-2 text-left">
           &#123; $search :

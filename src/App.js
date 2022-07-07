@@ -202,6 +202,7 @@ const App = () => {
             countries={countries}
             dob={dob}
             setDob={setDob}
+            operator={operator}
           />
         )}
 

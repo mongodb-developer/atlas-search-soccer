@@ -57,10 +57,11 @@ const PlayerCard = ({
             <div>{player?.club_name}</div>
             <div>{player?.club_jersey_number}</div>
           </div>
-          <div className=" border border-green-400 rounded-lg p-1  w-auto mx-auto">
+          <div className=" border border-green-400 rounded-lg p-1 mb-2 w-auto mx-auto">
             {"Overall: "}
             {player?.overall}
           </div>
+          <div className="">Positions: {player?.player_positions}</div>
 
           {parent === "PlayerGrid" && (
             <>
