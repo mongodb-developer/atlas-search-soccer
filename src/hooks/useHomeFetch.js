@@ -92,6 +92,7 @@ export const useHomeFetch = () => {
     const advancedSearchPlayers = responseJSON.players;
     const aggregation = responseJSON.aggregation;
     console.log(aggregation);
+    console.log("PLAYERSJSON FROM ADVANCED: ", advancedSearchPlayers);
 
     if (advancedSearchPlayers && advancedSearchPlayers.length > 0) {
       setShowPlayerChoices(true);
