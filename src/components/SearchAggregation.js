@@ -3,8 +3,17 @@ import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const SearchAggregation = ({ searchTerm, operator }) => {
+const SearchAggregation = ({
+  searchTerm,
+  operator,
+  clubs,
+  positions,
+  countries,
+}) => {
   let basicSearchObject = {};
+  let filterArray = [];
+  let mustArray = [];
+  let shouldArray = [];
 
   if (operator === "text") {
     basicSearchObject = {
@@ -33,12 +42,36 @@ const SearchAggregation = ({ searchTerm, operator }) => {
       },
     };
   }
-
   const searchString = JSON.stringify(basicSearchObject, null, 2);
 
-  let mustCount = 0;
-  let mustArray = [];
-  let filterArray = []; // using filter for stars, borough, cuisine
+  if (positions.length > 0) {
+    filterArray.push({
+      text: {
+        query: positions,
+        path: "player_positions_array",
+      },
+    });
+  }
+  if (clubs.length > 0) {
+    filterArray.push({
+      text: {
+        query: clubs,
+        path: "club_name",
+      },
+    });
+  }
+  if (countries.length > 0) {
+    filterArray.push({
+      text: {
+        query: countries,
+        path: "nationality_name",
+      },
+    });
+  }
+  const filterArrayString = JSON.stringify(filterArray, null, 2);
+
+  // let mustCount = 0;
+  // let mustArray = [];
 
   return (
     <div className="flex flex-col w-96 rounded h-auto bg-black px-2 text-sm content-start">
@@ -64,6 +97,9 @@ const SearchAggregation = ({ searchTerm, operator }) => {
         </pre>
         <SyntaxHighlighter language="javascript" style={atomDark}>
           {searchString}
+        </SyntaxHighlighter>
+        <SyntaxHighlighter language="javascript" style={atomDark}>
+          {filterArrayString}
         </SyntaxHighlighter>
       </>
     </div>

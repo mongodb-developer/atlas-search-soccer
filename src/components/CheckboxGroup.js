@@ -7,6 +7,8 @@ const CheckboxGroup = ({
   setFinalList,
   finalList,
   path,
+  setFilterArray,
+  filterArray,
 }) => {
   const [checkedState, setCheckedState] = useState(
     new Array(itemsArray.length).fill(false)
@@ -57,7 +59,12 @@ const CheckboxGroup = ({
       </div>
       {finalList.length !== 0 && (
         <div className="w-full">
-          <SearchCodeCheckbox path={path} value={finalList} />
+          <SearchCodeCheckbox
+            path={path}
+            value={finalList}
+            setFilterArray={setFilterArray}
+            filterArray={filterArray}
+          />
         </div>
       )}
     </div>

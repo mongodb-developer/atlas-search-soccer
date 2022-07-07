@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Calendar from "./Calendar";
 import CheckboxGroup from "./CheckboxGroup";
 import SearchAggregation from "./SearchAggregation";
@@ -122,7 +122,13 @@ const AdvancedSearch = ({
           />
         </div>
         <div>
-          <SearchAggregation searchTerm={searchTerm} operator={operator} />
+          <SearchAggregation
+            searchTerm={searchTerm}
+            operator={operator}
+            positions={positions}
+            clubs={clubs}
+            countries={countries}
+          />
         </div>
       </div>
     </div>

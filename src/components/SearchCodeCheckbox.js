@@ -2,7 +2,7 @@ import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const SearchCodeCheckbox = (path, value) => {
+const SearchCodeCheckbox = (path, value, setFilterArray, filterArray) => {
   console.log("PATH: ", path.path);
   console.log("VALUE: ", value);
   let stageObject = {};
