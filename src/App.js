@@ -55,10 +55,17 @@ const App = () => {
   } = useHomeFetch();
 
   useEffect(() => {
-    const dreamTeamPlayers = JSON.parse(
-      localStorage.getItem("dream-team-players")
-    );
-    setDreamTeam(dreamTeamPlayers);
+    const team = localStorage.getItem("dream-team-players");
+
+    if (team) {
+      const dreamTeamPlayers = JSON.parse(
+        localStorage.getItem("dream-team-players")
+      );
+      setDreamTeam(dreamTeamPlayers);
+    } else {
+      console.log("Team is not yet saved to storage");
+    }
+
     // eslint-disable-next-line
   }, []);
 

@@ -1,8 +1,9 @@
 import React from "react";
+import SearchCodeRange from "./SearchCodeRange";
 
 import { Range } from "react-range";
 
-const Slider = ({ field, value, setValue, max, step }) => {
+const Slider = ({ field, value, setValue, max, step, category }) => {
   return (
     <div className="w-full flex justify-center ">
       <div className="w-full p-4 border-4 border-indigo-900 rounded-lg text-white">
@@ -14,6 +15,7 @@ const Slider = ({ field, value, setValue, max, step }) => {
           values={value}
           onChange={(value) => {
             setValue(value);
+            console.log(`${category}:  ${value[0]}`);
           }}
           renderTrack={({ props, children }) => (
             <div
@@ -31,6 +33,11 @@ const Slider = ({ field, value, setValue, max, step }) => {
           )}
         />
         <div className=" text-center">{value[0]}</div>
+        {value[0] !== 0 && (
+          <div className="w-full px-8">
+            <SearchCodeRange field={category} value={value[0]} />
+          </div>
+        )}
       </div>
     </div>
   );

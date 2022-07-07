@@ -21,7 +21,7 @@ const SearchCode = ({ searchTerm, operator }) => {
         allowAnalyzedField: true,
       },
     };
-  } else {
+  } else if (operator === "autocomplete") {
     stageObject = {
       index: "autocomplete",
       autocomplete: {
@@ -30,6 +30,7 @@ const SearchCode = ({ searchTerm, operator }) => {
       },
     };
   }
+
   const stageString = JSON.stringify(stageObject, null, 2);
   return (
     <div>

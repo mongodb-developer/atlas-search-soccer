@@ -35,25 +35,36 @@ const AdvancedSearch = ({
             field="Select Country"
             itemsArray={countryNames}
             setFinalList={setCountries}
+            category="nationality_name"
           />
           <CheckboxGroup
             field="Select Club"
             itemsArray={clubNames}
             setFinalList={setClubs}
+            category="club_name"
           />
           <CheckboxGroup
             field="Position"
             itemsArray={positions}
             setFinalList={setPositions}
+            category="player_positions_array"
           />
         </div>
 
-        <div className="flex grid grid-cols-2 gap-x-4 gap-y-8 px-10">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-8 px-10">
           <div className="px-12 w-full p-4 border-4 border-indigo-900 rounded-lg text-white">
             <Calendar dob={dob} setDob={setDob} />
           </div>
-          <Slider field="Age" value={age} setValue={setAge} max={52} step={1} />
           <Slider
+            category="age"
+            field="Age"
+            value={age}
+            setValue={setAge}
+            max={52}
+            step={1}
+          />
+          <Slider
+            category="wage_eur"
             field="Salary (euros)"
             value={salary}
             setValue={setSalary}
@@ -61,6 +72,7 @@ const AdvancedSearch = ({
             step={1000}
           />
           <Slider
+            category="overall"
             field="Overall"
             value={overall}
             setValue={setOverall}
@@ -68,6 +80,7 @@ const AdvancedSearch = ({
             step={1}
           />
           <Slider
+            category="skill_moves"
             field="Skills"
             value={skillMoves}
             setValue={setSkillMoves}
@@ -75,6 +88,7 @@ const AdvancedSearch = ({
             max={5}
           />
           <Slider
+            category="pace"
             field="Pace"
             value={pace}
             setValue={setPace}
@@ -82,6 +96,7 @@ const AdvancedSearch = ({
             step={1}
           />
           <Slider
+            category="defending"
             field="Defending"
             value={defending}
             setValue={setDefending}
@@ -89,6 +104,7 @@ const AdvancedSearch = ({
             step={1}
           />{" "}
           <Slider
+            category="dribbling"
             field="Dribbling"
             value={dribbling}
             setValue={setDribbling}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import SearchCodeCheckbox from "./SearchCodeCheckbox";
 
-const CheckboxGroup = ({ field, itemsArray, setFinalList }) => {
+const CheckboxGroup = ({ field, itemsArray, setFinalList, category }) => {
   const [checkedState, setCheckedState] = useState(
     new Array(itemsArray.length).fill(false)
   );
@@ -18,7 +19,8 @@ const CheckboxGroup = ({ field, itemsArray, setFinalList }) => {
       }
     }
     setFinalList(checkedCountries);
-    console.log(checkedCountries);
+
+    console.log(`${category}: ${checkedCountries}`);
   };
 
   return (
@@ -45,6 +47,11 @@ const CheckboxGroup = ({ field, itemsArray, setFinalList }) => {
           );
         })}
       </ul>
+      {/* {fin.length !== 0 && ( */}
+      <div className="w-full px-8">
+        {/* <SearchCodeCheckbox field={category} value={checkedCountries} /> */}
+      </div>
+      {/* )} */}
     </div>
   );
 };
