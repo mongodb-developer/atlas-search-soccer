@@ -49,6 +49,9 @@ const App = () => {
     setPositions,
     setCountries,
     setClubs,
+    positions,
+    clubs,
+    countries,
     dob,
     setDob,
     setDreamTeam,
@@ -177,6 +180,7 @@ const App = () => {
         {showAdvancedSearch && (
           <AdvancedSearch
             salary={salary}
+            searchTerm={searchTerm}
             setSalary={setSalary}
             age={age}
             setAge={setAge}
@@ -193,6 +197,9 @@ const App = () => {
             setCountries={setCountries}
             setClubs={setClubs}
             setPositions={setPositions}
+            positions={positions}
+            clubs={clubs}
+            countries={countries}
             dob={dob}
             setDob={setDob}
           />

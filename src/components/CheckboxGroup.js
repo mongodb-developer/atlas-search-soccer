@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import SearchCodeCheckbox from "./SearchCodeCheckbox";
 
-const CheckboxGroup = ({ field, itemsArray, setFinalList, category }) => {
+const CheckboxGroup = ({
+  title,
+  itemsArray,
+  setFinalList,
+  finalList,
+  path,
+}) => {
   const [checkedState, setCheckedState] = useState(
     new Array(itemsArray.length).fill(false)
   );
@@ -20,38 +26,40 @@ const CheckboxGroup = ({ field, itemsArray, setFinalList, category }) => {
     }
     setFinalList(checkedCountries);
 
-    console.log(`${category}: ${checkedCountries}`);
+    console.log(`${path}: ${finalList}`);
   };
 
   return (
-    <div className="text-white  p-2">
-      <h3 className="text-xl font-bold mb-2 text-green-500">{field}</h3>
-      <ul className="countries-list">
-        {itemsArray.map((name, index) => {
-          return (
-            <li key={index}>
-              <div className="toppings-list-item">
-                <div className="left-section space-x-4">
-                  <input
-                    type="checkbox"
-                    id={`custom-checkbox-${index}`}
-                    name={name}
-                    value={name}
-                    checked={checkedState[index]}
-                    onChange={() => handleOnChange(index)}
-                  />
-                  <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+    <div className="flex flex-col">
+      <div className="text-white  p-2">
+        <h3 className="text-xl font-bold mb-2 text-green-500">{title}</h3>
+        <ul className="countries-list">
+          {itemsArray.map((name, index) => {
+            return (
+              <li key={index}>
+                <div className="toppings-list-item">
+                  <div className="left-section space-x-4">
+                    <input
+                      type="checkbox"
+                      id={`custom-checkbox-${index}`}
+                      name={name}
+                      value={name}
+                      checked={checkedState[index]}
+                      onChange={() => handleOnChange(index)}
+                    />
+                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                  </div>
                 </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-      {/* {fin.length !== 0 && ( */}
-      <div className="w-full px-8">
-        {/* <SearchCodeCheckbox field={category} value={checkedCountries} /> */}
+              </li>
+            );
+          })}
+        </ul>
       </div>
-      {/* )} */}
+      {finalList.length !== 0 && (
+        <div className="w-full">
+          <SearchCodeCheckbox path={path} value={finalList} />
+        </div>
+      )}
     </div>
   );
 };

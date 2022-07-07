@@ -1,12 +1,14 @@
 import React from "react";
 import Calendar from "./Calendar";
 import CheckboxGroup from "./CheckboxGroup";
+import SearchAggregation from "./SearchAggregation";
 
 import Slider from "./Slider";
 
 const AdvancedSearch = ({
   salary,
   setSalary,
+  searchTerm,
   age,
   setAge,
   overall,
@@ -22,6 +24,9 @@ const AdvancedSearch = ({
   setCountries,
   setPositions,
   setClubs,
+  clubs,
+  countries,
+  positions,
   dob,
   setDob,
 }) => {
@@ -29,30 +34,33 @@ const AdvancedSearch = ({
     <div className="flex flex-col w-full bg-black">
       <h2 className="text-center text-xl text-yellow-400">Advanced Scouting</h2>
 
-      <div className="flex mt-6 justify-evenly items-center px-24">
-        <div className="flex ml-6 mt-8 ">
+      <div className="flex mt-6 justify-evenly items-center">
+        <div className="flex mt-8">
           <CheckboxGroup
-            field="Select Country"
-            itemsArray={countryNames}
+            title="Select Country"
+            itemsArray={countryList}
             setFinalList={setCountries}
-            category="nationality_name"
+            finalList={countries}
+            path="nationality_name"
           />
           <CheckboxGroup
-            field="Select Club"
-            itemsArray={clubNames}
+            title="Select Club"
+            itemsArray={clubList}
+            finalList={clubs}
             setFinalList={setClubs}
-            category="club_name"
+            path="club_name"
           />
           <CheckboxGroup
-            field="Position"
-            itemsArray={positions}
+            title="Position"
+            itemsArray={positionsList}
+            finalList={positions}
             setFinalList={setPositions}
-            category="player_positions_array"
+            path="player_positions_array"
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-x-4 gap-y-8 px-10">
-          <div className="px-12 w-full p-4 border-4 border-indigo-900 rounded-lg text-white">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-8">
+          <div className="px-6 w-full p-4 border-4 border-indigo-900 rounded-lg text-white">
             <Calendar dob={dob} setDob={setDob} />
           </div>
           <Slider
@@ -112,6 +120,9 @@ const AdvancedSearch = ({
             step={1}
           />
         </div>
+        <div>
+          <SearchAggregation searchTerm={searchTerm} />
+        </div>
       </div>
     </div>
   );
@@ -119,7 +130,7 @@ const AdvancedSearch = ({
 
 export default AdvancedSearch;
 
-const clubNames = [
+const clubList = [
   "Arsenal",
   "Manchester United",
   "Wolverhampton Wanderers",
@@ -152,7 +163,7 @@ const clubNames = [
   "Real Madrid CF",
 ];
 
-const countryNames = [
+const countryList = [
   "England",
   "Germany",
   "Spain",
@@ -185,7 +196,7 @@ const countryNames = [
   "Venezuela",
 ];
 
-const positions = [
+const positionsList = [
   "CB",
   "CM",
   "LWB",
