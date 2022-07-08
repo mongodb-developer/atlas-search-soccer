@@ -124,8 +124,6 @@ const App = () => {
     saveToLocalStorage(newDreamTeam);
 
     setShowDreamTeam(true);
-
-    // insert BLURB2
   };
 
   return (

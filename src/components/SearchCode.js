@@ -33,10 +33,26 @@ const SearchCode = ({ searchTerm, operator }) => {
 
   const stageString = JSON.stringify(stageObject, null, 2);
   return (
-    <div>
-      <SyntaxHighlighter language="javascript" style={atomDark}>
-        {stageString}
-      </SyntaxHighlighter>
+    <div className="flex flex-col w-96 rounded h-auto bg-black px-2 text-sm content-start border border-yellow-200">
+      <>
+        <pre className="text-fuchsia-400 font-mono text-sm py-2 text-left">
+          &#123; $search :
+        </pre>
+        <pre className="text-blue-500 font-mono text-sm py-2 pl-2 text-left">
+          &#47; &#47; optional, defaults to "default"
+        </pre>
+
+        <pre className="text-yellow-200 font-mono text-sm py-2 pl-2 text-left">
+          index: &#60; indexName &#62;
+        </pre>
+
+        <SyntaxHighlighter language="javascript" style={atomDark}>
+          {stageString}
+        </SyntaxHighlighter>
+        <pre className="text-fuchsia-400 font-mono text-sm pl-2 text-left  font-bold">
+          &#125;
+        </pre>
+      </>
     </div>
   );
 };

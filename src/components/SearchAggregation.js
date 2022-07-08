@@ -38,12 +38,6 @@ const SearchAggregation = ({
 
   let compoundString = "";
 
-  /**********************************************************
-   * LOGIC TO IMPLEMENT
-   * STEP 1. SEE if STRINGS ARE VALID for fields
-   *
-   **********************************************************/
-
   if (
     filterArray.length > 0 ||
     mustArray.length > 0 ||
@@ -52,7 +46,7 @@ const SearchAggregation = ({
     let compoundObject = {};
 
     if (basicSearchObject !== {}) {
-      mustArray.push(basicSearchObject); // MAKE SURE IT GETS PUSH TO THE FRONT OF THE ARRAY
+      mustArray.unshift(basicSearchObject);
     }
     compoundObject.must = mustArray; // TEST IF IT WORKS FOR EMPTY MUST + NO BASIC SEARCH OBJECT
     if (shouldArray.length > 0) {

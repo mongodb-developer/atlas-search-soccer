@@ -18,6 +18,9 @@ const PlayerGrid = ({
   setShowPlayerModal,
   showAdvancedSearch,
 }) => {
+  if (players.length === 0) {
+    setShowPlayerChoices(false);
+  }
   return (
     <div className="flex relative px-10 mb-2 ">
       {/* <img
@@ -45,10 +48,10 @@ const PlayerGrid = ({
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-6 gap-2 p-2 mt-6 ml-48 w-full"></div>
+        <div className="grid grid-cols-6 gap-2 p-2 mt-6 ml-48 w-full">SAD</div>
       )}
       {searchTerm !== "" && !showAdvancedSearch && (
-        <div className="w-1/5 px-8">
+        <div className="w-2/5 px-8">
           <SearchCode operator={operator} searchTerm={searchTerm} />
         </div>
       )}
