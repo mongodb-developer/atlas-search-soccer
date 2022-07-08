@@ -33,7 +33,9 @@ const AdvancedSearch = ({
 }) => {
   return (
     <div className="flex flex-col w-full bg-black">
-      <h2 className="text-center text-xl text-yellow-400">Advanced Scouting</h2>
+      <h2 className="text-center text-2xl text-yellow-400">
+        Advanced Scouting
+      </h2>
 
       <div className="flex mt-6 justify-evenly items-start">
         <div className="flex mt-8">

@@ -20,29 +20,21 @@ const SearchAggregation = ({
 }) => {
   let basicSearchObject = getBasicObject(operator, searchTerm);
   const basicSearchString = JSON.stringify(basicSearchObject, null, 2);
-  console.log("BASIC: ", basicSearchObject);
-  let filterArray = getFilterArray(positions, clubs, countries);
-  console.log("FILTER", filterArray);
-  const filterArrayString = JSON.stringify(filterArray, null, 2);
 
   const shouldArrayValues = [
-    { name: "age", value: age },
-    { name: "wage_eur", value: salary },
+    { name: "age", value: age[0] },
+    { name: "wage_eur", value: salary[0] },
   ];
   const mustArrayValues = [
-    { name: "overall", value: overall },
-    { name: "skill_moves", value: skillMoves },
-    { name: "dribbling", value: dribbling },
-    { name: "pace", value: pace },
-    { name: "defending", value: defending },
+    { name: "overall", value: overall[0] },
+    { name: "skill_moves", value: skillMoves[0] },
+    { name: "dribbling", value: dribbling[0] },
+    { name: "pace", value: pace[0] },
+    { name: "defending", value: defending[0] },
   ];
-
-  let shouldArray = getShouldArray(shouldArrayValues);
-  console.log("SHOULD", shouldArray);
-  const shouldArrayString = JSON.stringify(shouldArray, null, 2);
-  let mustArray = getMustArray(mustArrayValues);
-  console.log("MUST", mustArray);
-  const mustArrayString = JSON.stringify(mustArray, null, 2);
+  const filterArray = getFilterArray(positions, clubs, countries);
+  const shouldArray = getShouldArray(shouldArrayValues);
+  const mustArray = getMustArray(mustArrayValues);
 
   let compoundString = "";
 
@@ -74,7 +66,7 @@ const SearchAggregation = ({
   }
 
   return (
-    <div className="flex flex-col w-96 rounded h-auto bg-black px-2 text-sm content-start">
+    <div className="flex flex-col w-96 rounded h-auto bg-black px-2 text-sm content-start border border-yellow-200">
       <>
         <pre className="text-fuchsia-400 font-mono text-sm py-2 text-left">
           &#123; $search :
@@ -89,41 +81,37 @@ const SearchAggregation = ({
       </>
 
       <>
-        <pre className="text-blue-300 font-mono pl-2 text-left text-sm font-bold">
-          &#123; compound :
-        </pre>
-        <pre className="text-blue-500 font-mono text-sm py-2 pl-2 text-left">
-          &#47; &#47; must | mustNot | should | filter
-        </pre>
+        {compoundString !== "" && (
+          <>
+            <pre className="text-blue-300 font-mono mx-6 text-left text-sm font-bold">
+              &#123; compound :
+            </pre>
+            <pre className="text-blue-500 font-mono text-sm py-2 pl-2 text-left">
+              &#47; &#47; must | mustNot | should | filter
+            </pre>
+          </>
+        )}
         {compoundString === "" ? (
-          <SyntaxHighlighter language="javascript" style={atomDark}>
-            {basicSearchString}
-          </SyntaxHighlighter>
+          <div className="px-6">
+            <SyntaxHighlighter language="javascript" style={atomDark}>
+              {basicSearchString}
+            </SyntaxHighlighter>
+          </div>
         ) : (
-          <SyntaxHighlighter language="javascript" style={atomDark}>
-            {compoundString}
-          </SyntaxHighlighter>
+          <div className="px-6">
+            <SyntaxHighlighter language="javascript" style={atomDark}>
+              {compoundString}
+            </SyntaxHighlighter>
+          </div>
         )}
-        <hr></hr>
-        <hr></hr>
-        {mustArrayString !== "" && (
-          <SyntaxHighlighter language="javascript" style={atomDark}>
-            {mustArrayString}
-          </SyntaxHighlighter>
+        {compoundString !== "" && (
+          <pre className="text-blue-300 font-mono text-left text-sm font-bold mx-6">
+            &#125;
+          </pre>
         )}
-        <hr></hr>
-        {shouldArrayString !== "" && (
-          <SyntaxHighlighter language="javascript" style={atomDark}>
-            {shouldArrayString}
-          </SyntaxHighlighter>
-        )}
-        <hr></hr>
-        {filterArrayString !== "" && (
-          <SyntaxHighlighter language="javascript" style={atomDark}>
-            {filterArrayString}
-          </SyntaxHighlighter>
-        )}
-        <hr></hr>
+        <pre className="text-fuchsia-400 font-mono text-sm pl-2 text-left  font-bold">
+          &#125;
+        </pre>
       </>
     </div>
   );
@@ -167,10 +155,10 @@ const getBasicObject = (operator, searchTerm) => {
 const getShouldArray = (shouldArrayValues) => {
   let shouldArray = [];
   for (let i = 0; i < shouldArrayValues.length; i++) {
-    if (shouldArrayValues[i].value[0] !== 0) {
+    if (shouldArrayValues[i].value !== 0) {
       shouldArray.push({
         range: {
-          lte: shouldArrayValues[i].value[0],
+          lte: shouldArrayValues[i].value,
           path: shouldArrayValues[i].name,
         },
       });
@@ -183,10 +171,10 @@ const getShouldArray = (shouldArrayValues) => {
 const getMustArray = (mustArrayValues) => {
   let mustArray = [];
   for (let i = 0; i < mustArrayValues.length; i++) {
-    if (mustArrayValues[i].value[0] !== 0) {
+    if (mustArrayValues[i].value !== 0) {
       mustArray.push({
         range: {
-          gte: mustArrayValues[i].value[0],
+          gte: mustArrayValues[i].value,
           path: mustArrayValues[i].name,
         },
       });
