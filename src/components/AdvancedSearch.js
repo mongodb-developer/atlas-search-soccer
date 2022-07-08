@@ -128,6 +128,14 @@ const AdvancedSearch = ({
             positions={positions}
             clubs={clubs}
             countries={countries}
+            age={age}
+            overall={overall}
+            dribbling={dribbling}
+            pace={pace}
+            skillMoves={skillMoves}
+            defending={defending}
+            salary={salary}
+            dob={dob}
           />
         </div>
       </div>

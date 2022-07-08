@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+In May 2022, Electronic Arts and FIFA consciously decoupled after 30 years of bringing gaming bliss to football enthusiasts across the globe.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+gone are the ... 'expressions from the game, what you see, what you do... HEARING "GOOOOOOAAAAAALLLLL"
+I am neither a gamer nor a football enthusiast, but I am a soccer mom. The EA FIFA gaming franchise gave me cheap, wholesome, and countless hours of babysitting. Park your child in front of any gaming console with EA FIFA, and there he/she would stay. Amused, entertained, but mostly still and not breaking anything.
 
-## Available Scripts
+EA FIFA, you let me fold the laundry. You let me finish dinner. You let me read a book. You let me speak on the phone. Uninterupted! <WISTFUL SIGH> and now you're gone - leaving me to despair for all the current soccer moms. Will they ever know a love like ours?
 
-In the project directory, you can run:
+EA FIFA, AtlasSearchSoccer is my tribute to you. Part eulogy, part love song... oh, yeah. And part Atlas Search tutorial.
+?? some corny expression about missing and loving someone - not knowing what they had until it's gone ??
 
-### `npm start`
+<paragraph about the app taking the FIFA 22 player dataset>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+when my now adult, still soccer-playing son comes home to commandeer the big screen and the kitchen for the European championships, I hope somebody somewhere learns about how to use Atlas Search's compound operator to quickly and easily build fine-grained searches. Maybe she'll find that mad skilled Polish goalie with the impossible to spell name. Maybe use the wildcard operator find the up-and-coming hotshot from Manchester United whose name begins with an R, I think?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+list of the tech to learn...
 
-### `npm test`
+and while these developers are using Atlas Search to quickly and easily build their FIFA dream team, I'll curl up with a (most likely technology) book and remember you, EA-FIFA.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<FOOTBALL===LIFE EXPRESSION HERE>
+<DANNY ROJAS GIF>
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+get soccer photos of Tommy and Juliane
