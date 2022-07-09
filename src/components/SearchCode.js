@@ -27,6 +27,7 @@ const SearchCode = ({ searchTerm, operator }) => {
       autocomplete: {
         query: searchTerm,
         path: "name_long",
+        fuzzy: { maxEdits: 1 },
       },
     };
   }

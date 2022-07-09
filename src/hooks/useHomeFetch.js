@@ -38,10 +38,16 @@ export const useHomeFetch = () => {
     const url = `${API}?searchTerm=${searchTerm}`;
 
     const playersJSON = await (await fetch(url)).json();
-    setShowAutocompletePlayers(true);
-    setShowPlayerChoices(false);
-    setPlayers(playersJSON);
-    console.log("PLAYERSJSON: ", playersJSON);
+    if (playersJSON && playersJSON.length > 0) {
+      setShowAutocompletePlayers(true);
+      setShowPlayerChoices(false);
+      setPlayers(playersJSON);
+      console.log("PLAYERSJSON: ", playersJSON);
+    } else {
+      setPlayersFound(false);
+      setShowAutocompletePlayers(false);
+      setPlayers(playersJSON);
+    }
   };
 
   const getPlayers = async () => {
@@ -57,9 +63,11 @@ export const useHomeFetch = () => {
       setPlayersFound(true);
       setPlayers(playersJSON);
       console.log("PLAYERSJSON: ", playersJSON);
+      setPlayersFound(true);
     } else if (playersJSON.length === 0) {
       console.log("NO PLAYERS TO SHOW. SHOW SAD PLAYER");
       setPlayersFound(false);
+      setPlayers(playersJSON);
     }
   };
 
@@ -105,6 +113,7 @@ export const useHomeFetch = () => {
     } else if (advancedSearchPlayers.length === 0) {
       console.log("NO PLAYERS TO SHOW. SHOW SAD PLAYER");
       setPlayersFound(false);
+      setPlayers(responseJSON);
     }
   };
   // ------------------------END_GET_PLAYERS_ADVANCED-----------------------------
@@ -112,9 +121,10 @@ export const useHomeFetch = () => {
   // -------------------------------- USE_EFFECTS ---------------------------
   useEffect(() => {
     if (operator !== "autocomplete") return;
-
+    setPlayersFound(true);
     if (searchTerm.length < 3) {
       setShowAutocompletePlayers(false);
+      setPlayersFound(true);
       return;
     }
     getPlayersAutocomplete();

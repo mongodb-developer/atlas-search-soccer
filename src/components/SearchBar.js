@@ -17,7 +17,6 @@ const SearchBar = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("SUBMITTING!!!");
-
     setSubmitted(true);
   };
 
@@ -32,7 +31,9 @@ const SearchBar = ({
           className=" border border-gray-700 w-4/5 px-6 py-2 text-2xl rounded-lg outline-none"
           placeholder="type to find players..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
         ></input>
         <Selector setOperator={setOperator} />
         <button type="submit">

@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -135,10 +134,10 @@ const getBasicObject = (operator, searchTerm) => {
     };
   } else if (operator === "autocomplete") {
     basicSearchObject = {
-      wildcard: {
-        query: searchTerm,
+      autocomplete: {
+        autocomplete: searchTerm,
         path: "long_name",
-        allowAnalyzedField: true,
+        fuzzy: { maxEdits: 1 },
       },
     };
   }

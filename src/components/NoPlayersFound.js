@@ -3,7 +3,7 @@ import SadSoccerPlayer from "../images/SadSoccerPlayer.jpg";
 
 const NoPlayersFound = () => {
   return (
-    <div className="bg-opacity-80 flex justify-center w-2/5 mx-auto rounded border border-gray-800 text-center text-white shadow-xl p-6 bg-mongo-600 border-solid ">
+    <div className="bg-opacity-80 flex justify-center w-2/5 mx-auto rounded border border-gray-800 text-center text-white shadow-xl mb-6 p-6 bg-mongo-600 border-solid ">
       <img
         src={SadSoccerPlayer}
         alt="player"
