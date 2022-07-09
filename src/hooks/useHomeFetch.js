@@ -21,7 +21,7 @@ export const useHomeFetch = () => {
   const [clubs, setClubs] = useState([]);
   const [dob, setDob] = useState(new Date(1970, 12, 1));
   const [positions, setPositions] = useState([]);
-  const [noPlayersFound, setNoPlayersFound] = useState(false);
+  const [playersFound, setPlayersFound] = useState(true);
 
   const TextEndPoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/players";
@@ -54,12 +54,12 @@ export const useHomeFetch = () => {
 
     if (playersJSON && playersJSON.length > 0) {
       setShowPlayerChoices(true);
-      setNoPlayersFound(false);
+      setPlayersFound(true);
       setPlayers(playersJSON);
       console.log("PLAYERSJSON: ", playersJSON);
     } else if (playersJSON.length === 0) {
       console.log("NO PLAYERS TO SHOW. SHOW SAD PLAYER");
-      setNoPlayersFound(true);
+      setPlayersFound(false);
     }
   };
 
@@ -101,10 +101,10 @@ export const useHomeFetch = () => {
     if (advancedSearchPlayers && advancedSearchPlayers.length > 0) {
       setShowPlayerChoices(true);
       setPlayers(advancedSearchPlayers);
-      setNoPlayersFound(false);
+      setPlayersFound(true);
     } else if (advancedSearchPlayers.length === 0) {
       console.log("NO PLAYERS TO SHOW. SHOW SAD PLAYER");
-      setNoPlayersFound(true);
+      setPlayersFound(false);
     }
   };
   // ------------------------END_GET_PLAYERS_ADVANCED-----------------------------
@@ -178,7 +178,7 @@ export const useHomeFetch = () => {
     setClubs,
     dob,
     setDob,
-    noPlayersFound,
+    playersFound,
   };
 };
 

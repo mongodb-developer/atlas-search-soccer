@@ -56,7 +56,7 @@ const App = () => {
     dob,
     setDob,
     setDreamTeam,
-    noPlayersFound,
+    playersFound,
   } = useHomeFetch();
 
   useEffect(() => {
@@ -160,7 +160,7 @@ const App = () => {
       </div>
 
       <div classname="px-12">
-        {noPlayersFound ? (
+        {!playersFound ? (
           <NoPlayersFound />
         ) : (
           <PlayerGrid
