@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Calendar from "./Calendar";
 import CheckboxGroup from "./CheckboxGroup";
 import SearchAggregation from "./SearchAggregation";
-
 import Slider from "./Slider";
+
+import SearchIcon from "../images/Search.png";
 
 const AdvancedSearch = ({
   salary,
@@ -30,6 +31,7 @@ const AdvancedSearch = ({
   positions,
   dob,
   setDob,
+  setSubmitted,
 }) => {
   return (
     <div className="flex flex-col w-full bg-black">
@@ -53,13 +55,24 @@ const AdvancedSearch = ({
             setFinalList={setClubs}
             path="club_name"
           />
-          <CheckboxGroup
-            title="Position"
-            itemsArray={positionsList}
-            finalList={positions}
-            setFinalList={setPositions}
-            path="player_positions_array"
-          />
+          <div>
+            {" "}
+            <CheckboxGroup
+              title="Position"
+              itemsArray={positionsList}
+              finalList={positions}
+              setFinalList={setPositions}
+              path="player_positions_array"
+            />
+            <button type="submit">
+              <img
+                className="mx-auto mt-28 w-20 text-white mb-2 z-10 content-image text-2xl"
+                src={SearchIcon}
+                alt="search"
+                onClick={() => setSubmitted(true)}
+              />
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 gap-x-4 gap-y-8">

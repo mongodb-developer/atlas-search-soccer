@@ -22,7 +22,7 @@ const SearchBar = ({
   };
 
   return (
-    <div className="relative w-full items-center">
+    <div className="relative w-4/5 items-center">
       <form
         className=" flex w-3/5 mx-auto items-center"
         onSubmit={handleSubmit}

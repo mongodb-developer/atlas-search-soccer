@@ -137,7 +137,7 @@ const PlayerCard = ({
           <img
             src={Footballer}
             alt="player-face"
-            className="rounded-full mt-2  mx-auto w-12"
+            className="rounded-full mt-2  mx-auto w-24"
           ></img>
 
           <div className="bottom-bar mt-4">

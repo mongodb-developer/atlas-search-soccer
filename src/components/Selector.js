@@ -16,7 +16,7 @@ const Selector = ({ setOperator }) => {
 
   return (
     <Select
-      className="w-1/5 p-2 outline-none text-xl"
+      className="w-1/3 p-2 outline-none text-xl"
       defaultValue={{ label: "text", value: "text" }}
       options={API_Options}
       onChange={handleChange}

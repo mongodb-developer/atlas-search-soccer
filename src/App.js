@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useHomeFetch } from "./hooks/useHomeFetch";
 import PlayerGrid from "./components/PlayerGrid";
+import NoPlayersFound from "./components/NoPlayersFound";
 
 import DreamTeamGrid from "./components/DreamTeamGrid";
 import SearchBar from "./components/SearchBar";
@@ -55,6 +56,7 @@ const App = () => {
     dob,
     setDob,
     setDreamTeam,
+    noPlayersFound,
   } = useHomeFetch();
 
   useEffect(() => {
@@ -131,19 +133,7 @@ const App = () => {
       <h2 className="text-center text-4xl text-white pt-12">
         Atlas Search Soccer
       </h2>
-      <div className="flex mx-20 w-full justify-evenly items-center">
-        <div
-          className=" text-lg text-mongo-400 font-bold"
-          onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
-        >
-          <img
-            src={SpotSearch}
-            alt="advanced search"
-            className="rounded-lg w-48 object-contain mb-4"
-          ></img>
-          {" Advanced Scouting "}
-        </div>
-
+      <div className="flex mx-20 w-full justify-around items-center">
         <SearchBar
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
@@ -156,25 +146,41 @@ const App = () => {
           addPlayerToTeam={addPlayerToTeam}
           position2Fill={position2Fill}
         />
+        <div
+          className="text-lg text-mongo-400 font-bold w-1/5"
+          onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
+        >
+          <img
+            src={SpotSearch}
+            alt="advanced search"
+            className="rounded-lg w-48 object-contain mb-4"
+          ></img>
+          {" Advanced Scouting "}
+        </div>
       </div>
+
       <div classname="px-12">
-        <PlayerGrid
-          header={searchTerm ? null : "Player Search Results"}
-          players={players}
-          addPlayerToTeam={addPlayerToTeam}
-          position2Fill={position2Fill}
-          setPosition2Fill={setPosition2Fill}
-          setHighlightCard={setHighlightCard}
-          highlightCard={highlightCard}
-          dreamTeam={dreamTeam}
-          setShowPlayerChoices={setShowPlayerChoices}
-          showPlayerChoices={showPlayerChoices}
-          searchTerm={searchTerm}
-          operator={operator}
-          setPlayerIndex={setPlayerIndex}
-          setShowPlayerModal={setShowPlayerModal}
-          showAdvancedSearch={showAdvancedSearch}
-        />
+        {noPlayersFound ? (
+          <NoPlayersFound />
+        ) : (
+          <PlayerGrid
+            header={searchTerm ? null : "Player Search Results"}
+            players={players}
+            addPlayerToTeam={addPlayerToTeam}
+            position2Fill={position2Fill}
+            setPosition2Fill={setPosition2Fill}
+            setHighlightCard={setHighlightCard}
+            highlightCard={highlightCard}
+            dreamTeam={dreamTeam}
+            setShowPlayerChoices={setShowPlayerChoices}
+            showPlayerChoices={showPlayerChoices}
+            searchTerm={searchTerm}
+            operator={operator}
+            setPlayerIndex={setPlayerIndex}
+            setShowPlayerModal={setShowPlayerModal}
+            showAdvancedSearch={showAdvancedSearch}
+          />
+        )}
         {showAdvancedSearch && (
           <AdvancedSearch
             salary={salary}
@@ -201,10 +207,10 @@ const App = () => {
             dob={dob}
             setDob={setDob}
             operator={operator}
+            setSubmitted={setSubmitted}
           />
         )}
 
-        <br></br>
         <hr
           style={{
             color: "green",
