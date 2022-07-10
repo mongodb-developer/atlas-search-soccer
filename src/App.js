@@ -24,8 +24,6 @@ const App = () => {
     setSearchTerm,
     players,
     dreamTeam,
-    setShowDreamTeam,
-    // setDreamTeam,
     showPlayerChoices,
     setShowPlayerChoices,
     setSubmitted,
@@ -57,6 +55,7 @@ const App = () => {
     setDob,
     setDreamTeam,
     playersFound,
+    setPlayersFound,
   } = useHomeFetch();
 
   useEffect(() => {
@@ -90,9 +89,8 @@ const App = () => {
       position: position,
       player: player,
     };
-
+    // --------------- UPDATING TEAM AND SAVING TO LOCAL STORAGE ------------------------------
     let newDreamTeam = dreamTeam.filter((player) => player.spot !== spot);
-
     newDreamTeam.push(newPlayer);
     newDreamTeam.sort(function (a, b) {
       return a.spot - b.spot;
@@ -100,10 +98,9 @@ const App = () => {
 
     setDreamTeam(newDreamTeam);
     saveToLocalStorage(newDreamTeam);
-
+    // ------------------- END UPDATING TEAM AND SAVING TO LOCAL STORAGE ------------------------------
     setHighlightCard(null);
     setShowPlayerChoices(false);
-    setShowDreamTeam(true);
     setSearchTerm("");
     setShowAdvancedSearch(false);
   };
@@ -124,8 +121,6 @@ const App = () => {
     });
     setDreamTeam(newDreamTeam);
     saveToLocalStorage(newDreamTeam);
-
-    setShowDreamTeam(true);
   };
 
   return (
@@ -145,6 +140,7 @@ const App = () => {
           players={players}
           addPlayerToTeam={addPlayerToTeam}
           position2Fill={position2Fill}
+          setPlayersFound={setPlayersFound}
         />
         <div
           className="text-lg text-mongo-400 font-bold w-1/5"
@@ -160,9 +156,7 @@ const App = () => {
       </div>
 
       <div classname="px-12">
-        {!playersFound ? (
-          <NoPlayersFound />
-        ) : (
+        {playersFound || searchTerm === "" ? (
           <PlayerGrid
             header={searchTerm ? null : "Player Search Results"}
             players={players}
@@ -180,6 +174,8 @@ const App = () => {
             setShowPlayerModal={setShowPlayerModal}
             showAdvancedSearch={showAdvancedSearch}
           />
+        ) : (
+          <NoPlayersFound />
         )}
         {showAdvancedSearch && (
           <AdvancedSearch

@@ -18,9 +18,6 @@ const PlayerGrid = ({
   setShowPlayerModal,
   showAdvancedSearch,
 }) => {
-  if (players.length === 0) {
-    setShowPlayerChoices(false);
-  }
   return (
     <div className="flex w-full justify-between pl-20 mb-2">
       {showPlayerChoices ? (

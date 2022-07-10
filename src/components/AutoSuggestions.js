@@ -2,12 +2,12 @@ import React from "react";
 
 const AutoSuggestions = ({
   setSearchTerm,
-  searchTerm,
+
   position2Fill,
   addPlayerToTeam,
   setSubmitted,
   players,
-  setOperator,
+
   setShowAutocompletePlayers,
 }) => {
   return (

@@ -13,6 +13,7 @@ const SearchBar = ({
   showAutocompletePlayers,
   setShowAutocompletePlayers,
   position2Fill,
+  setPlayersFound,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -56,6 +57,7 @@ const SearchBar = ({
             setShowAutocompletePlayers={setShowAutocompletePlayers}
             setOperator={setOperator}
             position2Fill={position2Fill}
+            setPlayersFound={setPlayersFound}
           />
         </div>
       )}

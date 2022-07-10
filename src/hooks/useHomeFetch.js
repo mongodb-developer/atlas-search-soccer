@@ -4,7 +4,6 @@ export const useHomeFetch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [players, setPlayers] = useState([]);
   const [dreamTeam, setDreamTeam] = useState(emptyTeam);
-  const [showDreamTeam, setShowDreamTeam] = useState(true);
   const [operator, setOperator] = useState("text");
   const [submitted, setSubmitted] = useState(false);
   const [showPlayerChoices, setShowPlayerChoices] = useState(false);
@@ -40,10 +39,11 @@ export const useHomeFetch = () => {
     const playersJSON = await (await fetch(url)).json();
     if (playersJSON && playersJSON.length > 0) {
       setShowAutocompletePlayers(true);
+      setPlayersFound(true);
       setShowPlayerChoices(false);
       setPlayers(playersJSON);
       console.log("PLAYERSJSON: ", playersJSON);
-    } else {
+    } else if (playersJSON.length === 0) {
       setPlayersFound(false);
       setShowAutocompletePlayers(false);
       setPlayers(playersJSON);
@@ -65,7 +65,7 @@ export const useHomeFetch = () => {
       console.log("PLAYERSJSON: ", playersJSON);
       setPlayersFound(true);
     } else if (playersJSON.length === 0) {
-      console.log("NO PLAYERS TO SHOW. SHOW SAD PLAYER");
+      setShowPlayerChoices(false);
       setPlayersFound(false);
       setPlayers(playersJSON);
     }
@@ -112,6 +112,7 @@ export const useHomeFetch = () => {
       setPlayersFound(true);
     } else if (advancedSearchPlayers.length === 0) {
       console.log("NO PLAYERS TO SHOW. SHOW SAD PLAYER");
+      setShowPlayerChoices(false);
       setPlayersFound(false);
       setPlayers(responseJSON);
     }
@@ -120,8 +121,10 @@ export const useHomeFetch = () => {
 
   // -------------------------------- USE_EFFECTS ---------------------------
   useEffect(() => {
-    if (operator !== "autocomplete") return;
-    setPlayersFound(true);
+    if (operator !== "autocomplete") {
+      return;
+    }
+
     if (searchTerm.length < 3) {
       setShowAutocompletePlayers(false);
       setPlayersFound(true);
@@ -155,7 +158,6 @@ export const useHomeFetch = () => {
     setSearchTerm,
     players,
     setPlayers,
-    setShowDreamTeam,
     dreamTeam,
     setDreamTeam,
     submitted,
@@ -189,6 +191,7 @@ export const useHomeFetch = () => {
     dob,
     setDob,
     playersFound,
+    setPlayersFound,
   };
 };
 
