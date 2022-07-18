@@ -1,3 +1,5 @@
+Score Big with Atlas Search
+
 In May 2022, Electronic Arts and FIFA consciously decoupled after 30 years of bringing gaming bliss to football enthusiasts across the globe.
 
 gone are the ... 'expressions from the game, what you see, what you do... HEARING "GOOOOOOAAAAAALLLLL"
@@ -21,16 +23,18 @@ and while these developers are using Atlas Search to quickly and easily build th
 
 get soccer photos of Tommy
 
-<h1 align="center">What's Cooking with Atlas Search</h1>
+<h1 align="center">Atlas Search Soccer</h1>
 
-<h2 align="center">A Restaurant Finder Application Demo MongoDB Atlas Search</h2>
-<p>Hello! 👋 This application allows you to search lightning fast through over 25,000 restaurants in the New York city area based on a variety of search parameters and data types:</p>
+<h2 align="center">Build your FIFA Dream Team with MongoDB Atlas Search</h2>
+<p>Hello! 👋 This application allows you to search lightning fast through over 22,000 soccer players based on a variety of search parameters and data types to build your own FIFA dream team:</p>
 <ul>
-<li>restaurant name</li>
-<li>geolocation coordinates</li>
-<li>cuisine type</li>
-<li>average star rating</li>
-<li>borough</li>
+<li>player name</li>
+<li>player position</li>
+<li>nationality</li>
+<li>team</li>
+<li>skill level</li>
+<li>age</li>
+<li>salary</li>
 </ul>
 <br/>
 <div align="center">
@@ -39,29 +43,26 @@ get soccer photos of Tommy
 <br/>
 <p><em>Note: This dataset is mocked. Please do not use to make actual dining decisions.</em></p>
 
-<p> What's Cooking implements many Atlas Search features from autocomplete to custom function scoring. Using the $search operator in a MongoDB aggregation pipeline, we can build fine-grained searches across text, numerics, and geospatial data. By building out What's Cooking, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches on your Atlas data.</p>
+<p> Atlas Search Soccer implements many Atlas Search features from autocomplete to search facets. Using the $search operator in a MongoDB aggregation pipeline, we can build fine-grained searches across text, numerics, and geospatial data. By building out your FIFA dream team, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches on your Atlas data.</p>
 
 **No additional servers or software needed. No need to keep data in sync. Everything is done in MongoDB Atlas.**
 
 - fuzzy matching
-- highlighting
+- wildcard
 - autocomplete
 - range queries
-- geoqueries
 - facets
 - relevance-based scoring
-- custom function scoring
-- synonyms
 
-<p>Check out the video of the MongoDB .Live keynote to see a demonstration of all the features or visit the link below to play around with the finished application, hosted entirely in MongoDB Atlas:</p>
-<h2 align="center"><a href="https://www.atlassearchrestaurants.com">www.atlassearchrestaurants.com</a></h2>
+<p>Check out the video to see a demonstration of all the features or visit the link below to play around with the finished application, hosted entirely in MongoDB Atlas:</p>
+<h2 align="center"><a href="https://www.atlassearchsoccer.com">www.atlassearchsoccer.com</a></h2>
 
 <p>This application is hosted entirely by MongoDB Atlas was created using:</p>
 
 - React
 - Tailwind CSS
 - MongoDB Realm for backend HTTPs endpoints and webhooks
-- A modified sample dataset based on MongoDB's Atlas sample_restaurants dataset
+- A FIFA 22 player dataset found on kaggle // -----------link to and credit -------------
 
 <p float="left">
     <img src="WhatsCookingArchitecture.png" width="750"  />
@@ -73,8 +74,7 @@ get soccer photos of Tommy
 
 - A MongoDB Atlas account. Get one for free <a href="https://www.mongodb.com/cloud/atlas">here.</a>
 - A recent version of Node.js and npm.
-- Restaurant sample dataset.
-- Synonyms dataset.
+- EA FIFA 22 player dataset (players22.json) provided in the data folder.
 - (Recommended) <a href="https://www.mongodb.com/try/download/compass">MongoDB Compass - GUI</a>
 
 <p>You can read and download the dataset using the MongoDB Shell, any MongoDB driver, or my favorite MongoDB Compass using the following URI:</p>
@@ -85,7 +85,7 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 </code>
 </pre>
 
-<p>It is also included in this repo's Supplemental Files branch as <pre>whatscooking.json</pre></p>
+<p>It is also included in this repo's data folder as <pre>whatscooking.json</pre></p>
 
 ---
 
@@ -119,7 +119,7 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 </p>
 
 <h2>Using Realm as Your Serverless Backend....</h2>
-<p>What's Cooking uses HTTP services in Realm to create 5 APIs to allow you to query for your restaurant data over HTTP: </p>
+<p>AtlasSearchSoccer uses HTTP services in Realm to create 5 APIs to allow you to query for your restaurant data over HTTP: </p>
 
 - `GetRestaurantsEndPoint` called from the `useHomeFetch.js` hook.
 - `GetFacetsEndpoint` called from the `useHomeFetch.js` hook.
@@ -141,7 +141,9 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
     <img src="" width="550"  />
 </p>
 <hr>
-Find the Realm application and code for these webhooks in the <code>WhatsCookingRealm</code> folder.</p>
+
+As you choose your players, they are written to local storage on your device so that your dream team persists even after you close your browser.
+Find the Realm application and code for these webhooks in the <code>AtlasSearchSoccer_Realm</code> folder.</p>
 
 <h5>If you have any questions or feedback about this repo, feel free to create an Issue or PR in this repo or reach out to me on Twitter @YouOldMaid.</h5>
 

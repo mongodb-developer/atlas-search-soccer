@@ -21,16 +21,24 @@ export const useHomeFetch = () => {
   const [dob, setDob] = useState(new Date(1970, 12, 1));
   const [positions, setPositions] = useState([]);
   const [playersFound, setPlayersFound] = useState(true);
+  // FACETS
+  const [countryBuckets, setCountryBuckets] = useState([]);
+  const [clubBuckets, setClubBuckets] = useState([]);
+  const [positionBuckets, setPositionBuckets] = useState([]);
+  const [showFacets, setShowFacets] = useState(false);
 
-  const TextEndPoint =
+  const BasicSearchEndPoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/players";
   const WildcardEndPoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/wildcard";
   const AutocompleteEndPoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/autocomplete";
 
-  const URL_SEARCH_ADVANCED =
+  const AdvancedSearchEndPoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/advancedSearch";
+
+  const FacetsEndPoint =
+    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/facets";
 
   const getPlayersAutocomplete = async () => {
     let API = AutocompleteEndPoint;
@@ -51,7 +59,7 @@ export const useHomeFetch = () => {
   };
 
   const getPlayers = async () => {
-    let API = TextEndPoint;
+    let API = BasicSearchEndPoint;
     if (operator === "wildcard") API = WildcardEndPoint;
 
     const url = `${API}?searchTerm=${searchTerm}`;
@@ -99,7 +107,7 @@ export const useHomeFetch = () => {
       },
     };
 
-    const response = await fetch(URL_SEARCH_ADVANCED, requestOptions);
+    const response = await fetch(AdvancedSearchEndPoint, requestOptions);
     const responseJSON = await response.json();
     const advancedSearchPlayers = responseJSON.players;
     const aggregation = responseJSON.aggregation;
@@ -118,6 +126,36 @@ export const useHomeFetch = () => {
     }
   };
   // ------------------------END_GET_PLAYERS_ADVANCED-----------------------------
+
+  // -------------------------FACETS ---------------------------------
+  const postFacets = async () => {
+    let facetData = {
+      searchTerm: searchTerm,
+      operator: operator,
+      countries: countries,
+      clubs: clubs,
+      age: age[0],
+      overall: overall[0],
+      dribbling: dribbling[0],
+      skillMoves: skillMoves[0],
+      defending: defending[0],
+      pace: pace[0],
+      dob: new Date(dob),
+      salary: salary[0],
+      positions: positions,
+    };
+    const requestOptions = {
+      method: "POST",
+      body: JSON.stringify(facetData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const response = await fetch(FacetsEndPoint, requestOptions);
+    const facetResponseJSON = await response.json();
+    console.log("FACETS: ", facetResponseJSON);
+  };
 
   // -------------------------------- USE_EFFECTS ---------------------------
   useEffect(() => {
@@ -143,6 +181,7 @@ export const useHomeFetch = () => {
     if (showAdvancedSearch) {
       getPlayersAdvanced();
     }
+    postFacets();
 
     setSubmitted(false);
     console.log(operator);
