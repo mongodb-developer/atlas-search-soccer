@@ -11,7 +11,7 @@ const SearchCode = ({ searchTerm, operator }) => {
       text: {
         query: searchTerm,
         path: "name_long",
-        fuzzy: { maxEdits: 1 },
+        fuzzy: { maxEdits: 2 },
       },
     };
   } else if (operator === "wildcard") {
