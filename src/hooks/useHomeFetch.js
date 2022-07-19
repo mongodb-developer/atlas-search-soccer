@@ -25,6 +25,7 @@ export const useHomeFetch = () => {
   const [countryBuckets, setCountryBuckets] = useState([]);
   const [clubBuckets, setClubBuckets] = useState([]);
   const [positionBuckets, setPositionBuckets] = useState([]);
+  const [facetOverallCount, setFacetOverallCount] = useState(0);
   const [showFacets, setShowFacets] = useState(false);
 
   const BasicSearchEndPoint =
@@ -154,7 +155,17 @@ export const useHomeFetch = () => {
 
     const response = await fetch(FacetsEndPoint, requestOptions);
     const facetResponseJSON = await response.json();
+    if (facetResponseJSON.ok === true) {
+      setShowFacets(true);
+    } else setShowFacets(false);
     console.log("FACETS: ", facetResponseJSON);
+    setFacetOverallCount(facetResponseJSON.results[0].count.lowerBound);
+
+    setCountryBuckets(facetResponseJSON.results[0].facet.countryFacet.buckets);
+    setClubBuckets(facetResponseJSON.results[0].facet.clubFacet.buckets);
+    setPositionBuckets(
+      facetResponseJSON.results[0].facet.positionFacet.buckets
+    );
   };
 
   // -------------------------------- USE_EFFECTS ---------------------------
@@ -231,6 +242,11 @@ export const useHomeFetch = () => {
     setDob,
     playersFound,
     setPlayersFound,
+    countryBuckets,
+    clubBuckets,
+    positionBuckets,
+    facetOverallCount,
+    showFacets,
   };
 };
 

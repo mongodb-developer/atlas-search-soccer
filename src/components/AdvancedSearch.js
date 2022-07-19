@@ -32,6 +32,11 @@ const AdvancedSearch = ({
   dob,
   setDob,
   setSubmitted,
+  countryBuckets,
+  clubBuckets,
+  positionBuckets,
+  facetOverallCount,
+  showFacets,
 }) => {
   return (
     <div className="flex flex-col w-full bg-black">
@@ -40,41 +45,53 @@ const AdvancedSearch = ({
       </h2>
 
       <div className="flex mt-6 justify-evenly items-start">
-        <div className="flex mt-8">
-          <CheckboxGroup
-            title="Select Country"
-            itemsArray={countryList}
-            setFinalList={setCountries}
-            finalList={countries}
-            path="nationality_name"
-          />
-          <CheckboxGroup
-            title="Select Club"
-            itemsArray={clubList}
-            finalList={clubs}
-            setFinalList={setClubs}
-            path="club_name"
-          />
-          <div>
-            {" "}
+        <div>
+          {showFacets && (
+            <div className="text-blue-300 text-center">
+              Matching Players: {facetOverallCount}
+            </div>
+          )}
+          <div className="flex mt-8">
             <CheckboxGroup
-              title="Position"
-              itemsArray={positionsList}
-              finalList={positions}
-              setFinalList={setPositions}
-              path="player_positions_array"
+              title="Select Country"
+              itemsArray={countryList}
+              setFinalList={setCountries}
+              finalList={countries}
+              path="nationality_name"
+              buckets={countryBuckets}
+              showFacets={showFacets}
             />
-            <button type="submit">
-              <img
-                className="mx-auto mt-28 w-20 text-white mb-2 z-10 content-image text-2xl"
-                src={SearchIcon}
-                alt="search"
-                onClick={() => setSubmitted(true)}
+            <CheckboxGroup
+              title="Select Club"
+              itemsArray={clubList}
+              finalList={clubs}
+              setFinalList={setClubs}
+              path="club_name"
+              buckets={clubBuckets}
+              showFacets={showFacets}
+            />
+            <div>
+              {" "}
+              <CheckboxGroup
+                title="Position"
+                itemsArray={positionsList}
+                finalList={positions}
+                setFinalList={setPositions}
+                path="player_positions_array"
+                buckets={positionBuckets}
+                showFacets={showFacets}
               />
-            </button>
+              <button type="submit">
+                <img
+                  className="mx-auto mt-28 w-20 text-white mb-2 z-10 content-image text-2xl"
+                  src={SearchIcon}
+                  alt="search"
+                  onClick={() => setSubmitted(true)}
+                />
+              </button>
+            </div>
           </div>
         </div>
-
         <div className="grid grid-cols-2 gap-x-4 gap-y-8">
           <div className="px-6 w-full p-4 border-4 border-indigo-900 rounded-lg text-white">
             <Calendar dob={dob} setDob={setDob} />

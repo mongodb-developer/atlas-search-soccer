@@ -56,6 +56,11 @@ const App = () => {
     setDreamTeam,
     playersFound,
     setPlayersFound,
+    countryBuckets,
+    clubBuckets,
+    positionBuckets,
+    facetOverallCount,
+    showFacets,
   } = useHomeFetch();
 
   useEffect(() => {
@@ -204,6 +209,11 @@ const App = () => {
             setDob={setDob}
             operator={operator}
             setSubmitted={setSubmitted}
+            countryBuckets={countryBuckets}
+            clubBuckets={clubBuckets}
+            positionBuckets={positionBuckets}
+            facetOverallCount={facetOverallCount}
+            showFacets={showFacets}
           />
         )}
 

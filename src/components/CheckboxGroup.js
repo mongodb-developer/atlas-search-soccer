@@ -9,6 +9,8 @@ const CheckboxGroup = ({
   path,
   setFilterArray,
   filterArray,
+  buckets,
+  showFacets,
 }) => {
   const [checkedState, setCheckedState] = useState(
     new Array(itemsArray.length).fill(false)
@@ -37,20 +39,27 @@ const CheckboxGroup = ({
         <h3 className="text-xl font-bold mb-2 text-green-500">{title}</h3>
         <ul className="countries-list">
           {itemsArray.map((name, index) => {
+            let count = 0;
+            for (let i = 0; i < buckets.length; i++) {
+              if (buckets[i]._id === name) {
+                count = buckets[i].count;
+              }
+            }
             return (
               <li key={index}>
-                <div className="toppings-list-item">
-                  <div className="left-section space-x-4">
-                    <input
-                      type="checkbox"
-                      id={`custom-checkbox-${index}`}
-                      name={name}
-                      value={name}
-                      checked={checkedState[index]}
-                      onChange={() => handleOnChange(index)}
-                    />
-                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                  </div>
+                <div className="flex space-x-4 ">
+                  <input
+                    type="checkbox"
+                    id={`custom-checkbox-${index}`}
+                    name={name}
+                    value={name}
+                    checked={checkedState[index]}
+                    onChange={() => handleOnChange(index)}
+                  />
+                  <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                  {showFacets && count !== 0 && (
+                    <div className="text-blue-300">({count})</div>
+                  )}
                 </div>
               </li>
             );

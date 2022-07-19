@@ -44,10 +44,13 @@ const SearchAggregation = ({
   ) {
     let compoundObject = {};
 
-    if (basicSearchObject !== {}) {
+    if (!isEmpty(basicSearchObject)) {
       mustArray.unshift(basicSearchObject);
     }
-    compoundObject.must = mustArray; // TEST IF IT WORKS FOR EMPTY MUST + NO BASIC SEARCH OBJECT
+
+    if (mustArray.length > 0) {
+      compoundObject.must = mustArray;
+    }
     if (shouldArray.length > 0) {
       compoundObject.should = shouldArray;
     }
@@ -114,7 +117,7 @@ const SearchAggregation = ({
 const getBasicObject = (operator, searchTerm) => {
   let basicSearchObject = {};
 
-  if (operator === "text") {
+  if (operator === "text" && searchTerm !== "") {
     basicSearchObject = {
       text: {
         query: searchTerm,
@@ -208,5 +211,9 @@ const getFilterArray = (positions, clubs, countries) => {
   return filterArray;
   //   END PROCESS FILTER ARRAY FOR POSITIONS, CLUBS, COUNTRIES--------------------------------------
 };
+
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
 
 export default SearchAggregation;
