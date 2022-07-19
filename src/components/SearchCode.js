@@ -7,6 +7,7 @@ const SearchCode = ({ searchTerm, operator }) => {
 
   if (operator === "text") {
     stageObject = {
+      index: "<INDEXNAME>",
       text: {
         query: searchTerm,
         path: "name_long",
@@ -15,6 +16,7 @@ const SearchCode = ({ searchTerm, operator }) => {
     };
   } else if (operator === "wildcard") {
     stageObject = {
+      index: "<INDEXNAME>",
       wildcard: {
         query: searchTerm,
         path: "name_long",
@@ -23,7 +25,7 @@ const SearchCode = ({ searchTerm, operator }) => {
     };
   } else if (operator === "autocomplete") {
     stageObject = {
-      index: "autocomplete",
+      index: "autocompleteIndex",
       autocomplete: {
         query: searchTerm,
         path: "name_long",
@@ -38,13 +40,6 @@ const SearchCode = ({ searchTerm, operator }) => {
       <>
         <pre className="text-fuchsia-400 font-mono text-sm py-2 text-left">
           &#123; $search :
-        </pre>
-        <pre className="text-blue-500 font-mono text-sm py-2 pl-2 text-left">
-          &#47; &#47; optional, defaults to "default"
-        </pre>
-
-        <pre className="text-yellow-200 font-mono text-sm py-2 pl-2 text-left">
-          index: &#60; indexName &#62;
         </pre>
 
         <SyntaxHighlighter language="javascript" style={atomDark}>

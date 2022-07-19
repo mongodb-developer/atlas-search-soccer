@@ -18,7 +18,6 @@ const SearchAggregation = ({
   dob, // TO DO - DEAL WITH DOB !!!!!!!!!!!!!!!!!!!!!!!
 }) => {
   let basicSearchObject = getBasicObject(operator, searchTerm);
-  const basicSearchString = JSON.stringify(basicSearchObject, null, 2);
 
   const shouldArrayValues = [
     { name: "age", value: age[0] },
@@ -37,6 +36,7 @@ const SearchAggregation = ({
 
   let compoundString = "";
 
+  // TEST IF WE HAVE A COMPOUND OPERATOR
   if (
     filterArray.length > 0 ||
     mustArray.length > 0 ||
@@ -45,6 +45,7 @@ const SearchAggregation = ({
     let compoundObject = {};
 
     if (!isEmpty(basicSearchObject)) {
+      delete basicSearchObject.index;
       mustArray.unshift(basicSearchObject);
     }
 
@@ -61,26 +62,27 @@ const SearchAggregation = ({
     compoundString = JSON.stringify(compoundObject, null, 2);
   }
 
+  const basicSearchString = JSON.stringify(basicSearchObject, null, 2);
+
   return (
     <div className="flex flex-col w-96 rounded h-auto bg-black px-2 text-sm content-start border border-yellow-200">
       <>
-        <pre className="text-fuchsia-400 font-mono text-sm py-2 text-left">
+        <pre className="text-fuchsia-400 font-mono font-bold text-sm py-2 text-left">
           &#123; $search :
-        </pre>
-        <pre className="text-blue-500 font-mono text-sm py-2 pl-2 text-left">
-          &#47; &#47; optional, defaults to "default"
-        </pre>
-
-        <pre className="text-yellow-200 font-mono text-sm py-2 pl-2 text-left">
-          index: &#60; indexName &#62;
         </pre>
       </>
 
       <>
         {compoundString !== "" && (
           <>
+            <pre className="text-blue-300 font-mono mx-3 text-left text-sm font-bold">
+              &#123;
+            </pre>
+            <pre className="text-yellow-300 font-mono mx-6 text-left text-sm font-bold">
+              index: "INDEXNAME",
+            </pre>
             <pre className="text-blue-300 font-mono mx-6 text-left text-sm font-bold">
-              &#123; compound :
+              compound :
             </pre>
             <pre className="text-blue-500 font-mono text-sm py-2 pl-2 text-left">
               &#47; &#47; must | mustNot | should | filter
@@ -119,6 +121,7 @@ const getBasicObject = (operator, searchTerm) => {
 
   if (operator === "text" && searchTerm !== "") {
     basicSearchObject = {
+      index: "INDEXNAME",
       text: {
         query: searchTerm,
         path: "long_name",
@@ -129,6 +132,7 @@ const getBasicObject = (operator, searchTerm) => {
     };
   } else if (operator === "wildcard") {
     basicSearchObject = {
+      index: "INDEXNAME",
       wildcard: {
         query: searchTerm,
         path: "long_name",
@@ -137,6 +141,7 @@ const getBasicObject = (operator, searchTerm) => {
     };
   } else if (operator === "autocomplete") {
     basicSearchObject = {
+      index: "autocompleteIndex",
       autocomplete: {
         autocomplete: searchTerm,
         path: "long_name",
@@ -217,3 +222,11 @@ function isEmpty(obj) {
 }
 
 export default SearchAggregation;
+
+/* <pre className="text-blue-500 font-mono text-sm py-2 pl-2 text-left">
+          &#47; &#47; optional, defaults to "default"
+        </pre>
+
+        <pre className="text-yellow-200 font-mono text-sm py-2 pl-2 text-left">
+          index: &#60; indexName &#62;
+        </pre> */
