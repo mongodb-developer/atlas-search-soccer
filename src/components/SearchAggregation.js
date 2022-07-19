@@ -79,7 +79,7 @@ const SearchAggregation = ({
               &#123;
             </pre>
             <pre className="text-yellow-300 font-mono mx-6 text-left text-sm font-bold">
-              index: "INDEXNAME",
+              index: "&#60;INDEXNAME&#62;",
             </pre>
             <pre className="text-blue-300 font-mono mx-6 text-left text-sm font-bold">
               compound :
@@ -121,7 +121,7 @@ const getBasicObject = (operator, searchTerm) => {
 
   if (operator === "text" && searchTerm !== "") {
     basicSearchObject = {
-      index: "INDEXNAME",
+      index: "<INDEXNAME>",
       text: {
         query: searchTerm,
         path: "long_name",
@@ -132,7 +132,7 @@ const getBasicObject = (operator, searchTerm) => {
     };
   } else if (operator === "wildcard") {
     basicSearchObject = {
-      index: "INDEXNAME",
+      index: "<INDEXNAME>",
       wildcard: {
         query: searchTerm,
         path: "long_name",
