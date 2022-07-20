@@ -86,7 +86,7 @@ const AdvancedSearch = ({
               <div className="flex space-x-4">
                 <button
                   type="submit"
-                  className="mt-10 border border-white rounded-lg text-white px-2"
+                  className="mt-10 border border-lime-600 shadow shadow-lime-700/50 rounded-lg text-white px-2"
                 >
                   {" "}
                   Search
@@ -97,43 +97,26 @@ const AdvancedSearch = ({
                     onClick={() => setSubmitted(true)}
                   />
                 </button>
-                <button
-                  type="submit"
-                  className="mt-10 border border-white rounded-lg text-white px-2"
-                >
-                  {" "}
-                  Facet Code
-                  <img
-                    className="mx-auto  w-20 text-white my-1 z-10 content-image text-2xl "
-                    src={FacetIcon}
-                    alt="facet code"
-                    onClick={() => setShowFacetCode(true)}
-                  />
-                </button>
+                {showFacets && (
+                  <button
+                    type="submit"
+                    className="mt-10 border border-lime-600 shadow shadow-lime-700/50 rounded-lg text-white px-2"
+                  >
+                    {" "}
+                    Facet Code
+                    <img
+                      className="mx-auto  w-20 text-white my-1 z-10 content-image text-2xl "
+                      src={FacetIcon}
+                      alt="facet code"
+                      onClick={() => setShowFacetCode(true)}
+                    />
+                  </button>
+                )}
               </div>
             </div>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-x-4 gap-y-8">
-          <div className="px-2 w-full p-4 border-4 border-indigo-900 rounded-lg text-white">
-            <Calendar dob={dob} setDob={setDob} />
-          </div>
-          <Slider
-            category="age"
-            field="Age"
-            value={age}
-            setValue={setAge}
-            max={52}
-            step={1}
-          />
-          <Slider
-            category="wage_eur"
-            field="Salary (euros)"
-            value={salary}
-            setValue={setSalary}
-            max={150000}
-            step={1000}
-          />
           <Slider
             category="overall"
             field="Overall"
@@ -149,6 +132,14 @@ const AdvancedSearch = ({
             setValue={setSkillMoves}
             step={1}
             max={5}
+          />
+          <Slider
+            category="dribbling"
+            field="Dribbling"
+            value={dribbling}
+            setValue={setDribbling}
+            max={100}
+            step={1}
           />
           <Slider
             category="pace"
@@ -167,13 +158,24 @@ const AdvancedSearch = ({
             step={1}
           />{" "}
           <Slider
-            category="dribbling"
-            field="Dribbling"
-            value={dribbling}
-            setValue={setDribbling}
-            max={100}
+            category="age"
+            field="Age"
+            value={age}
+            setValue={setAge}
+            max={52}
             step={1}
           />
+          <Slider
+            category="wage_eur"
+            field="Salary (euros)"
+            value={salary}
+            setValue={setSalary}
+            max={150000}
+            step={1000}
+          />
+          <div className="px-2 w-full p-4 border-4 border-indigo-900 rounded-lg text-white">
+            <Calendar dob={dob} setDob={setDob} />
+          </div>
         </div>
         <div>
           <SearchAggregation
@@ -202,34 +204,37 @@ export default AdvancedSearch;
 const clubList = [
   "Arsenal",
   "Manchester United",
-  "Wolverhampton Wanderers",
-  "Burnley",
-  "Paris Saint-Germain",
-  "Real Madrid CF",
   "Chelsea",
-  "Borussia Mönchengladbach",
-  "Newcastle United",
-  "RCD Mallorca",
-  "Everton",
-  "Real Betis Balompié",
-  "ESTAC Troyes",
+  "Liverpool",
   "Tottenham Hotspur",
-  "TSG Hoffenheim",
-  "VfB Stuttgart",
-  "Southampton",
-  "Brentford",
-  "Brighton & Hove Albion",
-  "Genoa",
-  "CA Osasuna",
-  "FC Barcelona",
-  "Crystal Palace",
   "West Ham United",
-  "RC Celta de Vigo",
-  "Granada CF",
-  "Norwich City",
+  "Manchester City",
+
+  "Paris Saint-Germain",
+  "Olympique de Marseille",
+  "AS Monaco",
+  "LOSC Lille",
+  "Olympique Lyonnais",
+  "ESTAC Troyes",
+
+  "FC Bayern München",
+  "Borussia Dortmund",
+  "FC Schalke 04",
+  "SV Werder Bremen",
+  "VfB Stuttgart",
+
+  "Real Madrid CF",
+  "Atlético de Madrid",
+  "FC Barcelona",
+  "Valencia CF",
+  "Real Betis Balompié",
   "Sevilla FC",
-  "Villarreal CF",
-  "Leicester City",
+
+  "Juventus",
+  "AC Milan",
+
+  "Roma",
+  "Napoli",
 ];
 
 const countryList = [

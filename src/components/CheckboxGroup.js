@@ -12,6 +12,12 @@ const CheckboxGroup = ({
   buckets,
   showFacets,
 }) => {
+  const borderTeams = [
+    "Manchester City",
+    "ESTAC Troyes",
+    "VfB Stuttgart",
+    "Sevilla FC",
+  ];
   const [checkedState, setCheckedState] = useState(
     new Array(itemsArray.length).fill(false)
   );
@@ -62,6 +68,16 @@ const CheckboxGroup = ({
                     <div className="text-blue-300">({count})</div>
                   )}
                 </div>
+                {borderTeams.includes(name) && (
+                  <hr
+                    style={{
+                      color: "green",
+                      backgroundColor: "green",
+                      height: 2,
+                      borderColor: "green",
+                    }}
+                  />
+                )}
               </li>
             );
           })}

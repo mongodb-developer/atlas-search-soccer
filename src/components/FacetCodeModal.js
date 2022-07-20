@@ -15,7 +15,7 @@ const FacetCodeModal = ({ setShowFacetCode, searchMetaStage }) => {
           </SyntaxHighlighter>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-12 w-12 float-right"
+            className="h-12 w-12 sticky bottom-0 float-right"
             viewBox="0 0 20 20"
             fill="#ff0000"
             onClick={() => {
