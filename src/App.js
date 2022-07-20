@@ -7,6 +7,7 @@ import NoPlayersFound from "./components/NoPlayersFound";
 import DreamTeamGrid from "./components/DreamTeamGrid";
 import SearchBar from "./components/SearchBar";
 import PlayerModal from "./components/PlayerModal";
+import FacetCodeModal from "./components/FacetCodeModal";
 import AdvancedSearch from "./components/AdvancedSearch";
 import SpotSearch from "./images/SpotSearch.png";
 
@@ -14,6 +15,7 @@ const App = () => {
   const [position2Fill, setPosition2Fill] = useState(100);
   const [highlightCard, setHighlightCard] = useState(null);
   const [showPlayerModal, setShowPlayerModal] = useState(false);
+  const [showFacetCode, setShowFacetCode] = useState(false);
 
   const [playerIndex, setPlayerIndex] = useState(-100);
 
@@ -214,6 +216,7 @@ const App = () => {
             positionBuckets={positionBuckets}
             facetOverallCount={facetOverallCount}
             showFacets={showFacets}
+            setShowFacetCode={setShowFacetCode}
           />
         )}
 
@@ -251,6 +254,9 @@ const App = () => {
             position2Fill={position2Fill}
           />
         ) : null}
+        {showFacetCode && (
+          <FacetCodeModal setShowFacetCode={setShowFacetCode} />
+        )}
       </div>
     </div>
   );

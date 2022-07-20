@@ -116,7 +116,6 @@ const PlayerModal = ({
         <div
           className="absolute bottom-0 right-0 mr-3 mb-3"
           onClick={() => {
-            console.log("CLICK ADD PLAYER: ", players[playerIndex].short_name);
             addPlayerToTeam(players[playerIndex], position2Fill);
             setShowPlayerModal(false);
           }}

@@ -40,6 +40,7 @@ const CheckboxGroup = ({
         <ul className="countries-list">
           {itemsArray.map((name, index) => {
             let count = 0;
+
             for (let i = 0; i < buckets.length; i++) {
               if (buckets[i]._id === name) {
                 count = buckets[i].count;

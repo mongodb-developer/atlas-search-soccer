@@ -5,6 +5,7 @@ import SearchAggregation from "./SearchAggregation";
 import Slider from "./Slider";
 
 import SearchIcon from "../images/Search.png";
+import FacetIcon from "../images/FacetIcon.png";
 
 const AdvancedSearch = ({
   salary,
@@ -37,6 +38,7 @@ const AdvancedSearch = ({
   positionBuckets,
   facetOverallCount,
   showFacets,
+  setShowFacetCode,
 }) => {
   return (
     <div className="flex flex-col w-full bg-black">
@@ -81,19 +83,39 @@ const AdvancedSearch = ({
                 buckets={positionBuckets}
                 showFacets={showFacets}
               />
-              <button type="submit">
-                <img
-                  className="mx-auto mt-28 w-20 text-white mb-2 z-10 content-image text-2xl"
-                  src={SearchIcon}
-                  alt="search"
-                  onClick={() => setSubmitted(true)}
-                />
-              </button>
+              <div className="flex space-x-4">
+                <button
+                  type="submit"
+                  className="mt-10 border border-white rounded-lg text-white px-2"
+                >
+                  {" "}
+                  Search
+                  <img
+                    className="mx-auto  w-20 text-white my-1 z-10 content-image text-2xl"
+                    src={SearchIcon}
+                    alt="search"
+                    onClick={() => setSubmitted(true)}
+                  />
+                </button>
+                <button
+                  type="submit"
+                  className="mt-10 border border-white rounded-lg text-white px-2"
+                >
+                  {" "}
+                  Facet Code
+                  <img
+                    className="mx-auto  w-20 text-white my-1 z-10 content-image text-2xl "
+                    src={FacetIcon}
+                    alt="facet code"
+                    onClick={() => setShowFacetCode(true)}
+                  />
+                </button>
+              </div>
             </div>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-x-4 gap-y-8">
-          <div className="px-6 w-full p-4 border-4 border-indigo-900 rounded-lg text-white">
+          <div className="px-2 w-full p-4 border-4 border-indigo-900 rounded-lg text-white">
             <Calendar dob={dob} setDob={setDob} />
           </div>
           <Slider
@@ -183,6 +205,7 @@ const clubList = [
   "Wolverhampton Wanderers",
   "Burnley",
   "Paris Saint-Germain",
+  "Real Madrid CF",
   "Chelsea",
   "Borussia Mönchengladbach",
   "Newcastle United",
@@ -207,7 +230,6 @@ const clubList = [
   "Sevilla FC",
   "Villarreal CF",
   "Leicester City",
-  "Real Madrid CF",
 ];
 
 const countryList = [
