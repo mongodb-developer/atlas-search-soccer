@@ -27,6 +27,7 @@ export const useHomeFetch = () => {
   const [positionBuckets, setPositionBuckets] = useState([]);
   const [facetOverallCount, setFacetOverallCount] = useState(0);
   const [showFacets, setShowFacets] = useState(false);
+  const [searchMetaStage, setSearchMetaStage] = useState({});
 
   const BasicSearchEndPoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/players";
@@ -166,6 +167,7 @@ export const useHomeFetch = () => {
     setPositionBuckets(
       facetResponseJSON.results[0].facet.positionFacet.buckets
     );
+    setSearchMetaStage(facetResponseJSON.searchMetaStage);
   };
 
   // -------------------------------- USE_EFFECTS ---------------------------
@@ -247,6 +249,7 @@ export const useHomeFetch = () => {
     positionBuckets,
     facetOverallCount,
     showFacets,
+    searchMetaStage,
   };
 };
 

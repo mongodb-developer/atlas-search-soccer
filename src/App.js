@@ -63,6 +63,7 @@ const App = () => {
     positionBuckets,
     facetOverallCount,
     showFacets,
+    searchMetaStage,
   } = useHomeFetch();
 
   useEffect(() => {
@@ -255,7 +256,10 @@ const App = () => {
           />
         ) : null}
         {showFacetCode && (
-          <FacetCodeModal setShowFacetCode={setShowFacetCode} />
+          <FacetCodeModal
+            setShowFacetCode={setShowFacetCode}
+            searchMetaStage={searchMetaStage}
+          />
         )}
       </div>
     </div>
