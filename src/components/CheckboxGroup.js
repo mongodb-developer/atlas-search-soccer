@@ -73,7 +73,7 @@ const CheckboxGroup = ({
                     style={{
                       color: "green",
                       backgroundColor: "green",
-                      height: 2,
+                      height: 1,
                       borderColor: "green",
                     }}
                   />
