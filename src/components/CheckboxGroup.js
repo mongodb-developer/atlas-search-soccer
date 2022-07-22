@@ -17,6 +17,7 @@ const CheckboxGroup = ({
     "ESTAC Troyes",
     "VfB Stuttgart",
     "Sevilla FC",
+    "Napoli",
   ];
   const [checkedState, setCheckedState] = useState(
     new Array(itemsArray.length).fill(false)
@@ -73,7 +74,7 @@ const CheckboxGroup = ({
                     style={{
                       color: "green",
                       backgroundColor: "green",
-                      height: 1,
+                      height: 2,
                       borderColor: "green",
                     }}
                   />

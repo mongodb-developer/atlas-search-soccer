@@ -9,7 +9,7 @@ import SearchBar from "./components/SearchBar";
 import PlayerModal from "./components/PlayerModal";
 import FacetCodeModal from "./components/FacetCodeModal";
 import AdvancedSearch from "./components/AdvancedSearch";
-import SpotSearch from "./images/SpotSearch.png";
+import SpotSearch from "./images/Search_UI.png";
 
 const App = () => {
   const [position2Fill, setPosition2Fill] = useState(100);
@@ -150,16 +150,17 @@ const App = () => {
           position2Fill={position2Fill}
           setPlayersFound={setPlayersFound}
         />
+
         <div
-          className="text-lg text-mongo-400 font-bold w-1/5"
+          className="flex flex-col text-lg text-mongo-400 font-bold w-1/4 mr-12 "
           onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
         >
           <img
             src={SpotSearch}
             alt="advanced search"
-            className="rounded-lg w-48 object-contain mb-4"
+            className="rounded-lg mx-auto w-52 object-contain mb-4 border border-slate-700 shadow shadow-green-500/50"
           ></img>
-          {" Advanced Scouting "}
+          <div className="text-center">Advanced Scouting</div>
         </div>
       </div>
 

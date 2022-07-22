@@ -2,6 +2,7 @@ import React from "react";
 import Selector from "./Selector";
 import SearchIcon from "../images/Search.png";
 import AutoSuggestions from "./AutoSuggestions";
+import Calculator from "../images/calculator.png";
 
 const SearchBar = ({
   searchTerm,
@@ -22,9 +23,9 @@ const SearchBar = ({
   };
 
   return (
-    <div className="relative w-4/5 items-center">
+    <div className="relative w-full items-center">
       <form
-        className=" flex w-3/5 mx-auto items-center"
+        className=" flex w-4/5 mx-auto items-center"
         onSubmit={handleSubmit}
       >
         <input
@@ -39,12 +40,24 @@ const SearchBar = ({
         <Selector setOperator={setOperator} />
         <button type="submit">
           <img
-            className="mx-auto w-20 text-white mb-2 z-10 content-image text-2xl"
+            className="mx-auto w-24 text-white mb-2 z-10 content-image text-2xl"
             src={SearchIcon}
             alt="search"
             onClick={handleSubmit}
           />
         </button>
+        <div
+          className="flex ml-12  text-white w-1/10 space-x-2 border rounded-lg border-slate-700 shadow shadow-green-500/50 p-2"
+          onClick={() => console.log("calculate!")}
+        >
+          {" "}
+          <div className="text-center my-auto">Function Score</div>
+          <img
+            src={Calculator}
+            alt="advanced search"
+            className="rounded-lg w-16 "
+          ></img>
+        </div>
       </form>
       {showAutocompletePlayers && (
         <div className="absolute top-20 left-80 z-10  text-left w-2/5 bg-white rounded shadow-2xl">

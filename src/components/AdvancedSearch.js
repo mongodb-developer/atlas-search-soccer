@@ -113,6 +113,42 @@ const AdvancedSearch = ({
                   </button>
                 )}
               </div>
+              {showFacets && (
+                <>
+                  <div className="text-green-400 my-4">
+                    Facets uses a keyword analyzer. See results with standard
+                    analyzer.
+                  </div>
+                  <div class="flex justify-center">
+                    <div className="flex items-center justify-center w-4/5">
+                      <label
+                        for="analyzer"
+                        className="flex items-center cursor-pointer"
+                      >
+                        <div className="mr-3 text-white font-medium">
+                          Keyword
+                        </div>
+                        <div class="relative">
+                          <input
+                            id="analyzer"
+                            type="checkbox"
+                            className="sr-only"
+                            onChange={() => console.log("TOGGLE")}
+                          />
+
+                          <div className="rail w-10 h-4 bg-green-600 rounded-full shadow-inner"></div>
+
+                          <div className="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
+                        </div>
+
+                        <div className="ml-3 text-white font-medium">
+                          Standard
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -234,6 +270,7 @@ const clubList = [
   "AC Milan",
   "Roma",
   "Napoli",
+  "Arsenal de Sarandí",
 ];
 
 const countryList = [
