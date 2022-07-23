@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Calendar from "./Calendar";
 import CheckboxGroup from "./CheckboxGroup";
 import SearchAggregation from "./SearchAggregation";
@@ -39,6 +39,8 @@ const AdvancedSearch = ({
   facetOverallCount,
   showFacets,
   setShowFacetCode,
+  keywordFacetIndex,
+  setKeywordFacetIndex,
 }) => {
   return (
     <div className="flex flex-col w-full bg-black">
@@ -46,7 +48,7 @@ const AdvancedSearch = ({
         Advanced Scouting
       </h2>
 
-      <div className="flex mt-6 justify-evenly items-start">
+      <div className="flex mt-6 justify-evenly items-start w-auto">
         <div>
           {showFacets && (
             <div className="text-blue-300 text-center">
@@ -72,7 +74,7 @@ const AdvancedSearch = ({
               buckets={clubBuckets}
               showFacets={showFacets}
             />
-            <div>
+            <div className="w-1/3">
               {" "}
               <CheckboxGroup
                 title="Position"
@@ -83,7 +85,7 @@ const AdvancedSearch = ({
                 buckets={positionBuckets}
                 showFacets={showFacets}
               />
-              <div className="flex space-x-4">
+              <div className="flex space-x-2">
                 <button
                   type="submit"
                   className="mt-10 border border-lime-600 shadow shadow-lime-700/50 rounded-lg text-white px-2"
@@ -115,17 +117,13 @@ const AdvancedSearch = ({
               </div>
               {showFacets && (
                 <>
-                  <div className="text-green-400 my-4">
-                    Facets uses a keyword analyzer. See results with standard
-                    analyzer.
-                  </div>
                   <div class="flex justify-center">
-                    <div className="flex items-center justify-center w-4/5">
+                    <div className="flex items-center mt-4 justify-center w-4/5">
                       <label
                         for="analyzer"
                         className="flex items-center cursor-pointer"
                       >
-                        <div className="mr-3 text-white font-medium">
+                        <div className="mr-3 text-yellow-300 font-medium">
                           Keyword
                         </div>
                         <div class="relative">
@@ -133,26 +131,37 @@ const AdvancedSearch = ({
                             id="analyzer"
                             type="checkbox"
                             className="sr-only"
-                            onChange={() => console.log("TOGGLE")}
+                            onChange={() => {
+                              setKeywordFacetIndex(!keywordFacetIndex);
+                              console.log("TOGGLE: ", keywordFacetIndex);
+                              //setSubmitted
+                            }}
                           />
-
-                          <div className="rail w-10 h-4 bg-green-600 rounded-full shadow-inner"></div>
-
-                          <div className="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
+                          <div className="rail w-10 h-4 bg-white rounded-full shadow-inner"></div>
+                          <div className="dot absolute w-6 h-6 bg-fuchsia-700 rounded-full shadow -left-1 -top-1 transition"></div>
                         </div>
 
-                        <div className="ml-3 text-white font-medium">
+                        <div className="ml-3 text-yellow-300 font-medium">
                           Standard
                         </div>
                       </label>
                     </div>
+                  </div>
+
+                  <div className="text-white my-4 text-center">
+                    Try the
+                    <span className="text-yellow-400">
+                      {" "}
+                      standard analyzer
+                    </span>{" "}
+                    for facet results.
                   </div>
                 </>
               )}
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-8">
+        <div className="grid grid-cols-2 gap-x-2 gap-y-8 mx-1">
           <Slider
             category="overall"
             field="Overall"
@@ -213,7 +222,7 @@ const AdvancedSearch = ({
             <Calendar dob={dob} setDob={setDob} />
           </div>
         </div>
-        <div>
+        <div className=" mx-auto">
           <SearchAggregation
             searchTerm={searchTerm}
             operator={operator}

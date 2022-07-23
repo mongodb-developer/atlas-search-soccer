@@ -15,6 +15,8 @@ const SearchBar = ({
   setShowAutocompletePlayers,
   position2Fill,
   setPlayersFound,
+  functionScore,
+  setFunctionScore,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,7 +25,7 @@ const SearchBar = ({
   };
 
   return (
-    <div className="relative w-full items-center">
+    <div className="relative w-full items-center mr-12">
       <form
         className=" flex w-4/5 mx-auto items-center"
         onSubmit={handleSubmit}
@@ -48,7 +50,13 @@ const SearchBar = ({
         </button>
         <div
           className="flex ml-12  text-white w-1/10 space-x-2 border rounded-lg border-slate-700 shadow shadow-green-500/50 p-2"
-          onClick={() => console.log("calculate!")}
+          onClick={
+            () => {
+              setFunctionScore(!functionScore);
+              console.log(functionScore);
+            }
+            // setSubmitted
+          }
         >
           {" "}
           <div className="text-center my-auto">Function Score</div>

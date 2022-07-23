@@ -24,7 +24,7 @@ const SearchCodeRange = ({ field, value }) => {
 
   const stageString = JSON.stringify(stageObject, null, 2);
   return (
-    <div>
+    <div className="text-sm overflow-scroll">
       <SyntaxHighlighter language="javascript" style={atomDark}>
         {stageString}
       </SyntaxHighlighter>

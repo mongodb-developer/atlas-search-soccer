@@ -42,7 +42,7 @@ const CheckboxGroup = ({
 
   return (
     <div className="flex flex-col">
-      <div className="text-white  p-2">
+      <div className="text-white p-2">
         <h3 className="text-xl font-bold mb-2 text-green-500">{title}</h3>
         <ul className="countries-list">
           {itemsArray.map((name, index) => {
@@ -85,7 +85,7 @@ const CheckboxGroup = ({
         </ul>
       </div>
       {finalList.length !== 0 && (
-        <div className="w-full">
+        <div className="mx-auto">
           <SearchCodeCheckbox
             path={path}
             value={finalList}

@@ -34,7 +34,7 @@ const Slider = ({ field, value, setValue, max, step, category }) => {
         />
         <div className=" text-center">{value[0]}</div>
         {value[0] !== 0 && (
-          <div className="w-full px-8">
+          <div className="w-full ">
             <SearchCodeRange field={category} value={value[0]} />
           </div>
         )}

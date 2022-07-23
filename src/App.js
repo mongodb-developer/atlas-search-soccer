@@ -64,6 +64,10 @@ const App = () => {
     facetOverallCount,
     showFacets,
     searchMetaStage,
+    keywordFacetIndex,
+    setKeywordFacetIndex,
+    functionScore,
+    setFunctionScore,
   } = useHomeFetch();
 
   useEffect(() => {
@@ -136,7 +140,21 @@ const App = () => {
       <h2 className="text-center text-4xl text-white pt-12">
         Atlas Search Soccer
       </h2>
+      <h2 className="text-center text-xl text-mongo-400 pt-4">
+        Build Your FIFA Dream Team ⚽
+      </h2>
       <div className="flex mx-20 w-full justify-around items-center">
+        <div
+          className="flex flex-col text-lg text-mongo-400 font-bold w-1/5"
+          onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
+        >
+          <img
+            src={SpotSearch}
+            alt="advanced search"
+            className="rounded-lg mx-auto w-52 object-contain mb-4 border border-slate-700 shadow shadow-green-500/50"
+          ></img>
+          <div className="text-center">Advanced Scouting</div>
+        </div>
         <SearchBar
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
@@ -149,19 +167,9 @@ const App = () => {
           addPlayerToTeam={addPlayerToTeam}
           position2Fill={position2Fill}
           setPlayersFound={setPlayersFound}
+          functionScore={functionScore}
+          setFunctionScore={setFunctionScore}
         />
-
-        <div
-          className="flex flex-col text-lg text-mongo-400 font-bold w-1/4 mr-12 "
-          onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
-        >
-          <img
-            src={SpotSearch}
-            alt="advanced search"
-            className="rounded-lg mx-auto w-52 object-contain mb-4 border border-slate-700 shadow shadow-green-500/50"
-          ></img>
-          <div className="text-center">Advanced Scouting</div>
-        </div>
       </div>
 
       <div classname="px-12">
@@ -219,6 +227,8 @@ const App = () => {
             facetOverallCount={facetOverallCount}
             showFacets={showFacets}
             setShowFacetCode={setShowFacetCode}
+            keywordFacetIndex={keywordFacetIndex}
+            setKeywordFacetIndex={setKeywordFacetIndex}
           />
         )}
 

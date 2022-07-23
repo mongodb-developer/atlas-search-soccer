@@ -5,6 +5,8 @@ export const useHomeFetch = () => {
   const [players, setPlayers] = useState([]);
   const [dreamTeam, setDreamTeam] = useState(emptyTeam);
   const [operator, setOperator] = useState("text");
+  const [keywordFacetIndex, setKeywordFacetIndex] = useState(true);
+  const [functionScore, setFunctionScore] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [showPlayerChoices, setShowPlayerChoices] = useState(false);
   const [showAutocompletePlayers, setShowAutocompletePlayers] = useState(false);
@@ -99,6 +101,7 @@ export const useHomeFetch = () => {
       dob: new Date(dob),
       salary: salary[0],
       positions: positions,
+      functionScore: functionScore,
     };
 
     const requestOptions = {
@@ -132,6 +135,7 @@ export const useHomeFetch = () => {
   // -------------------------FACETS ---------------------------------
   const postFacets = async () => {
     let facetData = {
+      keywordFacetIndex: keywordFacetIndex,
       searchTerm: searchTerm,
       operator: operator,
       countries: countries,
@@ -250,6 +254,10 @@ export const useHomeFetch = () => {
     facetOverallCount,
     showFacets,
     searchMetaStage,
+    keywordFacetIndex,
+    setKeywordFacetIndex,
+    functionScore,
+    setFunctionScore,
   };
 };
 
