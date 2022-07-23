@@ -85,7 +85,7 @@ const CheckboxGroup = ({
         </ul>
       </div>
       {finalList.length !== 0 && (
-        <div className="mx-auto">
+        <div className="overflow-auto">
           <SearchCodeCheckbox
             path={path}
             value={finalList}
