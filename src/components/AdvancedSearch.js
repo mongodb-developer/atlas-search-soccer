@@ -57,7 +57,7 @@ const AdvancedSearch = ({
           )}
           <div className="flex overflow-auto">
             <div className="CHECKBOX_COLUMNS flex w-full">
-              {/*---------BEGIN POSITIONS COLUMN---------------*/}
+              {/*---------BEGIN COUNTRIES COLUMN---------------*/}
               <div className="COUNTRIES w-1/3">
                 <CheckboxGroup
                   title="Country"
