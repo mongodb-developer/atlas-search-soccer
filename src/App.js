@@ -172,7 +172,7 @@ const App = () => {
         />
       </div>
 
-      <div classname="px-12">
+      <div className="px-12">
         {playersFound || searchTerm === "" ? (
           <PlayerGrid
             header={searchTerm ? null : "Player Search Results"}
