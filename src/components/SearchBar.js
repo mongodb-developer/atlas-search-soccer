@@ -49,11 +49,15 @@ const SearchBar = ({
         </button>
 
         <button
-          className={`flex ml-12 hover:bg-purple-800 active:bg-purple-900 active:scale-110 text-white w-1/10 space-x-2 border rounded-lg border-slate-700 shadow shadow-green-500/50 p-2 `}
-          onClick={() => {
+          className={`flex ml-12 text-white hover:scale-110 active:scale-125 shadow shadow-green-500/50  ${
+            !functionScore
+              ? " border-green-700  border"
+              : "border-slate-800  border-2  "
+          } w-1/10 space-x-2 rounded-lg  p-2 `}
+          onClick={(e) => {
             setFunctionScore(!functionScore);
             console.log(functionScore);
-            handleSubmit();
+            handleSubmit(e);
           }}
         >
           {" "}

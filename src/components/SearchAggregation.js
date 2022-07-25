@@ -162,59 +162,14 @@ const SearchAggregation = ({
 // HELPER FUNCTIONS TO GET SEARCH OBJECTS FOR SEARCH STAGE - BASIC AND COMPOUND
 const getBasicObject = (operator, searchTerm, functionScore) => {
   let basicSearchObject = {};
+  if (searchTerm === "") {
+    return basicSearchObject;
+  }
   console.log("function score object", functionScore);
 
-  if (operator === "text" && searchTerm !== "") {
-    basicSearchObject = {
-      index: "<INDEXNAME>",
-      text: {
-        query: searchTerm,
-        path: "long_name",
-        fuzzy: {
-          maxEdits: 2,
-        },
-        score: {
-          function: {
-            add: [
-              {
-                score: "relevance",
-              },
-              {
-                path: {
-                  value: "overall",
-                  undefined: 1,
-                },
-              },
-            ],
-          },
-        },
-      },
-    };
-  } else if (operator === "wildcard") {
-    basicSearchObject = {
-      index: "<INDEXNAME>",
-      wildcard: {
-        query: searchTerm,
-        path: "long_name",
-        allowAnalyzedField: true,
-        score: {
-          function: {
-            add: [
-              {
-                score: "relevance",
-              },
-              {
-                path: {
-                  value: "overall",
-                  undefined: 1,
-                },
-              },
-            ],
-          },
-        },
-      },
-    };
-  } else if (operator === "autocomplete") {
+  // WE WILL HAVE A BASICSEARCHOBJECT - BUILD FOR 3 OPERATORS - autocomplete, wildcard, text
+
+  if (operator === "autocomplete") {
     basicSearchObject = {
       index: "autocompleteIndex",
       autocomplete: {
@@ -225,11 +180,81 @@ const getBasicObject = (operator, searchTerm, functionScore) => {
     };
   }
 
-  if (!functionScore) {
-    basicSearchObject = removeFunctionScoreAttribute(
-      basicSearchObject,
-      operator
-    );
+  if (functionScore) {
+    if (operator === "text") {
+      basicSearchObject = {
+        index: "<INDEXNAME>",
+        text: {
+          query: searchTerm,
+          path: "long_name",
+          fuzzy: {
+            maxEdits: 2,
+          },
+          score: {
+            function: {
+              add: [
+                {
+                  score: "relevance",
+                },
+                {
+                  path: {
+                    value: "overall",
+                    undefined: 1,
+                  },
+                },
+              ],
+            },
+          },
+        },
+      };
+    } else if (operator === "wildcard") {
+      basicSearchObject = {
+        index: "<INDEXNAME>",
+        wildcard: {
+          query: searchTerm,
+          path: "long_name",
+          allowAnalyzedField: true,
+          score: {
+            function: {
+              add: [
+                {
+                  score: "relevance",
+                },
+                {
+                  path: {
+                    value: "overall",
+                    undefined: 1,
+                  },
+                },
+              ],
+            },
+          },
+        },
+      };
+    }
+  } // END FUNCTION SCORE // ! function score
+  else {
+    if (operator === "text") {
+      basicSearchObject = {
+        index: "<INDEXNAME>",
+        text: {
+          query: searchTerm,
+          path: "long_name",
+          fuzzy: {
+            maxEdits: 2,
+          },
+        },
+      };
+    } else if (operator === "wildcard") {
+      basicSearchObject = {
+        index: "<INDEXNAME>",
+        wildcard: {
+          query: searchTerm,
+          path: "long_name",
+          allowAnalyzedField: true,
+        },
+      };
+    }
   }
 
   return basicSearchObject;
@@ -314,11 +339,3 @@ function isEmpty(obj) {
 }
 
 export default SearchAggregation;
-
-/* <pre className="text-blue-500 font-mono text-sm py-2 pl-2 text-left">
-          &#47; &#47; optional, defaults to "default"
-        </pre>
-
-        <pre className="text-yellow-200 font-mono text-sm py-2 pl-2 text-left">
-          index: &#60; indexName &#62;
-        </pre> */
