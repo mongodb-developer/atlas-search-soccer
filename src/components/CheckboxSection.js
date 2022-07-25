@@ -92,44 +92,38 @@ function CheckboxSection({
           )}
         </div>
         {/*---------------- END BUTTON GROUP----------*/}
-        {showFacets && (
-          <>
-            <div className="flex justify-center">
-              <div className="flex items-center mt-4 justify-center w-4/5">
-                <label
-                  htmlFor="analyzer"
-                  className="flex items-center cursor-pointer"
-                >
-                  <div className="mr-3 text-yellow-300 font-medium">
-                    Keyword
-                  </div>
-                  <div className="relative">
-                    <input
-                      id="analyzer"
-                      type="checkbox"
-                      className="sr-only"
-                      onChange={() => {
-                        setKeywordFacetIndex(!keywordFacetIndex);
-                      }}
-                    />
-                    <div className="rail w-10 h-4 bg-white rounded-full shadow-inner"></div>
-                    <div className="dot absolute w-6 h-6 bg-fuchsia-700 rounded-full shadow -left-1 -top-1 transition"></div>
-                  </div>
+        <>
+          <div className="flex justify-center">
+            <div className="flex items-center mt-4 justify-center w-4/5">
+              <label
+                htmlFor="analyzer"
+                className="flex items-center cursor-pointer"
+              >
+                <div className="mr-3 text-yellow-300 font-medium">Keyword</div>
+                <div className="relative">
+                  <input
+                    id="analyzer"
+                    type="checkbox"
+                    className="sr-only"
+                    onChange={() => {
+                      setKeywordFacetIndex(!keywordFacetIndex);
+                    }}
+                  />
+                  <div className="rail w-10 h-4 bg-white rounded-full shadow-inner"></div>
+                  <div className="dot absolute w-6 h-6 bg-fuchsia-700 rounded-full shadow -left-1 -top-1 transition"></div>
+                </div>
 
-                  <div className="ml-3 text-yellow-300 font-medium">
-                    Standard
-                  </div>
-                </label>
-              </div>
+                <div className="ml-3 text-yellow-300 font-medium">Standard</div>
+              </label>
             </div>
+          </div>
 
-            <div className="text-white my-4 text-center">
-              Try the
-              <span className="text-yellow-400"> standard analyzer</span> for
-              facet results.
-            </div>
-          </>
-        )}
+          <div className="text-white my-4 text-center">
+            Try the
+            <span className="text-yellow-400"> standard analyzer</span> for
+            facet results.
+          </div>
+        </>
         {/*---------- END FACET TOGGLE -----------*/}
       </div>
       {/*---------END POSITIONS COLUMN---------------*/}

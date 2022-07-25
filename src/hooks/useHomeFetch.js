@@ -48,7 +48,9 @@ export const useHomeFetch = () => {
     let API = AutocompleteEndPoint;
     const url = `${API}?searchTerm=${searchTerm}`;
 
-    const playersJSON = await (await fetch(url)).json();
+    const response = await (await fetch(url)).json();
+    const playersJSON = response.results;
+
     if (playersJSON && playersJSON.length > 0) {
       setShowAutocompletePlayers(true);
       setPlayersFound(true);
@@ -66,9 +68,12 @@ export const useHomeFetch = () => {
     let API = BasicSearchEndPoint;
     if (operator === "wildcard") API = WildcardEndPoint;
 
-    const url = `${API}?searchTerm=${searchTerm}`;
+    const url = `${API}?searchTerm=${searchTerm}&functionScore=${functionScore}`;
 
-    const playersJSON = await (await fetch(url)).json();
+    const response = await (await fetch(url)).json();
+
+    const playersJSON = response.results;
+    console.log("SEARCHSTAGE: ", response.searchString);
 
     if (playersJSON && playersJSON.length > 0) {
       setShowPlayerChoices(true);
@@ -198,11 +203,11 @@ export const useHomeFetch = () => {
     }
     if (showAdvancedSearch) {
       getPlayersAdvanced();
+      postFacets();
     }
-    postFacets();
 
     setSubmitted(false);
-    console.log(operator);
+
     // eslint-disable-next-line
   }, [submitted]);
 

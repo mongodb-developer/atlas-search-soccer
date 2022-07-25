@@ -48,15 +48,14 @@ const SearchBar = ({
             onClick={handleSubmit}
           />
         </button>
-        <div
-          className="flex ml-12  text-white w-1/10 space-x-2 border rounded-lg border-slate-700 shadow shadow-green-500/50 p-2"
-          onClick={
-            () => {
-              setFunctionScore(!functionScore);
-              console.log(functionScore);
-            }
-            // setSubmitted
-          }
+
+        <button
+          className={`flex ml-12 hover:bg-purple-800 active:bg-purple-900 active:scale-110 text-white w-1/10 space-x-2 border rounded-lg border-slate-700 shadow shadow-green-500/50 p-2 `}
+          onClick={() => {
+            setFunctionScore(!functionScore);
+            console.log(functionScore);
+            setSubmitted(true);
+          }}
         >
           {" "}
           <div className="text-center my-auto">Function Score</div>
@@ -65,7 +64,7 @@ const SearchBar = ({
             alt="advanced search"
             className="rounded-lg w-16 "
           ></img>
-        </div>
+        </button>
       </form>
       {showAutocompletePlayers && (
         <div className="absolute top-20 left-80 z-10  text-left w-2/5 bg-white rounded shadow-2xl">

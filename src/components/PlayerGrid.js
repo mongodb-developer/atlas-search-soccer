@@ -17,6 +17,7 @@ const PlayerGrid = ({
   setPlayerIndex,
   setShowPlayerModal,
   showAdvancedSearch,
+  functionScore,
 }) => {
   return (
     <div className="flex w-full justify-between pl-20 mb-2">
@@ -43,7 +44,11 @@ const PlayerGrid = ({
       )}
       {searchTerm !== "" && !showAdvancedSearch && (
         <div className=" mt-6 mx-4 ">
-          <SearchCode operator={operator} searchTerm={searchTerm} />
+          <SearchCode
+            operator={operator}
+            searchTerm={searchTerm}
+            functionScore={functionScore}
+          />
         </div>
       )}
     </div>

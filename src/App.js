@@ -190,6 +190,7 @@ const App = () => {
             setPlayerIndex={setPlayerIndex}
             setShowPlayerModal={setShowPlayerModal}
             showAdvancedSearch={showAdvancedSearch}
+            functionScore={functionScore}
           />
         ) : (
           <NoPlayersFound />

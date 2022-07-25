@@ -2,7 +2,7 @@ import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const SearchCode = ({ searchTerm, operator }) => {
+const SearchCode = ({ searchTerm, operator, functionScore }) => {
   let stageObject = {};
 
   if (operator === "text") {
@@ -14,6 +14,31 @@ const SearchCode = ({ searchTerm, operator }) => {
         fuzzy: { maxEdits: 2 },
       },
     };
+    if (functionScore) {
+      stageObject = {
+        index: "<INDEXNAME>",
+        text: {
+          query: searchTerm,
+          path: "name_long",
+          fuzzy: { maxEdits: 2 },
+          score: {
+            function: {
+              add: [
+                {
+                  score: "relevance",
+                },
+                {
+                  path: {
+                    value: "overall",
+                    undefined: 1,
+                  },
+                },
+              ],
+            },
+          },
+        },
+      };
+    }
   } else if (operator === "wildcard") {
     stageObject = {
       index: "<INDEXNAME>",
@@ -23,6 +48,32 @@ const SearchCode = ({ searchTerm, operator }) => {
         allowAnalyzedField: true,
       },
     };
+
+    if (functionScore) {
+      stageObject = {
+        index: "<INDEXNAME>",
+        wildcard: {
+          query: searchTerm,
+          path: "name_long",
+          allowAnalyzedField: true,
+          score: {
+            function: {
+              add: [
+                {
+                  score: "relevance",
+                },
+                {
+                  path: {
+                    value: "overall",
+                    undefined: 1,
+                  },
+                },
+              ],
+            },
+          },
+        },
+      };
+    }
   } else if (operator === "autocomplete") {
     stageObject = {
       index: "autocompleteIndex",
