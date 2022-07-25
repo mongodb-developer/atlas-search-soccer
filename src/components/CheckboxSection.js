@@ -62,6 +62,7 @@ function CheckboxSection({
           <button
             type="submit"
             className="mt-10 border border-lime-600 shadow shadow-lime-700/50 rounded-lg text-white px-2"
+            onClick={() => setSubmitted(true)}
           >
             {" "}
             Search
@@ -69,7 +70,6 @@ function CheckboxSection({
               className="mx-auto  w-20 text-white my-1 z-10 content-image text-2xl"
               src={SearchIcon}
               alt="search"
-              onClick={() => setSubmitted(true)}
             />
           </button>
           {showFacets && (
@@ -97,21 +97,19 @@ function CheckboxSection({
             <div className="flex justify-center">
               <div className="flex items-center mt-4 justify-center w-4/5">
                 <label
-                  for="analyzer"
+                  htmlFor="analyzer"
                   className="flex items-center cursor-pointer"
                 >
                   <div className="mr-3 text-yellow-300 font-medium">
                     Keyword
                   </div>
-                  <div class="relative">
+                  <div className="relative">
                     <input
                       id="analyzer"
                       type="checkbox"
                       className="sr-only"
                       onChange={() => {
                         setKeywordFacetIndex(!keywordFacetIndex);
-                        console.log("TOGGLE: ", keywordFacetIndex);
-                        //setSubmit
                       }}
                     />
                     <div className="rail w-10 h-4 bg-white rounded-full shadow-inner"></div>
@@ -175,6 +173,8 @@ const clubList = [
   "Roma",
   "Napoli",
   "Arsenal de Sarandí",
+  "Dundee United",
+  "FC Red Bull Salzburg",
 ];
 
 const countryList = [

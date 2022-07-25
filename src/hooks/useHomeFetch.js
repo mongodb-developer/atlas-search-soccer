@@ -102,6 +102,7 @@ export const useHomeFetch = () => {
       salary: salary[0],
       positions: positions,
       functionScore: functionScore,
+      keywordFacetIndex: keywordFacetIndex,
     };
 
     const requestOptions = {
