@@ -1,41 +1,45 @@
-Score Big with Atlas Search
-
-In May 2022, Electronic Arts and FIFA consciously decoupled after 30 years of bringing gaming bliss to football enthusiasts across the globe.
-
-gone are the ... 'expressions from the game, what you see, what you do... HEARING "GOOOOOOAAAAAALLLLL"
-I am neither a gamer nor a football enthusiast, but I am a soccer mom. The EA FIFA gaming franchise gave me cheap, wholesome, and countless hours of babysitting. Park your child in front of any gaming console with EA FIFA, and there he/she would stay. Amused, entertained, but mostly still and not breaking anything.
-
-EA FIFA, you let me fold the laundry. You let me finish dinner. You let me read a book. You let me speak on the phone. Uninterupted! <WISTFUL SIGH> and now you're gone - leaving me to despair for all the current soccer moms. Will they ever know a love like ours?
-
-EA FIFA, AtlasSearchSoccer is my tribute to you. Part eulogy, part love song... oh, yeah. And part Atlas Search tutorial.
-?? some corny expression about missing and loving someone - not knowing what they had until it's gone ??
-
-<paragraph about the app taking the FIFA 22 player dataset>
-
-when my now adult, still soccer-playing son comes home to commandeer the big screen and the kitchen for the European championships, I hope somebody somewhere learns about how to use Atlas Search's compound operator to quickly and easily build fine-grained searches. Maybe she'll find that mad skilled Polish goalie with the impossible to spell name. Maybe use the wildcard operator find the up-and-coming hotshot from Manchester United whose name begins with an R, I think?
-
-list of the tech to learn...
-
-and while these developers are using Atlas Search to quickly and easily build their FIFA dream team, I'll curl up with a (most likely technology) book and remember you, EA-FIFA.
-
-<FOOTBALL===LIFE EXPRESSION HERE>
-<DANNY ROJAS GIF>
-
-get soccer photos of Tommy
-
 <h1 align="center">Atlas Search Soccer</h1>
 
 <h2 align="center">Build your FIFA Dream Team with MongoDB Atlas Search</h2>
-<p>Hello! 👋 This application allows you to search lightning fast through over 22,000 soccer players based on a variety of search parameters and data types to build your own FIFA dream team:</p>
-<ul>
-<li>player name</li>
-<li>player position</li>
-<li>nationality</li>
-<li>team</li>
-<li>skill level</li>
-<li>age</li>
-<li>salary</li>
-</ul>
+
+Hello, sports fans & non-sports fans alike! 👋
+
+In May 2022, Electronic Arts and FIFA consciously decoupled after 30 years of bringing gaming bliss to soccer enthusiasts across the globe. I am neither a gamer nor a soccer enthusiast, but I am a soccer mom. The EA FIFA gaming franchise gave me cheap, wholesome, and countless hours of babysitting. Park your child in front of any gaming console with EA FIFA, and there he/she would stay. Amused, entertained, but mostly still and not breaking anything.
+
+EA FIFA, <b>Atlas Search Soccer</b> is my tribute to you. Part eulogy, part love song. Oh yeah, and part Atlas Search tutorial.
+
+Teaming up MongoDB Atlas Search with the FIFA22 player dataset, you can scour across the 22,00 players in FIFA22 player database based on a variety of search parameters and data types:
+
+- player name
+- player position
+- nationality
+- club
+- skill level
+- age
+- salary
+
+Equipped with only a searchbox, sliders and checkboxes, find the world's best players with the most inpossible-to-spell names to build out your own FIFA Dream Team. Autocomplete, wildcard, and filters to find Ibrahimović, Błaszczykowski, and Szczęsny? No problem!
+
+<< INSERT AN ANIMATED GIF HERE>>
+
+Skills and Drills to Train
+
+- search operators:
+  - text
+  - wildcard
+  - autocomplete
+- fuzzy matching
+- indexes and analyzers
+- compound operator
+- relevance based scoring
+- custom score modifiers
+- filters, facets and counts
+
+ <div class="tenor-gif-embed" data-postid="23442325" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%"><a href="https://tenor.com/view/football-is-life-ted-lasso-futbol-is-life-soccer-futbol-es-vida-gif-23442325">Football Is Life Ted Lasso GIF</a>from <a href="https://tenor.com/search/football+is+life-gifs">Football Is Life GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+get soccer photos of Tommy
+
+<p>
 <br/>
 <div align="center">
 <img src="restaurantDemo.gif" width="450"  />
