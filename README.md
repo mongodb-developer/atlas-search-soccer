@@ -20,7 +20,9 @@ Teaming up MongoDB Atlas Search with the FIFA22 player dataset, you can scour ac
 
 Equipped with only a searchbox, sliders and checkboxes, find the world's best players with the most inpossible-to-spell names to build out your own FIFA Dream Team. Autocomplete, wildcard, and filters to find Ibrahimović, Błaszczykowski, and Szczęsny? No problem!
 
-<< INSERT AN ANIMATED GIF HERE>>
+<p align="center">
+    <img src="readmeImages/EA.gif"" width="400"  />
+</p>
 
 Skills and Drills to Train
 
@@ -28,6 +30,7 @@ Skills and Drills to Train
   - text
   - wildcard
   - autocomplete
+  - range
 - fuzzy matching
 - indexes and analyzers
 - compound operator
@@ -35,41 +38,27 @@ Skills and Drills to Train
 - custom score modifiers
 - filters, facets and counts
 
- <div class="tenor-gif-embed" data-postid="23442325" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%"><a href="https://tenor.com/view/football-is-life-ted-lasso-futbol-is-life-soccer-futbol-es-vida-gif-23442325">Football Is Life Ted Lasso GIF</a>from <a href="https://tenor.com/search/football+is+life-gifs">Football Is Life GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+<p align="center">
+    <img src="readmeImages/football-is-life-ted-lasso.gif"" width="400"  />
+</p>
 
-get soccer photos of Tommy
-
-<p>
-<br/>
-<div align="center">
-<img src="restaurantDemo.gif" width="450"  />
-</div>
-<br/>
-<p><em>Note: This dataset is mocked. Please do not use to make actual dining decisions.</em></p>
-
-<p> Atlas Search Soccer implements many Atlas Search features from autocomplete to search facets. Using the $search operator in a MongoDB aggregation pipeline, we can build fine-grained searches across text, numerics, and geospatial data. By building out your FIFA dream team, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches on your Atlas data.</p>
+// You'll be a pro
+Atlas Search Soccer implements many Atlas Search features from autocomplete to search facets. Using the $search operator in a MongoDB aggregation pipeline, we can build fine-grained searches across text, numerics, and geospatial data. By building out your FIFA dream team, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches on your Atlas data.
 
 **No additional servers or software needed. No need to keep data in sync. Everything is done in MongoDB Atlas.**
 
-- fuzzy matching
-- wildcard
-- autocomplete
-- range queries
-- facets
-- relevance-based scoring
-
-<p>Check out the video to see a demonstration of all the features or visit the link below to play around with the finished application, hosted entirely in MongoDB Atlas:</p>
+<p>Check out the finished application:</p>
 <h2 align="center"><a href="https://www.atlassearchsoccer.com">www.atlassearchsoccer.com</a></h2>
-
+<!-- some image with soccer -->
 <p>This application is hosted entirely by MongoDB Atlas was created using:</p>
 
 - React
 - Tailwind CSS
 - MongoDB Realm for backend HTTPs endpoints and webhooks
-- A FIFA 22 player dataset found on kaggle // -----------link to and credit -------------
+- A [FIFA22 player dataset](https://www.kaggle.com/datasets/bryanb/fifa-player-stats-database)
 
 <p float="left">
-    <img src="WhatsCookingArchitecture.png" width="750"  />
+    <img src="readmeImages/ted-lasso-how-about-that.gif"" width="400"  />
 </p>
 
 <p><em>Currently this app is not suitable for mobile, but feel free to send a PR.</em> 😊</p>
@@ -96,7 +85,7 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 <h2>To Run This Application....</h2>
 
 1. Clone the repo.
-2. Navigate inside `WhatsCooking` directory.
+2. Navigate inside `atlas-search-soccer` directory.
 3. Run <code>npm install</code> .
 4. Run <code>npm start </code> .
 
@@ -109,12 +98,11 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 <ol>
 <li> Load data to Atlas cluster:
 <ul>
-<li>database: <code>whatscooking</code></li>
-<li>collection: <code>restaurants</code></li>
+<li>database: <code>soccer</code></li>
+<li>collection: <code>players22</code></li>
 </ul>
 </li>
 
-<li> Create Search indexes. (Index definitions includes in `supplement-files` .)</li>
 </ol>
 
 <h2>React Components....</h2>
