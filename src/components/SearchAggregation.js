@@ -5,6 +5,7 @@ import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 const SearchAggregation = ({
   searchTerm,
   operator,
+  functionScore,
   clubs,
   positions,
   countries,
@@ -17,7 +18,29 @@ const SearchAggregation = ({
   salary,
   dob, // TO DO - DEAL WITH DOB !!!!!!!!!!!!!!!!!!!!!!!
 }) => {
-  let basicSearchObject = getBasicObject(operator, searchTerm);
+  console.log("importing score object", functionScore);
+  let basicSearchObject = getBasicObject(operator, searchTerm, functionScore); // get basicSearchObject score is included
+
+  const scoreObject = {
+    score: {
+      function: {
+        add: [
+          {
+            score: "relevance",
+          },
+          {
+            path: {
+              value: "overall",
+              undefined: 1,
+            },
+          },
+        ],
+      },
+    },
+  };
+
+  let scoreString = JSON.stringify(scoreObject, null, 2);
+  scoreString = scoreString.substring(1);
 
   const shouldArrayValues = [
     { name: "age", value: age[0] },
@@ -36,16 +59,25 @@ const SearchAggregation = ({
 
   let compoundString = "";
 
-  // TEST IF WE HAVE A COMPOUND OPERATOR
+  // TEST IF WE HAVE A COMPOUND OPERATOR --------------
   if (
     filterArray.length > 0 ||
     mustArray.length > 0 ||
     shouldArray.length > 0
   ) {
-    let compoundObject = {};
+    let compoundObject = {}; // need compound operator
 
     if (!isEmpty(basicSearchObject)) {
+      // add basicSearchObject to mustArray in compound operator
       delete basicSearchObject.index;
+
+      // remove functionScoreObject from basicObject... will add it to compoundObject
+      if (functionScore) {
+        basicSearchObject = removeFunctionScoreAttribute(
+          basicSearchObject,
+          operator
+        );
+      }
       mustArray.unshift(basicSearchObject);
     }
 
@@ -60,7 +92,10 @@ const SearchAggregation = ({
     }
 
     compoundString = JSON.stringify(compoundObject, null, 2);
-  }
+    if (functionScore) {
+      compoundString = compoundString.slice(0, -1) + ",";
+    }
+  } // END OF COMPOUND OPERATOR-----------------
 
   const basicSearchString = JSON.stringify(basicSearchObject, null, 2);
 
@@ -96,11 +131,20 @@ const SearchAggregation = ({
             </SyntaxHighlighter>
           </div>
         ) : (
-          <div className="px-6">
-            <SyntaxHighlighter language="javascript" style={atomDark}>
-              {compoundString}
-            </SyntaxHighlighter>
-          </div>
+          <>
+            <div className="px-6">
+              <SyntaxHighlighter language="javascript" style={atomDark}>
+                {compoundString}
+              </SyntaxHighlighter>
+            </div>
+            {functionScore && (
+              <div className="px-3 border border-mongo">
+                <SyntaxHighlighter language="javascript" style={atomDark}>
+                  {scoreString}
+                </SyntaxHighlighter>
+              </div>
+            )}
+          </>
         )}
         {compoundString !== "" && (
           <pre className="text-blue-300 font-mono text-left text-sm font-bold mx-6">
@@ -116,8 +160,9 @@ const SearchAggregation = ({
 };
 
 // HELPER FUNCTIONS TO GET SEARCH OBJECTS FOR SEARCH STAGE - BASIC AND COMPOUND
-const getBasicObject = (operator, searchTerm) => {
+const getBasicObject = (operator, searchTerm, functionScore) => {
   let basicSearchObject = {};
+  console.log("function score object", functionScore);
 
   if (operator === "text" && searchTerm !== "") {
     basicSearchObject = {
@@ -128,6 +173,21 @@ const getBasicObject = (operator, searchTerm) => {
         fuzzy: {
           maxEdits: 2,
         },
+        score: {
+          function: {
+            add: [
+              {
+                score: "relevance",
+              },
+              {
+                path: {
+                  value: "overall",
+                  undefined: 1,
+                },
+              },
+            ],
+          },
+        },
       },
     };
   } else if (operator === "wildcard") {
@@ -137,6 +197,21 @@ const getBasicObject = (operator, searchTerm) => {
         query: searchTerm,
         path: "long_name",
         allowAnalyzedField: true,
+        score: {
+          function: {
+            add: [
+              {
+                score: "relevance",
+              },
+              {
+                path: {
+                  value: "overall",
+                  undefined: 1,
+                },
+              },
+            ],
+          },
+        },
       },
     };
   } else if (operator === "autocomplete") {
@@ -150,7 +225,24 @@ const getBasicObject = (operator, searchTerm) => {
     };
   }
 
+  if (!functionScore) {
+    basicSearchObject = removeFunctionScoreAttribute(
+      basicSearchObject,
+      operator
+    );
+  }
+
   return basicSearchObject;
+};
+
+const removeFunctionScoreAttribute = (basicObject, operator) => {
+  if (operator === "text") {
+    delete basicObject.text.score;
+  } else if (operator === "wildcard") {
+    delete basicObject.wildcard.score;
+  }
+
+  return basicObject;
 };
 
 const getShouldArray = (shouldArrayValues) => {

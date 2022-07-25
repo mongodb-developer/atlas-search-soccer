@@ -230,6 +230,7 @@ const App = () => {
             setShowFacetCode={setShowFacetCode}
             keywordFacetIndex={keywordFacetIndex}
             setKeywordFacetIndex={setKeywordFacetIndex}
+            functionScore={functionScore}
           />
         )}
 

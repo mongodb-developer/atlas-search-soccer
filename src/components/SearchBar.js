@@ -20,7 +20,6 @@ const SearchBar = ({
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("SUBMITTING!!!");
     setSubmitted(true);
   };
 
@@ -54,7 +53,7 @@ const SearchBar = ({
           onClick={() => {
             setFunctionScore(!functionScore);
             console.log(functionScore);
-            setSubmitted(true);
+            handleSubmit();
           }}
         >
           {" "}

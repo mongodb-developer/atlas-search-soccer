@@ -39,6 +39,7 @@ const AdvancedSearch = ({
   setShowFacetCode,
   keywordFacetIndex,
   setKeywordFacetIndex,
+  functionScore,
 }) => {
   return (
     <div className="flex flex-col w-full bg-black">
@@ -150,6 +151,7 @@ const AdvancedSearch = ({
             defending={defending}
             salary={salary}
             dob={dob}
+            functionScore={functionScore}
           />
         </div>
       </div>

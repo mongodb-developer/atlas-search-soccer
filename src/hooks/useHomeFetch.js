@@ -199,9 +199,11 @@ export const useHomeFetch = () => {
   useEffect(() => {
     if (!submitted) return;
     if (!showAdvancedSearch) {
+      console.log("Normal Player Search");
       getPlayers();
     }
     if (showAdvancedSearch) {
+      console.log("Advanced Player Search");
       getPlayersAdvanced();
       postFacets();
     }
