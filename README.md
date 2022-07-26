@@ -109,7 +109,7 @@ Load data to Atlas cluster:
   <img src="readmeImages/Filters.png" width="550" />
 
 <h2>Using Atlas App Services as Your Serverless Backend....</h2>
-<p>AtlasSearchSoccer uses HTTP services in App Services to create 5 APIs to allow you to query for your restaurant data over HTTP: </p>
+<p>AtlasSearchSoccer uses HTTP services in App Services to create 5 APIs to allow you to query for your player data over HTTP: </p>
 
 The data is queried from `useHomeFetch.js` in the `hooks` directory.
 Here you'll find the endpoints for the backend search queries using the `$search` operator:
