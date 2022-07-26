@@ -104,9 +104,9 @@ Load data to Atlas cluster:
 
 <h2>React Components....</h2>
 
-  <img src="/readmeImages/Main.png" width="450" />
-  <img src="/readmeImages/SearchResults.png" width="450" /> 
-  <img src="readmeImages/Filters.png" width="450" />
+  <img src="/readmeImages/Main.png" width="500" />
+  <img src="/readmeImages/SearchResults.png" width="550" /> 
+  <img src="readmeImages/Filters.png" width="550" />
 
 <h2>Using Atlas App Services as Your Serverless Backend....</h2>
 <p>AtlasSearchSoccer uses HTTP services in App Services to create 5 APIs to allow you to query for your restaurant data over HTTP: </p>
