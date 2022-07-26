@@ -4,7 +4,7 @@
 
 Hello! 👋
 
-In May 2022, Electronic Arts and FIFA consciously decoupled after 30 years of bringing gaming bliss to soccer enthusiasts across the globe. 😔 😢 I am neither a gamer nor a soccer enthusiast, but I am a soccer mom. The EA Sports FIFA gaming franchise gave me cheap, wholesome, and countless hours of babysitting. Park your child in front of any gaming console with EA FIFA, and there he/she would stay. Amused, entertained, but mostly still and not breaking anything.
+In May 2022, Electronic Arts and FIFA consciously decoupled after 30 years of bringing gaming bliss to soccer enthusiasts across the globe. 😔 😢 I am neither a gamer nor a soccer enthusiast, but I am a soccer mom. The EA Sports FIFA gaming franchise never failed to provide me with countless hours of wholesome and free babysitting. Park your child in front of any gaming console with EA FIFA, and there he/she would stay. Amused, entertained, but mostly still and **_not breaking anything_**!!
 
 EA Sports FIFA, <a href="https://www.atlassearchsoccer.com"><b>Atlas Search Soccer</b></a> is my tribute to you. Part eulogy, part love song. Oh yeah, and part Atlas Search tutorial.
 
@@ -29,7 +29,8 @@ Equipped with only a searchbox, sliders and checkboxes, find the world's best pl
 </p>
 
 As you interact with the application, you'll see the `$search` operator in a MongoDB aggregation pipeline live in-action! Click on the Advanced Scouting image for more options using the `compound`. Learn all the ways and plays to build complex, fine-grained full-text searches across text, date, and numerics.
-When you choose a footballer, he is written to local storage on your device. That way, your Dream Team stays warmed up and on the pitch even after you close your browser.
+
+When you pick a footballer for your team, he is written to local storage on your device. That way, your Dream Team stays warmed up and on the pitch even after you close your browser.
 
 <h4>Skills and Drills</h4>
 
@@ -86,6 +87,10 @@ It is also included in this repo's data folder as <pre>players22.json</pre>
 
 ---
 
+<p float="left">
+    <img src="readmeImages/Architecture.png" width="750"  />
+</p>
+
 <h6>Prepare Data</h6>
 
 Load data to Atlas cluster:
@@ -96,8 +101,11 @@ Load data to Atlas cluster:
 </ul>
 
 <h2>React Components....</h2>
+
 <p float="left">
-    <img src="" width="550"  />
+  <img src="/readmeImages/Main.png" width="400" />
+  <img src="/readmeImages/SearchResults.png" width="400" /> 
+  <img src="readmeImages/Filters.png" width="400" />
 </p>
 
 <h2>Using Realm as Your Serverless Backend....</h2>
