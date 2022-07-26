@@ -28,7 +28,7 @@ Equipped with only a searchbox, sliders and checkboxes, find the world's best pl
     <img src="readmeImages/SoccerInterfaceFilters.png" width="600"  />
 </p>
 
-As you interact with the application, you'll see the $search operator in a MongoDB aggregation pipeline live in-action! Click on the Advanced Scouting image for more options. Learn all sorts of ways and plays MongoDB allows you to build complex, fine-grained full-text searches across text, date, and numerics.
+As you interact with the application, you'll see the `$search` operator in a MongoDB aggregation pipeline live in-action! Click on the Advanced Scouting image for more options using the `compound`. Learn all the ways and plays to build complex, fine-grained full-text searches across text, date, and numerics.
 When you choose a footballer, he is written to local storage on your device. That way, your Dream Team stays warmed up and on the pitch even after you close your browser.
 
 <h4>Skills and Drills</h4>
