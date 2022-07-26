@@ -65,7 +65,13 @@ So give it a shot, and you'll be an Atlas Search pro in no time!
 
 <h4>Want to play in your own stadium? Here's how to build Atlas Search Soccer on your own free cluster.
 </h4>
+
+Atlas Search Soccer runs on a very streamlined game plan where MongoDB Atlas is the MVP.
 **No additional servers or software needed. No need to keep data in sync. Everything is done in MongoDB Atlas.**
+
+<p float="left">
+    <img src="readmeImages/Architecture.png" width="750"  />
+</p>
 
 <h3>Prerequisites</h3>
 
@@ -87,10 +93,6 @@ It is also included in this repo's data folder as <pre>players22.json</pre>
 
 ---
 
-<p float="left">
-    <img src="readmeImages/Architecture.png" width="750"  />
-</p>
-
 <h6>Prepare Data</h6>
 
 Load data to Atlas cluster:
@@ -102,14 +104,12 @@ Load data to Atlas cluster:
 
 <h2>React Components....</h2>
 
-<p float="left">
-  <img src="/readmeImages/Main.png" width="400" />
-  <img src="/readmeImages/SearchResults.png" width="400" /> 
-  <img src="readmeImages/Filters.png" width="400" />
-</p>
+  <img src="/readmeImages/Main.png" width="450" />
+  <img src="/readmeImages/SearchResults.png" width="450" /> 
+  <img src="readmeImages/Filters.png" width="450" />
 
-<h2>Using Realm as Your Serverless Backend....</h2>
-<p>AtlasSearchSoccer uses HTTP services in Realm to create 5 APIs to allow you to query for your restaurant data over HTTP: </p>
+<h2>Using Atlas App Services as Your Serverless Backend....</h2>
+<p>AtlasSearchSoccer uses HTTP services in App Services to create 5 APIs to allow you to query for your restaurant data over HTTP: </p>
 
 The data is queried from `useHomeFetch.js` in the `hooks` directory.
 Here you'll find the endpoints for the backend search queries using the `$search` operator:
