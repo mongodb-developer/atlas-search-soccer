@@ -22,13 +22,13 @@ Teaming up MongoDB Atlas Search with the FIFA22 player dataset, you can scour ac
 - age
 - salary
 
-Equipped with only a searchbox, sliders and checkboxes, find the world's best players with the most inpossible-to-spell names to build out your own FIFA Dream Team. Autocomplete, wildcard, and filters to find Ibrahimović, Błaszczykowski, and Szczęsny? No problem!
+Equipped with only a search box, sliders and checkboxes, find the world's best players with the most impossible-to-spell names to build out your own FIFA Dream Team. Autocomplete, wildcard, and filters to find Ibrahimović, Błaszczykowski, and Szczęsny? No problem!
 
 <p align="center">
-    <img src="readmeImages/SoccerInterfaceFilters.png" width="600"  />
+    <img src="readmeImages/soccerDemo.gif" width="400"  />
 </p>
 
-As you interact with the application, you'll see the `$search` operator in a MongoDB aggregation pipeline live in-action! Click on the Advanced Scouting image for more options using the `compound`. Learn all the ways and plays to build complex, fine-grained full-text searches across text, date, and numerics.
+As you interact with the application, you'll see the `$search` operator in a MongoDB aggregation pipeline live in-action!
 
 When you pick a footballer for your team, he is written to local storage on your device. That way, your Dream Team stays warmed up and on the pitch even after you close your browser.
 
