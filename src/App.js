@@ -91,9 +91,6 @@ const App = () => {
 
   //-------------------------------- FUNCTION TO ADDPLAYER --------------------------------------------------------
   const addPlayerToTeam = (player, spot) => {
-    console.log("Trying to add player: ", position2Fill);
-    console.log("IN ADDING PLAYER FUNCTION:", spot);
-
     let position = getPosition(spot);
 
     const newPlayer = {

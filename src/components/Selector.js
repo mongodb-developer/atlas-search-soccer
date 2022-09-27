@@ -11,7 +11,6 @@ const Selector = ({ setOperator }) => {
   // handle onChange event of the dropdown
   const handleChange = (e) => {
     setOperator(e.value);
-    console.log(e.value);
   };
 
   return (

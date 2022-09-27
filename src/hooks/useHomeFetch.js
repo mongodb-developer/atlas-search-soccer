@@ -90,8 +90,6 @@ export const useHomeFetch = () => {
 
   // ---------------------GET_PLAYERS_ADVANCED------------------------------
   const getPlayersAdvanced = async () => {
-    console.log("Advanced Search");
-
     const data = {
       searchTerm: searchTerm,
       operator: operator,
@@ -130,7 +128,7 @@ export const useHomeFetch = () => {
       setPlayers(advancedSearchPlayers);
       setPlayersFound(true);
     } else if (advancedSearchPlayers.length === 0) {
-      console.log("NO PLAYERS TO SHOW. SHOW SAD PLAYER");
+      console.log("NO PLAYERS TO SHOW.");
       setShowPlayerChoices(false);
       setPlayersFound(false);
       setPlayers(responseJSON);
@@ -199,11 +197,9 @@ export const useHomeFetch = () => {
   useEffect(() => {
     if (!submitted) return;
     if (!showAdvancedSearch) {
-      console.log("Normal Player Search");
       getPlayers();
     }
     if (showAdvancedSearch) {
-      console.log("Advanced Player Search");
       getPlayersAdvanced();
       postFacets();
     }

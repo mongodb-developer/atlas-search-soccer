@@ -1,18 +1,16 @@
 <h1 align="center">Atlas Search Soccer</h1>
 
-<h2 align="center">Build your FIFA Dream Team with MongoDB Atlas Search</h2>
+<h2 align="center">Build your Soccer Dream Team with MongoDB Atlas Search</h2>
 
-Hello! 👋
+Every four years, for the sake of blending in, I pretend to know soccer. When the World Cup is on, I’m overwhelmed by the exuberant fans with colorful soccer jerseys. Jerseys with unfamiliar names from far away places. I recognize Messi and Ronaldo, but the others …? Mkhitaryan, Szczęsny, Großkreutz? How can I look up their stats to feign familiarity when I have no idea how to spell their names?
 
-In May 2022, Electronic Arts and FIFA consciously decoupled after 30 years of bringing gaming bliss to soccer enthusiasts across the globe. 😔 😢 I am neither a gamer nor a soccer enthusiast, but I am a soccer mom. The EA Sports FIFA gaming franchise never failed to provide me with countless hours of wholesome and free babysitting. Park your child in front of any gaming console with EA FIFA, and there he/she would stay. Amused, entertained, but mostly still and **_not breaking anything_**!!
-
-EA Sports FIFA, <a href="https://www.atlassearchsoccer.com"><b>Atlas Search Soccer</b></a> is my tribute to you. Part eulogy, part love song. Oh yeah, and part Atlas Search tutorial.
+Well, now there's this app for that. <a href="https://www.atlassearchsoccer.com"><b>Atlas Search Soccer</b></a> is an interactive Atlas Search tutorial and instant sports bar credibility builder.
 
 <p align="center">
-    <img src="readmeImages/EA.gif"" width="250"  />
+    <img src="readmeImages/soccerDemo.gif" width="400"  />
 </p>
 
-Teaming up MongoDB Atlas Search with the FIFA22 player dataset, you can scour across the over 22,000 players in the database based on a variety of search parameters and data types:
+Teaming up MongoDB Atlas Search with an extensive player dataset, you can scour across the over 22,000 players in the database based on a variety of search parameters and data types:
 
 - player name
 - player position
@@ -22,11 +20,7 @@ Teaming up MongoDB Atlas Search with the FIFA22 player dataset, you can scour ac
 - age
 - salary
 
-Equipped with only a search box, sliders and checkboxes, find the world's best players with the most impossible-to-spell names to build out your own FIFA Dream Team. Autocomplete, wildcard, and filters to find Ibrahimović, Błaszczykowski, and Szczęsny? No problem!
-
-<p align="center">
-    <img src="readmeImages/soccerDemo.gif" width="400"  />
-</p>
+Equipped with only a search box, sliders and checkboxes, find the world's best players with the most impossible-to-spell names to build out your own Soccer Dream Team. Autocomplete, wildcard, and filters to find Ibrahimović, Błaszczykowski, and Szczęsny? No problem!
 
 As you interact with the application, you'll see the `$search` operator in a MongoDB aggregation pipeline live in-action!
 
@@ -77,7 +71,7 @@ Atlas Search Soccer runs on a very streamlined game plan where MongoDB Atlas is 
 
 - A MongoDB Atlas account. Get one for free <a href="https://www.mongodb.com/cloud/atlas">here.</a>
 - A recent version of Node.js and npm.
-- EA FIFA 22 player dataset (players22.json) provided in the data folder.
+- Extensive worldwide player dataset (players22.json) provided in the data folder.
 - (Recommended) <a href="https://www.mongodb.com/try/download/compass">MongoDB Compass - GUI</a>
 
 It is also included in this repo's data folder as <pre>players22.json</pre>

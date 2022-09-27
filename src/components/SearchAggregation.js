@@ -18,7 +18,6 @@ const SearchAggregation = ({
   salary,
   dob, // TO DO - DEAL WITH DOB !!!!!!!!!!!!!!!!!!!!!!!
 }) => {
-  console.log("importing score object", functionScore);
   let basicSearchObject = getBasicObject(operator, searchTerm, functionScore); // get basicSearchObject score is included
 
   const scoreObject = {
@@ -165,7 +164,6 @@ const getBasicObject = (operator, searchTerm, functionScore) => {
   if (searchTerm === "") {
     return basicSearchObject;
   }
-  console.log("function score object", functionScore);
 
   // WE WILL HAVE A BASICSEARCHOBJECT - BUILD FOR 3 OPERATORS - autocomplete, wildcard, text
 

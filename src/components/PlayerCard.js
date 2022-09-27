@@ -95,7 +95,6 @@ const PlayerCard = ({
                 <div
                   className="absolute bottom-0 right-0 flex items-end"
                   onClick={() => {
-                    console.log("CLICK ADD");
                     addPlayerToTeam(player, position2Fill);
                   }}
                 >
@@ -121,10 +120,9 @@ const PlayerCard = ({
         <div
           onClick={() => {
             setPosition2Fill(spot);
-            console.log("CLICKED POSITION: ", spot);
+
             if (highlightCard === spot) setHighlightCard(null);
             else setHighlightCard(spot);
-            console.log("SETTING HIGHLIGHTCARD: ", highlightCard);
           }}
           className={
             highlightCard === spot

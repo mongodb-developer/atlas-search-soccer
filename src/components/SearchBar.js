@@ -56,7 +56,7 @@ const SearchBar = ({
           } w-1/10 space-x-2 rounded-lg  p-2 `}
           onClick={(e) => {
             setFunctionScore(!functionScore);
-            console.log(functionScore);
+
             handleSubmit(e);
           }}
         >

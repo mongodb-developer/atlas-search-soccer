@@ -76,7 +76,6 @@ function CheckboxSection({
             <button
               type="submit"
               onClick={() => {
-                console.log("Click!");
                 setShowFacetCode(true);
               }}
               className="mt-10 border border-lime-600 shadow shadow-lime-700/50 rounded-lg text-white px-2"
