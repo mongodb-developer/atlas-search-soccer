@@ -140,6 +140,7 @@ const App = () => {
       <h2 className="text-center text-xl text-mongo-400 pt-4">
         Build Your Soccer Dream Team ⚽
       </h2>
+
       <div className="flex mx-20 w-full justify-around items-center">
         <div
           className="flex flex-col text-lg text-mongo-400 font-bold w-1/5"
