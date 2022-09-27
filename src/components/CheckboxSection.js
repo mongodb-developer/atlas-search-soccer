@@ -20,7 +20,7 @@ function CheckboxSection({
   setKeywordFacetIndex,
 }) {
   return (
-    <div className="CHECKBOX_COLUMNS flex w-full">
+    <div className="CHECKBOX_COLUMNS flex w-full text-lg">
       {/*---------BEGIN COUNTRIES COLUMN---------------*/}
       <div className="COUNTRIES w-1/3">
         <CheckboxGroup

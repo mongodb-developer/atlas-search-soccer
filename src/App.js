@@ -141,7 +141,7 @@ const App = () => {
         Atlas Search Soccer
       </h2>
       <h2 className="text-center text-xl text-mongo-400 pt-4">
-        Build Your FIFA Dream Team ⚽
+        Build Your Soccer Dream Team ⚽
       </h2>
       <div className="flex mx-20 w-full justify-around items-center">
         <div

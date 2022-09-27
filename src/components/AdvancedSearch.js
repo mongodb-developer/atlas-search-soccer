@@ -48,7 +48,7 @@ const AdvancedSearch = ({
       </h2>
 
       <div className="flex mt-6 justify-evenly w-full px-6">
-        <div className="COL1 w-2/5">
+        <div className="COL1 w-1/2">
           {showFacets && (
             <div className="text-blue-300 text-center mb-8">
               Matching Players: {facetOverallCount}
@@ -73,7 +73,7 @@ const AdvancedSearch = ({
             />
           </div>
         </div>
-        <div className="w-1/3">
+        <div className="w-1/4">
           <div className="SLIDER_GROUP grid grid-cols-2 gap-x-2 gap-y-8 mx-1">
             <Slider
               category="overall"
