@@ -76,7 +76,7 @@ export const useHomeFetch = () => {
 
     const playersJSON = response.results;
     console.log("SEARCHSTAGE: ", response.searchString);
-    setMaxPages(response.maxPages);
+    setMaxPages("MAX PAGES: ", response.maxPages);
 
     if (playersJSON && playersJSON.length > 0) {
       setShowPlayerChoices(true);
@@ -109,6 +109,7 @@ export const useHomeFetch = () => {
       positions: positions,
       functionScore: functionScore,
       keywordFacetIndex: keywordFacetIndex,
+      page: currentPage,
     };
 
     const requestOptions = {
@@ -122,9 +123,11 @@ export const useHomeFetch = () => {
     const response = await fetch(AdvancedSearchEndPoint, requestOptions);
     const responseJSON = await response.json();
     const advancedSearchPlayers = responseJSON.players;
-    const aggregation = responseJSON.aggregation;
-    console.log(aggregation);
+    const searchString = responseJSON.searchString;
+    setMaxPages(responseJSON.maxPages);
+    console.log(searchString);
     console.log("PLAYERSJSON FROM ADVANCED: ", advancedSearchPlayers);
+    console.log(maxPages);
 
     if (advancedSearchPlayers && advancedSearchPlayers.length > 0) {
       setShowPlayerChoices(true);
