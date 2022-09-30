@@ -76,7 +76,8 @@ export const useHomeFetch = () => {
 
     const playersJSON = response.results;
     console.log("SEARCHSTAGE: ", response.searchString);
-    setMaxPages("MAX PAGES: ", response.maxPages);
+    console.log("MAX PAGES: ", response.maxPages);
+    setMaxPages(response.maxPages);
 
     if (playersJSON && playersJSON.length > 0) {
       setShowPlayerChoices(true);

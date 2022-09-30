@@ -21,7 +21,7 @@ const Pagination = ({
   const current =
     "p-1 rounded-full  bg-white border-4 border-green-600 text-black hover:bg-green-500 hover:text-black";
   const notCurrent =
-    "py-1 px-1 rounded-full bg-black-500 border-2 border-green-500  text-white hover:bg-green-500 hover:text-white";
+    "py-1 px-1 rounded-full bg-black-500 border-2 border-green-500  text-white hover:bg-green-700 hover:text-white hover:border-green-700";
 
   return (
     <nav className="mt-10">
