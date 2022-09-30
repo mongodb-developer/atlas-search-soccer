@@ -25,6 +25,7 @@ export const useHomeFetch = () => {
   const [playersFound, setPlayersFound] = useState(true);
   const [maxPages, setMaxPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
+  const [restart, setRestart] = useState(false);
   // FACETS
   const [countryBuckets, setCountryBuckets] = useState([]);
   const [clubBuckets, setClubBuckets] = useState([]);
@@ -45,6 +46,19 @@ export const useHomeFetch = () => {
 
   const FacetsEndPoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/facets";
+
+  const resetState = () => {
+    setSubmitted(false);
+    setShowAutocompletePlayers(false);
+    setOperator("text");
+    setShowAdvancedSearch(false);
+    setShowAutocompletePlayers(false);
+    setShowFacets(false);
+    setShowPlayerChoices(false);
+    setSearchTerm("");
+    setPlayers([]);
+    setFunctionScore(false);
+  };
 
   const getPlayersAutocomplete = async () => {
     let API = AutocompleteEndPoint;
@@ -216,6 +230,14 @@ export const useHomeFetch = () => {
     // eslint-disable-next-line
   }, [submitted]);
 
+  useEffect(() => {
+    if (!restart) return;
+    resetState();
+    setRestart(false);
+
+    // eslint-disable-next-line
+  }, [restart]);
+
   // ----------------------------END USE_EFFECTS ---------------------------
 
   return {
@@ -273,6 +295,7 @@ export const useHomeFetch = () => {
     setMaxPages,
     currentPage,
     setCurrentPage,
+    setRestart,
   };
 };
 

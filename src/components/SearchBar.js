@@ -2,7 +2,8 @@ import React from "react";
 import Selector from "./Selector";
 import SearchIcon from "../images/Search.png";
 import AutoSuggestions from "./AutoSuggestions";
-import Calculator from "../images/calculator.png";
+import Scoreboard from "../images/scoreboard.png";
+import Reset from "../images/RESET.png";
 
 const SearchBar = ({
   searchTerm,
@@ -17,21 +18,26 @@ const SearchBar = ({
   setPlayersFound,
   functionScore,
   setFunctionScore,
+  setRestart,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitted(true);
   };
 
+  const handleReset = () => {
+    setRestart(true);
+  };
+
   return (
-    <div className="relative w-full items-center mr-12">
+    <div className="relative flex w-full items-center">
       <form
-        className=" flex w-4/5 mx-auto items-center"
+        className=" flex w-3/4 space-x-8 mx-8 items-center"
         onSubmit={handleSubmit}
       >
         <input
           type="text"
-          className=" border border-gray-700 w-4/5 px-6 py-2 text-2xl rounded-lg outline-none"
+          className=" border border-gray-700 w-3/4 px-6 py-2 text-2xl rounded-lg outline-none"
           placeholder="type to find players..."
           value={searchTerm}
           onChange={(e) => {
@@ -49,9 +55,9 @@ const SearchBar = ({
         </button>
 
         <button
-          className={`flex ml-12 text-white hover:scale-110 active:scale-125   ${
+          className={`flex flex-col text-white hover:scale-110 active:scale-125 justify-items-center mx-4  ${
             !functionScore
-              ? " border-green-700 shadow-lg shadow-mongo border"
+              ? " border-green-700 shadow shadow-mongo border"
               : "border-slate-800  border-2 shadow shadow-green-500/50 "
           } w-1/10 space-x-2 rounded-lg  p-2 `}
           onClick={(e) => {
@@ -60,15 +66,18 @@ const SearchBar = ({
             handleSubmit(e);
           }}
         >
-          {" "}
-          <div className="text-center my-auto">Function Score</div>
+          <div className="text-center mx-auto">Function Score</div>
           <img
-            src={Calculator}
+            src={Scoreboard}
             alt="advanced search"
-            className="rounded-lg w-16 "
+            className="rounded-lg w-60 mx-auto"
           ></img>
         </button>
       </form>
+      <button onClick={() => handleReset()} className="px-4 py-2 w-1/4">
+        {" "}
+        <img src={Reset} alt="reset" className="rounded-lg w-16 "></img>
+      </button>
       {showAutocompletePlayers && (
         <div className="absolute top-20 left-80 z-10  text-left w-2/5 bg-white rounded shadow-2xl">
           <AutoSuggestions

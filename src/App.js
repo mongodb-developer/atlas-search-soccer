@@ -72,6 +72,7 @@ const App = () => {
     maxPages,
     currentPage,
     setCurrentPage,
+    setRestart,
   } = useHomeFetch();
 
   useEffect(() => {
@@ -160,6 +161,7 @@ const App = () => {
             <h1>Is Tablet</h1>
           </DeviceIdentifier>
         </div>
+
         <SearchBar
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
@@ -174,6 +176,7 @@ const App = () => {
           setPlayersFound={setPlayersFound}
           functionScore={functionScore}
           setFunctionScore={setFunctionScore}
+          setRestart={setRestart}
         />
       </div>
 
