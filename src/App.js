@@ -19,8 +19,6 @@ const App = () => {
   const [showPlayerModal, setShowPlayerModal] = useState(false);
   const [showFacetCode, setShowFacetCode] = useState(false);
   const [playerIndex, setPlayerIndex] = useState(-100);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [maxPages, setMaxPages] = useState(6);
 
   const {
     operator,
@@ -71,6 +69,9 @@ const App = () => {
     setKeywordFacetIndex,
     functionScore,
     setFunctionScore,
+    maxPages,
+    currentPage,
+    setCurrentPage,
   } = useHomeFetch();
 
   useEffect(() => {
@@ -207,6 +208,7 @@ const App = () => {
             maxPages={maxPages}
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}
+            setSubmitted={setSubmitted}
           />
         )}
         {showAdvancedSearch && (

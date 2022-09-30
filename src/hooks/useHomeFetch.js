@@ -23,6 +23,8 @@ export const useHomeFetch = () => {
   const [dob, setDob] = useState(new Date(1970, 12, 1));
   const [positions, setPositions] = useState([]);
   const [playersFound, setPlayersFound] = useState(true);
+  const [maxPages, setMaxPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   // FACETS
   const [countryBuckets, setCountryBuckets] = useState([]);
   const [clubBuckets, setClubBuckets] = useState([]);
@@ -68,12 +70,13 @@ export const useHomeFetch = () => {
     let API = BasicSearchEndPoint;
     if (operator === "wildcard") API = WildcardEndPoint;
 
-    const url = `${API}?searchTerm=${searchTerm}&functionScore=${functionScore}`;
+    const url = `${API}?searchTerm=${searchTerm}&functionScore=${functionScore}&page=${currentPage}`;
 
     const response = await (await fetch(url)).json();
 
     const playersJSON = response.results;
     console.log("SEARCHSTAGE: ", response.searchString);
+    setMaxPages(response.maxPages);
 
     if (playersJSON && playersJSON.length > 0) {
       setShowPlayerChoices(true);
@@ -262,6 +265,10 @@ export const useHomeFetch = () => {
     setKeywordFacetIndex,
     functionScore,
     setFunctionScore,
+    maxPages,
+    setMaxPages,
+    currentPage,
+    setCurrentPage,
   };
 };
 
