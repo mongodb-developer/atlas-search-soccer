@@ -1,46 +1,51 @@
 import React from "react";
+import OutsideClickHandler from "react-outside-click-handler";
 
 const AutoSuggestions = ({
   setSearchTerm,
-
   position2Fill,
   addPlayerToTeam,
   setSubmitted,
   players,
-
   setShowAutocompletePlayers,
 }) => {
   return (
-    <div className="container flex ml-8 w-96">
-      <div className="flex flex-col">
-        {players.length > 0 &&
-          players.map((player) => {
-            return (
-              <div
-                className="flex py-2 border-b-1 border-slate-500"
-                key={player._id}
-              >
-                <img
-                  src={player?.player_face_url}
-                  alt="player-face"
-                  className="rounded-full mt-1  text-left w-16 border border-slate-500 shadow-2xl"
-                ></img>
+    <OutsideClickHandler
+      onOutsideClick={() => {
+        setShowAutocompletePlayers(false);
+      }}
+    >
+      <div className="container flex ml-8 w-96">
+        <div className="flex flex-col">
+          {players.length > 0 &&
+            players.map((player) => {
+              return (
                 <div
-                  className="pl-8 my-4 border-b border-gray-300 w-auto text-lg"
-                  onClick={(e) => {
-                    setShowAutocompletePlayers(false);
-                    setSearchTerm("");
-                    addPlayerToTeam(player, position2Fill);
-                    setSubmitted(true);
-                  }}
+                  className="flex py-2 border-b-1 border-slate-500"
+                  key={player._id}
                 >
-                  {player.long_name}
+                  <img
+                    src={player?.player_face_url}
+                    alt="player-face"
+                    className="rounded-full mt-1  text-left w-16 border border-slate-500 shadow-2xl"
+                  ></img>
+                  <div
+                    className="pl-8 my-4 border-b border-gray-300 w-auto text-lg"
+                    onClick={(e) => {
+                      setShowAutocompletePlayers(false);
+                      setSearchTerm("");
+                      addPlayerToTeam(player, position2Fill);
+                      setSubmitted(true);
+                    }}
+                  >
+                    {player.long_name}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+        </div>
       </div>
-    </div>
+    </OutsideClickHandler>
   );
 };
 
