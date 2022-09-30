@@ -1,8 +1,10 @@
 // Dependencies
 import React, { useEffect, useState } from "react";
+import DeviceIdentifier from "react-device-identifier";
 import { useHomeFetch } from "./hooks/useHomeFetch";
 import PlayerGrid from "./components/PlayerGrid";
 import NoPlayersFound from "./components/NoPlayersFound";
+import Pagination from "./components/Pagination";
 
 import DreamTeamGrid from "./components/DreamTeamGrid";
 import SearchBar from "./components/SearchBar";
@@ -16,8 +18,9 @@ const App = () => {
   const [highlightCard, setHighlightCard] = useState(null);
   const [showPlayerModal, setShowPlayerModal] = useState(false);
   const [showFacetCode, setShowFacetCode] = useState(false);
-
   const [playerIndex, setPlayerIndex] = useState(-100);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [maxPages, setMaxPages] = useState(6);
 
   const {
     operator,
@@ -152,6 +155,9 @@ const App = () => {
             className="rounded-lg mx-auto w-52 object-contain mb-4 border border-slate-700 shadow shadow-green-500/50"
           ></img>
           <div className="text-center">Advanced Scouting</div>
+          <DeviceIdentifier isTablet={true}>
+            <h1>Is Tablet</h1>
+          </DeviceIdentifier>
         </div>
         <SearchBar
           searchTerm={searchTerm}
@@ -172,26 +178,36 @@ const App = () => {
 
       <div className="px-12">
         {playersFound || searchTerm === "" ? (
-          <PlayerGrid
-            header={searchTerm ? null : "Player Search Results"}
-            players={players}
-            addPlayerToTeam={addPlayerToTeam}
-            position2Fill={position2Fill}
-            setPosition2Fill={setPosition2Fill}
-            setHighlightCard={setHighlightCard}
-            highlightCard={highlightCard}
-            dreamTeam={dreamTeam}
-            setShowPlayerChoices={setShowPlayerChoices}
-            showPlayerChoices={showPlayerChoices}
-            searchTerm={searchTerm}
-            operator={operator}
-            setPlayerIndex={setPlayerIndex}
-            setShowPlayerModal={setShowPlayerModal}
-            showAdvancedSearch={showAdvancedSearch}
-            functionScore={functionScore}
-          />
+          <>
+            <PlayerGrid
+              header={searchTerm ? null : "Player Search Results"}
+              players={players}
+              addPlayerToTeam={addPlayerToTeam}
+              position2Fill={position2Fill}
+              setPosition2Fill={setPosition2Fill}
+              setHighlightCard={setHighlightCard}
+              highlightCard={highlightCard}
+              dreamTeam={dreamTeam}
+              setShowPlayerChoices={setShowPlayerChoices}
+              showPlayerChoices={showPlayerChoices}
+              searchTerm={searchTerm}
+              operator={operator}
+              setPlayerIndex={setPlayerIndex}
+              setShowPlayerModal={setShowPlayerModal}
+              showAdvancedSearch={showAdvancedSearch}
+              functionScore={functionScore}
+            />
+            {/* <Pagination /> */}
+          </>
         ) : (
           <NoPlayersFound />
+        )}
+        {maxPages > 1 && (
+          <Pagination
+            maxPages={maxPages}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
         )}
         {showAdvancedSearch && (
           <AdvancedSearch
