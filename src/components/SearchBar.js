@@ -19,6 +19,8 @@ const SearchBar = ({
   functionScore,
   setFunctionScore,
   setRestart,
+  setDisplayedPlayer,
+  setShowPlayerModal,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,14 +32,14 @@ const SearchBar = ({
   };
 
   return (
-    <div className="relative flex w-full items-center">
+    <div className="flex w-full items-center relative ">
       <form
         className=" flex w-3/4 space-x-8 mx-8 items-center"
         onSubmit={handleSubmit}
       >
         <input
           type="text"
-          className=" border border-gray-700 w-3/4 px-6 py-2 text-2xl rounded-lg outline-none"
+          className=" border border-gray-700 w-3/4 px-6 py-2 text-2xl rounded-lg outline-none "
           placeholder="type to find players..."
           value={searchTerm}
           onChange={(e) => {
@@ -79,7 +81,7 @@ const SearchBar = ({
         <img src={Reset} alt="reset" className="rounded-lg w-16 "></img>
       </button>
       {showAutocompletePlayers && (
-        <div className="absolute mt-4 top-20 left-20 z-10  text-left w-2/5 bg-white rounded shadow-2xl">
+        <div className="absolute top-28 left-10  z-10  bg-white rounded shadow-2xl">
           <AutoSuggestions
             setSearchTerm={setSearchTerm}
             addPlayerToTeam={addPlayerToTeam}
@@ -90,6 +92,8 @@ const SearchBar = ({
             setOperator={setOperator}
             position2Fill={position2Fill}
             setPlayersFound={setPlayersFound}
+            setDisplayedPlayer={setDisplayedPlayer}
+            setShowPlayerModal={setShowPlayerModal}
           />
         </div>
       )}

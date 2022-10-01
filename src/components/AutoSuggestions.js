@@ -8,6 +8,8 @@ const AutoSuggestions = ({
   setSubmitted,
   players,
   setShowAutocompletePlayers,
+  setDisplayedPlayer,
+  setShowPlayerModal,
 }) => {
   return (
     <OutsideClickHandler
@@ -24,10 +26,12 @@ const AutoSuggestions = ({
                   className="flex py-2 border-b-1 border-slate-500 w-full"
                   key={player._id}
                   onClick={(e) => {
-                    setShowAutocompletePlayers(false);
-                    setSearchTerm("");
-                    addPlayerToTeam(player, position2Fill);
-                    setSubmitted(true);
+                    // setShowAutocompletePlayers(false);
+                    // setSearchTerm("");
+                    // setDisplayedPlayer(player);
+                    // addPlayerToTeam(player, position2Fill);
+                    // setSubmitted(true);
+                    console.log("TO DISPLAY: ", player.short_name);
                   }}
                 >
                   <img
@@ -36,15 +40,15 @@ const AutoSuggestions = ({
                     className="rounded-full mt-1  text-left w-20 h-auto border border-slate-500 shadow-2xl"
                   ></img>
                   <div className="flex border-b border-gray-300 w-full">
-                    <div className="pl-8 my-4 w-full text-lg">
+                    <div className="pl-8 my-4 w-3/5 text-lg">
                       {player.long_name}
                     </div>
-
                     <div
                       className="ml-10 text-3xl my-auto"
                       onClick={() => {
-                        // setShowPlayerModal(true);
-                        // setPlayerIndex(index);
+                        setDisplayedPlayer(player);
+                        console.log("TO DISPLAY: ", player.short_name);
+                        setShowPlayerModal(true);
                       }}
                     >
                       🔍

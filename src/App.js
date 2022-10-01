@@ -18,7 +18,7 @@ const App = () => {
   const [highlightCard, setHighlightCard] = useState(null);
   const [showPlayerModal, setShowPlayerModal] = useState(false);
   const [showFacetCode, setShowFacetCode] = useState(false);
-  const [playerIndex, setPlayerIndex] = useState(-100);
+  const [displayedPlayer, setDisplayedPlayer] = useState({}); // added for modal
 
   const {
     operator,
@@ -177,6 +177,9 @@ const App = () => {
           functionScore={functionScore}
           setFunctionScore={setFunctionScore}
           setRestart={setRestart}
+          setDisplayedPlayer={setDisplayedPlayer}
+          setShowPlayerModal={setShowPlayerModal}
+          setPosition2Fill={setPosition2Fill}
         />
       </div>
 
@@ -196,10 +199,10 @@ const App = () => {
               showPlayerChoices={showPlayerChoices}
               searchTerm={searchTerm}
               operator={operator}
-              setPlayerIndex={setPlayerIndex}
               setShowPlayerModal={setShowPlayerModal}
               showAdvancedSearch={showAdvancedSearch}
               functionScore={functionScore}
+              setDisplayedPlayer={setDisplayedPlayer}
             />
           </>
         ) : (
@@ -279,9 +282,8 @@ const App = () => {
         {showPlayerModal ? (
           <PlayerModal
             players={players}
-            playerIndex={playerIndex}
+            displayedPlayer={displayedPlayer} // displayedPlayer
             setShowPlayerModal={setShowPlayerModal}
-            setPlayerIndex={setPlayerIndex}
             addPlayerToTeam={addPlayerToTeam}
             position2Fill={position2Fill}
           />

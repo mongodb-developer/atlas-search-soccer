@@ -14,10 +14,10 @@ const PlayerGrid = ({
   showPlayerChoices,
   operator,
   searchTerm,
-  setPlayerIndex,
   setShowPlayerModal,
   showAdvancedSearch,
   functionScore,
+  setDisplayedPlayer,
 }) => {
   return (
     <div className="flex w-full justify-between pl-20 mb-2">
@@ -26,7 +26,6 @@ const PlayerGrid = ({
           {players.map((player, index) => (
             <PlayerCard
               key={index}
-              index={index}
               player={player}
               parent="PlayerGrid"
               addPlayerToTeam={addPlayerToTeam}
@@ -34,8 +33,8 @@ const PlayerGrid = ({
               setPosition2Fill={setPosition2Fill}
               dreamTeam={dreamTeam}
               dreamNames={dreamNames}
-              setPlayerIndex={setPlayerIndex}
               setShowPlayerModal={setShowPlayerModal}
+              setDisplayedPlayer={setDisplayedPlayer} // displayedPlayer
             />
           ))}
         </div>

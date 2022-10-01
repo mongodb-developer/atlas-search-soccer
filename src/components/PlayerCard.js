@@ -12,10 +12,7 @@ const PlayerCard = ({
   setHighlightCard,
   highlightCard,
   setShowPlayerModal,
-  setPlayerIndex,
-  index,
-  dreamTeam,
-  dreamNames,
+  setDisplayedPlayer,
 }) => {
   let scoreString = "" + player?.score;
   scoreString = scoreString.slice(0, 5);
@@ -75,7 +72,7 @@ const PlayerCard = ({
                   className="absolute bottom-0 left-0"
                   onClick={() => {
                     setShowPlayerModal(true);
-                    setPlayerIndex(index);
+                    setDisplayedPlayer(player);
                   }}
                 >
                   <svg
@@ -120,7 +117,6 @@ const PlayerCard = ({
         <div
           onClick={() => {
             setPosition2Fill(spot);
-
             if (highlightCard === spot) setHighlightCard(null);
             else setHighlightCard(spot);
           }}
