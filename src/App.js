@@ -201,7 +201,6 @@ const App = () => {
               showAdvancedSearch={showAdvancedSearch}
               functionScore={functionScore}
             />
-            {/* <Pagination /> */}
           </>
         ) : (
           <NoPlayersFound />

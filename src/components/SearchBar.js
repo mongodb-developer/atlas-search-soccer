@@ -79,7 +79,7 @@ const SearchBar = ({
         <img src={Reset} alt="reset" className="rounded-lg w-16 "></img>
       </button>
       {showAutocompletePlayers && (
-        <div className="absolute top-20 left-80 z-10  text-left w-2/5 bg-white rounded shadow-2xl">
+        <div className="absolute mt-4 top-20 left-20 z-10  text-left w-2/5 bg-white rounded shadow-2xl">
           <AutoSuggestions
             setSearchTerm={setSearchTerm}
             addPlayerToTeam={addPlayerToTeam}

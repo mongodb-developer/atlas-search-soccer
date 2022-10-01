@@ -15,30 +15,49 @@ const AutoSuggestions = ({
         setShowAutocompletePlayers(false);
       }}
     >
-      <div className="container flex ml-8 w-96">
+      <div className="container flex ml-8 w-full">
         <div className="flex flex-col">
           {players.length > 0 &&
             players.map((player) => {
               return (
                 <div
-                  className="flex py-2 border-b-1 border-slate-500"
+                  className="flex py-2 border-b-1 border-slate-500 w-full"
                   key={player._id}
+                  onClick={(e) => {
+                    setShowAutocompletePlayers(false);
+                    setSearchTerm("");
+                    addPlayerToTeam(player, position2Fill);
+                    setSubmitted(true);
+                  }}
                 >
                   <img
                     src={player?.player_face_url}
                     alt="player-face"
-                    className="rounded-full mt-1  text-left w-16 border border-slate-500 shadow-2xl"
+                    className="rounded-full mt-1  text-left w-20 h-auto border border-slate-500 shadow-2xl"
                   ></img>
-                  <div
-                    className="pl-8 my-4 border-b border-gray-300 w-auto text-lg"
-                    onClick={(e) => {
-                      setShowAutocompletePlayers(false);
-                      setSearchTerm("");
-                      addPlayerToTeam(player, position2Fill);
-                      setSubmitted(true);
-                    }}
-                  >
-                    {player.long_name}
+                  <div className="flex border-b border-gray-300 w-full">
+                    <div className="pl-8 my-4 w-full text-lg">
+                      {player.long_name}
+                    </div>
+
+                    <div
+                      className="ml-10 text-3xl my-auto"
+                      onClick={() => {
+                        // setShowPlayerModal(true);
+                        // setPlayerIndex(index);
+                      }}
+                    >
+                      🔍
+                    </div>
+                    <div
+                      className="ml-10 text-3xl my-auto "
+                      onClick={() => {
+                        addPlayerToTeam(player, position2Fill);
+                      }}
+                    >
+                      {" "}
+                      💚
+                    </div>
                   </div>
                 </div>
               );
