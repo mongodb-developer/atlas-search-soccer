@@ -12,6 +12,8 @@ import PlayerModal from "./components/PlayerModal";
 import FacetCodeModal from "./components/FacetCodeModal";
 import AdvancedSearch from "./components/AdvancedSearch";
 import SpotSearch from "./images/Search_UI.png";
+import player from "./images/player_outline.png";
+import goalie from "./images/goalie.png";
 
 const App = () => {
   const [position2Fill, setPosition2Fill] = useState(100);
@@ -145,7 +147,16 @@ const App = () => {
       <h2 className="text-center text-xl text-mongo-400 pt-4">
         Build Your Soccer Dream Team ⚽
       </h2>
+      <DeviceIdentifier isMobile={true} isTablet={true}>
+        <div className="flex justify-evenly px-4 py-2 bg-red-700 items-center  my-2">
+          <img src={goalie} className="w-16" alt="outline"></img>
+          <div className=" text-white text-xl text-center uppercase">
+            Best Played on Desktops
+          </div>
 
+          <img src={player} className="w-16" alt="outline"></img>
+        </div>
+      </DeviceIdentifier>
       <div className="flex mx-20 w-full justify-around items-center">
         <div
           className="flex flex-col text-lg text-mongo-400 font-bold w-1/5"
@@ -157,9 +168,6 @@ const App = () => {
             className="rounded-lg mx-auto w-52 object-contain mb-4 border border-slate-700 shadow shadow-green-500/50"
           ></img>
           <div className="text-center">Advanced Scouting</div>
-          <DeviceIdentifier isTablet={true}>
-            <h1>Is Tablet</h1>
-          </DeviceIdentifier>
         </div>
 
         <SearchBar
