@@ -58,6 +58,8 @@ export const useHomeFetch = () => {
     setSearchTerm("");
     setPlayers([]);
     setFunctionScore(false);
+    setMaxPages(1);
+    setCurrentPage(1);
   };
 
   const getPlayersAutocomplete = async () => {
