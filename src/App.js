@@ -74,7 +74,6 @@ const App = () => {
     maxPages,
     currentPage,
     setCurrentPage,
-    setRestart,
   } = useHomeFetch();
 
   useEffect(() => {
@@ -184,7 +183,6 @@ const App = () => {
           setPlayersFound={setPlayersFound}
           functionScore={functionScore}
           setFunctionScore={setFunctionScore}
-          setRestart={setRestart}
           setDisplayedPlayer={setDisplayedPlayer}
           setShowPlayerModal={setShowPlayerModal}
           setPosition2Fill={setPosition2Fill}

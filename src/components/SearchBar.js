@@ -18,17 +18,12 @@ const SearchBar = ({
   setPlayersFound,
   functionScore,
   setFunctionScore,
-  setRestart,
   setDisplayedPlayer,
   setShowPlayerModal,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitted(true);
-  };
-
-  const handleReset = () => {
-    setRestart(true);
   };
 
   return (
@@ -76,7 +71,10 @@ const SearchBar = ({
           ></img>
         </button>
       </form>
-      <button onClick={() => handleReset()} className="px-4 py-2 w-1/4">
+      <button
+        onClick={() => window.location.reload()}
+        className="px-4 py-2 w-1/4"
+      >
         {" "}
         <img src={Reset} alt="reset" className="rounded-lg w-16 "></img>
       </button>
