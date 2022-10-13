@@ -72,6 +72,7 @@ const App = () => {
     functionScore,
     setFunctionScore,
     maxPages,
+    setMaxPages,
     currentPage,
     setCurrentPage,
   } = useHomeFetch();
@@ -118,6 +119,7 @@ const App = () => {
     setShowPlayerChoices(false);
     setSearchTerm("");
     setShowAdvancedSearch(false);
+    setMaxPages(1);
   };
 
   //-------------------------------- END FUNCTION TO ADDPLAYER --------------------------------------------------------
