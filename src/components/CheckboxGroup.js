@@ -36,8 +36,6 @@ const CheckboxGroup = ({
       }
     }
     setFinalList(checkedCountries);
-
-    // console.log(`${path}: ${finalList}`);
   };
 
   return (

@@ -43,6 +43,7 @@ function CheckboxSection({
           path="club_name"
           buckets={clubBuckets}
           showFacets={showFacets}
+          keywordFacetIndex={keywordFacetIndex}
         />
       </div>
       {/*---------BEGIN POSITIONS COLUMN---------------*/}
