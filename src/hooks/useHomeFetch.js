@@ -87,7 +87,7 @@ export const useHomeFetch = () => {
       console.log("PLAYERSJSON: ", playersJSON);
       setPlayersFound(true);
     } else if (playersJSON.length === 0) {
-      setShowPlayerChoices(false);
+      // setShowPlayerChoices(false);   // show player choices but is only NoPlayersFound
       setPlayersFound(false);
       setPlayers(playersJSON);
     }

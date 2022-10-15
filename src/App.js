@@ -192,7 +192,7 @@ const App = () => {
       </div>
 
       <div className="px-12">
-        {playersFound || searchTerm === "" ? (
+        {showPlayerChoices || playersFound ? ( // - CHANGING THIS playersFound || searchTerm === ""
           <>
             <PlayerGrid
               header={searchTerm ? null : "Player Search Results"}
