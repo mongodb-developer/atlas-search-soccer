@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LikePlayersSection from "./LikePlayersSection";
+import MoreLikeThisCode from "./MoreLikeThisCode";
 
 const PlayerModal = ({
   setShowPlayerModal,
@@ -30,8 +31,8 @@ const PlayerModal = ({
   }, []);
 
   return (
-    <div className="fixed inset-0 z-20 p-20 flex justify-center bg-smoke-dark">
-      <div className="relative flex flex-col w-2/3 bg-gray-900 text-white border-r-2 border-slate-700 pt-5">
+    <div className="fixed inset-0 z-20 p-20 flex justify-center bg-smoke-darkest">
+      <div className="relative flex flex-col w-1/2 bg-gray-900 text-white border-r-2 border-slate-700 pt-5">
         <div className="absolute -top-3 right-0 bg-red-600 rounded-full font-bold px-2 py-1  w-auto mx-auto">
           Search Score: {scoreString}
         </div>
@@ -151,6 +152,9 @@ const PlayerModal = ({
         </div>
       </div>
       <LikePlayersSection players={likePlayers} />
+      <div className=" mt-6 mx-4 ">
+        <MoreLikeThisCode playerToMatch={displayedPlayer} />
+      </div>
     </div>
   );
 };
