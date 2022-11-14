@@ -72,6 +72,7 @@ const PlayerCard = ({
                   className="absolute bottom-0 left-0"
                   onClick={() => {
                     setShowPlayerModal(true);
+                    console.log("ID", player._id);
                     setDisplayedPlayer(player);
                   }}
                 >

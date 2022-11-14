@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import LikePlayersSection from "./LikePlayersSection";
 
 const PlayerModal = ({
   setShowPlayerModal,
@@ -8,11 +9,29 @@ const PlayerModal = ({
 }) => {
   const shortDate = new Date(displayedPlayer.dob);
   const birthday = shortDate.toLocaleDateString();
+
+  const [likePlayers, setLikePlayers] = useState([]);
+
   let scoreString = "" + displayedPlayer?.score;
   scoreString = scoreString.slice(0, 5);
+
+  const getLikePlayers = async () => {
+    console.log(displayedPlayer._id);
+
+    const ENDPOINT = `https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/likePlayers?arg=${displayedPlayer._id}`;
+    const response = await (await fetch(ENDPOINT)).json();
+    console.log("RESPONSE", response);
+    setLikePlayers(response);
+  };
+
+  useEffect(() => {
+    getLikePlayers();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="fixed inset-0 z-20 p-20 flex justify-center bg-smoke-dark">
-      <div className="relative flex flex-col w-2/3 bg-gray-900 text-white border-2 border-slate-700 rounded pt-5">
+      <div className="relative flex flex-col w-2/3 bg-gray-900 text-white border-r-2 border-slate-700 pt-5">
         <div className="absolute -top-3 right-0 bg-red-600 rounded-full font-bold px-2 py-1  w-auto mx-auto">
           Search Score: {scoreString}
         </div>
@@ -21,9 +40,9 @@ const PlayerModal = ({
             <img
               src={displayedPlayer.player_face_url}
               alt="player"
-              className="object-contain w-3/5 rounded-full my-auto"
+              className="object-contain w-1/2 rounded-full my-auto"
             />
-            <div className="mx-auto text-4xl font-bold">
+            <div className="mx-auto text-2xl font-bold">
               {" "}
               {displayedPlayer.short_name}
             </div>
@@ -48,7 +67,7 @@ const PlayerModal = ({
                 <div> Number: {displayedPlayer.club_jersey_number}</div>
               </div>
             </div>
-            <div className=" border border-green-400 rounded-full p-1  text-2xl w-1/4 mx-auto text-center">
+            <div className=" border border-green-400 rounded-full p-1  text-xl w-1/4 mx-auto text-center">
               {"Overall "}
               {displayedPlayer?.overall}
             </div>
@@ -64,7 +83,7 @@ const PlayerModal = ({
             <div> Dribbling: {displayedPlayer.dribbling}</div>
             <div> Shooting: {displayedPlayer.shooting}</div>
             <div> Defending: {displayedPlayer.defending}</div>
-            <div> Physical: {displayedPlayer.physic}</div>
+            {/* <div> Physical: {displayedPlayer.physic}</div> */}
             <div> Skill Moves: {displayedPlayer.skill_moves}</div>
             <div> Weak Foot: {displayedPlayer.weak_foot}</div>
             <hr
@@ -88,6 +107,7 @@ const PlayerModal = ({
         <div className="text-yellow-400 text-lg text-center px-20">
           {displayedPlayer.player_traits}
         </div>
+
         <div
           className="absolute bottom-0 left-0 ml-3 mb-3"
           onClick={() => {
@@ -130,6 +150,7 @@ const PlayerModal = ({
           </svg>
         </div>
       </div>
+      <LikePlayersSection players={likePlayers} />
     </div>
   );
 };

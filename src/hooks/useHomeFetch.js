@@ -137,7 +137,7 @@ export const useHomeFetch = () => {
       setPlayersFound(true);
     } else if (advancedSearchPlayers.length === 0) {
       console.log("NO PLAYERS TO SHOW.");
-      setShowPlayerChoices(false);
+      //  setShowPlayerChoices(false);
       setPlayersFound(false);
       setPlayers(responseJSON);
     }
