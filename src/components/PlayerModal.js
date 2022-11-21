@@ -169,7 +169,7 @@ const PlayerModal = ({
         </div>
       </div>
       <LikePlayersSection players={likePlayers} />
-      <div className=" mt-6 mx-4 ">
+      <div className="mx-2 ">
         <TikTok
           author={author}
           description={description}

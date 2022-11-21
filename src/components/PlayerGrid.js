@@ -20,9 +20,9 @@ const PlayerGrid = ({
   setDisplayedPlayer,
 }) => {
   return (
-    <div className="flex w-full justify-between pl-20 mb-2">
+    <div className="flex w-full justify-between mb-2">
       {showPlayerChoices ? (
-        <div className="grid grid-cols-5 gap-x-2 gap-y-4 p-2 mt-10 w-4/5">
+        <div className="grid grid-cols-5 gap-x-2 gap-y-4 p-2 mt-10 w-4/5 mx-auto">
           {players.map((player, index) => (
             <PlayerCard
               key={index}
@@ -39,9 +39,9 @@ const PlayerGrid = ({
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-6 gap-2 p-2 mt-6 ml-48 w-4/5"></div>
+        <div className="grid grid-cols-6 gap-2 p-2 mt-6 mx-auto w-4/5"></div>
       )}
-      {searchTerm !== "" && !showAdvancedSearch && (
+      {/*searchTerm !== "" && !showAdvancedSearch && (
         <div className=" mt-6 mx-4 ">
           <SearchCode
             operator={operator}
@@ -49,7 +49,7 @@ const PlayerGrid = ({
             functionScore={functionScore}
           />
         </div>
-      )}
+      )*/}
     </div>
   );
 };

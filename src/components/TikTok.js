@@ -10,11 +10,11 @@ const TikTok = ({ author, description, TikTokURL }) => {
           src={TikTokURL}
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </div>
-      <div className="text-center text-xl text-yellow-400 mt-4">{author}</div>
-      <div className=" text-2xl text-center text-indigo-600 mt-4">
+      <div className="text-center text-xl text-yellow-400 mt-2">{author}</div>
+      <div className=" text-xl text-center text-indigo-600 mt-1">
         {description}
       </div>
     </div>
