@@ -35,17 +35,17 @@ export const useHomeFetch = () => {
   const [searchMetaStage, setSearchMetaStage] = useState({});
 
   const BasicSearchEndPoint =
-    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/players";
+    "https://us-west-2.aws.data.mongodb-api.com/app/reinvent-zxcbu/endpoint/players";
   const WildcardEndPoint =
-    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/wildcard";
+    "https://us-west-2.aws.data.mongodb-api.com/app/reinvent-zxcbu/endpoint/wildcard";
   const AutocompleteEndPoint =
-    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/autocomplete";
+    "https://us-west-2.aws.data.mongodb-api.com/app/reinvent-zxcbu/endpoint/autocomplete";
 
   const AdvancedSearchEndPoint =
-    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/advancedSearch";
+    "https://us-west-2.aws.data.mongodb-api.com/app/reinvent-zxcbu/endpoint/advancedSearch";
 
   const FacetsEndPoint =
-    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/facets";
+    "https://us-west-2.aws.data.mongodb-api.com/app/reinvent-zxcbu/endpoint/facets";
 
   const getPlayersAutocomplete = async () => {
     let API = AutocompleteEndPoint;
@@ -72,6 +72,7 @@ export const useHomeFetch = () => {
     if (operator === "wildcard") API = WildcardEndPoint;
 
     const url = `${API}?searchTerm=${searchTerm}&functionScore=${functionScore}&page=${currentPage}`;
+    console.log("URL", url);
 
     const response = await (await fetch(url)).json();
 

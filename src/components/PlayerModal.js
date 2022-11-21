@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LikePlayersSection from "./LikePlayersSection";
-import MoreLikeThisCode from "./MoreLikeThisCode";
+// import MoreLikeThisCode from "./MoreLikeThisCode";
+import TikTok from "./TikTok";
 
 const PlayerModal = ({
   setShowPlayerModal,
@@ -12,9 +13,23 @@ const PlayerModal = ({
   const birthday = shortDate.toLocaleDateString();
 
   const [likePlayers, setLikePlayers] = useState([]);
+  const [TikTokURL, setTikTokURL] = useState("");
+  const [author, setAuthor] = useState("");
+  const [description, setDescription] = useState("");
 
   let scoreString = "" + displayedPlayer?.score;
   scoreString = scoreString.slice(0, 5);
+
+  const getLikePlayersTikTok = async () => {
+    console.log("in GraphQL function");
+    const GRAPHQLENDPOINT = `https://us-west-2.aws.data.mongodb-api.com/app/reinvent-zxcbu/endpoint/playerGraphQL?name=${displayedPlayer.short_name}&ID=${displayedPlayer._id}`;
+    const response = await (await fetch(GRAPHQLENDPOINT)).json();
+    console.log("TIKTOK", response.data.tiktok_trends[0].video.playAddr);
+    setLikePlayers(response.data.moreLikeThis);
+    setAuthor(response.data.tiktok_trends[0].author.nickname);
+    setDescription(response.data.tiktok_trends[0].description);
+    setTikTokURL(response.data.tiktok_trends[0].video.playAddr);
+  };
 
   const getLikePlayers = async () => {
     console.log(displayedPlayer._id);
@@ -26,7 +41,9 @@ const PlayerModal = ({
   };
 
   useEffect(() => {
-    getLikePlayers();
+    // getLikePlayers();
+    getLikePlayersTikTok();
+
     // eslint-disable-next-line
   }, []);
 
@@ -153,7 +170,11 @@ const PlayerModal = ({
       </div>
       <LikePlayersSection players={likePlayers} />
       <div className=" mt-6 mx-4 ">
-        <MoreLikeThisCode playerToMatch={displayedPlayer} />
+        <TikTok
+          author={author}
+          description={description}
+          TikTokURL={TikTokURL}
+        />
       </div>
     </div>
   );
