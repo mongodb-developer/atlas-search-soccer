@@ -7,9 +7,9 @@ const app = new App(APP_ID);
 
 // Creating a user context to manage and access all the user related functions
 // across different component and pages.
-export const CurrentUserContext = createContext();
+export const UserContext = createContext();
 
-export const CurrentUserProvider = ({ children }) => {
+export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   // Function to login user into our Realm using their email & password
@@ -26,7 +26,7 @@ export const CurrentUserProvider = ({ children }) => {
       await app.emailPasswordAuth.registerUser(email, password);
       // Since we are automatically confirming our users we are going to login
       // the user using the same credentials once the signup is complete.
-      return emailPasswordLogin(email, password);
+      //  return emailPasswordLogin(email, password);
     } catch (error) {
       throw error;
     }
@@ -60,7 +60,7 @@ export const CurrentUserProvider = ({ children }) => {
   };
 
   return (
-    <CurrentUserContext.Provider
+    <UserContext.Provider
       value={{
         user,
         setUser,
@@ -71,6 +71,6 @@ export const CurrentUserProvider = ({ children }) => {
       }}
     >
       {children}
-    </CurrentUserContext.Provider>
+    </UserContext.Provider>
   );
 };
