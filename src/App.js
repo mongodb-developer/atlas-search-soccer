@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { Link, Route, Routes } from "react-router-dom";
 
@@ -12,6 +12,7 @@ import { UserContext } from "./contexts/CurrentUserContext";
 
 function App() {
   const { user, fetchUser, logOutUser } = useContext(UserContext);
+  const [signedUp, setSignedUp] = useState(false);
   const loadUser = async () => {
     if (!user) {
       const fetchedUser = await fetchUser();
@@ -26,10 +27,13 @@ function App() {
   }, []);
   return (
     <>
-      <Navbar user={user} logOutUser={logOutUser} />
+      <Navbar user={user} logOutUser={logOutUser} signedUp={signedUp} />
       <Routes>
         <Route path="/" exact={true} element={<HomePage />} />
-        <Route path="/signup" element={<SignUpPage />} />
+        <Route
+          path="/signup"
+          element={<SignUpPage setSignedUp={setSignedUp} />}
+        />
         <Route path="/login" element={<LogInPage />} />
       </Routes>
     </>

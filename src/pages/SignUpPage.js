@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/CurrentUserContext";
 import { useForm } from "react-hook-form";
 
-const SignUpPage = () => {
+const SignUpPage = ({ setSignedUp }) => {
   const { register, handleSubmit, errors } = useForm();
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,6 +27,7 @@ const SignUpPage = () => {
   const onSubmit = async (data, event) => {
     event.preventDefault();
     console.log("SIGNING UP");
+    setSignedUp(true);
     const newUserData = {
       name: data.name,
       email: data.email,
@@ -36,6 +37,7 @@ const SignUpPage = () => {
 
     try {
       const user = await emailPasswordSignup(data.email, data.password);
+      setSignedUp(true);
 
       if (user) {
         console.log("redirecting");
@@ -44,6 +46,7 @@ const SignUpPage = () => {
     } catch (error) {
       alert(error);
     }
+    redirectNow();
   };
 
   return (
