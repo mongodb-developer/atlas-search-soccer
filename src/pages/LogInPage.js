@@ -55,7 +55,7 @@ const LogInPage = () => {
 
   const onSubmit = async (data) => {
     console.log("SUBMITTED");
-    console.log(data);
+
     try {
       // Here we are passing user details to our emailPasswordLogin
       // function that we imported from our realm/authentication.js
@@ -63,6 +63,7 @@ const LogInPage = () => {
       console.log("EMAIL", data.email);
       console.log("PASSWORD", data.password);
       const user = await emailPasswordLogin(data.email, data.password);
+
       if (user) {
         console.log("USER", user);
         redirectNow();

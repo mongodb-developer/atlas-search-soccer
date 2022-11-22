@@ -8,7 +8,7 @@ const SignUpPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { emailPasswordSignup } = useContext(UserContext);
+  const { emailPasswordSignup, emailPasswordLogin } = useContext(UserContext);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -24,12 +24,18 @@ const SignUpPage = () => {
     navigate(redirectTo ? redirectTo : "/");
   };
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
+  const onSubmit = async (data) => {
+    const newUserData = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    };
+
     try {
-      const user = await emailPasswordSignup(form.email, form.password);
+      const user = await emailPasswordSignup(data.email, data.password);
 
       if (user) {
+        console.log("redirecting");
         redirectNow();
       }
     } catch (error) {
@@ -40,7 +46,29 @@ const SignUpPage = () => {
   return (
     <div className="bg-black min-h-screen">
       <div className="pt-24">
-        <form className="bg-white py-32 md:w-2/3 lg:w-1/2 mx-auto rounded px-20">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="bg-white py-32 md:w-2/3 lg:w-1/2 mx-auto rounded px-20"
+        >
+          <div className="flex items-center mb-5">
+            <label
+              htmlFor="name"
+              className="inline-block text-right mr-6 w-20 font-bold"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              id="namel"
+              //   value={form.email}
+              placeholder="Your name"
+              {...register("name")}
+              //   onInput={onFormInputChange}
+              className="border-b-2 border-gray-400 focus:border-green-800 w-full flex-1 py-2 placeholder-gray-300 outline-none"
+            />
+          </div>
+
           <div className="flex items-center mb-5">
             <label
               htmlFor="email"
@@ -52,8 +80,10 @@ const SignUpPage = () => {
               type="text"
               name="email"
               id="email"
+              //   value={form.email}
               placeholder="Your email"
               {...register("email")}
+              //   onInput={onFormInputChange}
               className="border-b-2 border-gray-400 focus:border-green-800 w-full flex-1 py-2 placeholder-gray-300 outline-none"
             />
           </div>
@@ -70,6 +100,8 @@ const SignUpPage = () => {
               name="password"
               id="password"
               placeholder="Super secret password"
+              //   value={form.password}
+              //   onInput={onFormInputChange}
               {...register("password")}
               className="border-b-2 border-gray-400 w-full flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-800"
             />
@@ -77,11 +109,11 @@ const SignUpPage = () => {
           <div className="text-right">
             <button
               className="py-3 px-8 bg-green-500 text-white font-bold"
-              onClick={onSubmit}
+              //   onClick={onSubmit}
             >
               Sign Up
             </button>
-            <p className="mt-8">
+            <p className="mt-8 hover:underline decoration-indigo-500">
               Already have an account? <Link to="/login">Log In</Link>
             </p>
           </div>
