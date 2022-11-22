@@ -24,7 +24,8 @@ const SignUpPage = () => {
     navigate(redirectTo ? redirectTo : "/");
   };
 
-  const onSubmit = async () => {
+  const onSubmit = async (event) => {
+    event.preventDefault();
     try {
       const user = await emailPasswordSignup(form.email, form.password);
 
@@ -38,8 +39,8 @@ const SignUpPage = () => {
 
   return (
     <div className="bg-black min-h-screen">
-      <div className="bg-white p-10 md:w-2/3 lg:w-1/2 mx-auto mb-20 rounded pt-24">
-        <form className="py-20 px-20">
+      <div className="pt-24">
+        <form className="bg-white py-32 md:w-2/3 lg:w-1/2 mx-auto rounded px-20">
           <div className="flex items-center mb-5">
             <label
               htmlFor="email"

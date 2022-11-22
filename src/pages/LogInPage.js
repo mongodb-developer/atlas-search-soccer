@@ -74,8 +74,11 @@ const LogInPage = () => {
 
   return (
     <div className="bg-black min-h-screen">
-      <div class="bg-white p-10 md:w-2/3 lg:w-1/2 mx-auto mb-20 rounded pt-24">
-        <form className="py-20 px-20" onSubmit={handleSubmit(onSubmit)}>
+      <div className="pt-24">
+        <form
+          className="bg-white py-32 md:w-2/3 lg:w-1/2 mx-auto rounded px-20"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <div class="flex items-center mb-5">
             <label
               for="email"

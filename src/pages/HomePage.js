@@ -1,11 +1,10 @@
 // Dependencies
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import DeviceIdentifier from "react-device-identifier";
 import { useHomeFetch } from "../hooks/useHomeFetch";
 import PlayerGrid from "../components/PlayerGrid";
 import NoPlayersFound from "../components/NoPlayersFound";
 import Pagination from "../components/Pagination";
-import Navbar from "../components/Navbar";
 import DreamTeamGrid from "../components/DreamTeamGrid";
 import SearchBar from "../components/SearchBar";
 import PlayerModal from "../components/PlayerModal";
@@ -15,23 +14,7 @@ import SpotSearch from "../images/Search_UI.png";
 import player from "../images/player_outline.png";
 import goalie from "../images/goalie.png";
 
-import { UserContext } from "../contexts/CurrentUserContext";
-
 const HomePage = () => {
-  const { user, fetchUser } = useContext(UserContext);
-  const loadUser = async () => {
-    if (!user) {
-      const fetchedUser = await fetchUser();
-      if (fetchedUser) {
-        console.log("FETCHED USER IN HOME", fetchedUser);
-      }
-    }
-  };
-
-  useEffect(() => {
-    loadUser(); // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const [position2Fill, setPosition2Fill] = useState(100);
   const [highlightCard, setHighlightCard] = useState(null);
   const [showPlayerModal, setShowPlayerModal] = useState(false);
