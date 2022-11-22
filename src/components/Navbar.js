@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import Leaf from "../images/Leaf.png";
-import { HiOutlineLogout } from "react-icons/hi";
+import { HiOutlineLogout, HiShoppingCart } from "react-icons/hi";
 
 const Navbar = ({ user, logOutUser, signedUp }) => {
   let navigate = useNavigate();
@@ -17,9 +17,12 @@ const Navbar = ({ user, logOutUser, signedUp }) => {
         {signedUp && user ? (
           <div className="px-6 text-white flex justify-end">
             <div className=" flex mx-4">Welcome, Karen</div>
+            <div className="text-green-500 text-2xl mx-4">
+              <HiShoppingCart />
+            </div>
             <div
               onClick={async () => await logOutUser()}
-              className="text-green-500 text-2xl"
+              className="text-indigo-600 text-2xl"
             >
               <HiOutlineLogout />
             </div>
