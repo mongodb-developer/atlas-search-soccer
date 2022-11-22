@@ -8,7 +8,7 @@ const SignUpPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { emailPasswordSignup, emailPasswordLogin } = useContext(UserContext);
+  const { user, fetchUser, emailPasswordSignup } = useContext(UserContext);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -24,12 +24,15 @@ const SignUpPage = () => {
     navigate(redirectTo ? redirectTo : "/");
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, event) => {
+    event.preventDefault();
+    console.log("SIGNING UP");
     const newUserData = {
       name: data.name,
       email: data.email,
       password: data.password,
     };
+    console.log("NEWUSER: ", newUserData);
 
     try {
       const user = await emailPasswordSignup(data.email, data.password);
@@ -47,8 +50,8 @@ const SignUpPage = () => {
     <div className="bg-black min-h-screen">
       <div className="pt-24">
         <form
-          onSubmit={handleSubmit(onSubmit)}
           className="bg-white py-32 md:w-2/3 lg:w-1/2 mx-auto rounded px-20"
+          onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex items-center mb-5">
             <label
@@ -61,10 +64,10 @@ const SignUpPage = () => {
               type="text"
               name="name"
               id="namel"
-              //   value={form.email}
+              value={form.name}
               placeholder="Your name"
               {...register("name")}
-              //   onInput={onFormInputChange}
+              onInput={onFormInputChange}
               className="border-b-2 border-gray-400 focus:border-green-800 w-full flex-1 py-2 placeholder-gray-300 outline-none"
             />
           </div>
@@ -80,10 +83,10 @@ const SignUpPage = () => {
               type="text"
               name="email"
               id="email"
-              //   value={form.email}
+              value={form.email}
               placeholder="Your email"
               {...register("email")}
-              //   onInput={onFormInputChange}
+              onInput={onFormInputChange}
               className="border-b-2 border-gray-400 focus:border-green-800 w-full flex-1 py-2 placeholder-gray-300 outline-none"
             />
           </div>
@@ -100,17 +103,14 @@ const SignUpPage = () => {
               name="password"
               id="password"
               placeholder="Super secret password"
-              //   value={form.password}
-              //   onInput={onFormInputChange}
+              value={form.password}
+              onInput={onFormInputChange}
               {...register("password")}
               className="border-b-2 border-gray-400 w-full flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-800"
             />
           </div>
           <div className="text-right">
-            <button
-              className="py-3 px-8 bg-green-500 text-white font-bold"
-              //   onClick={onSubmit}
-            >
+            <button className="py-3 px-8 bg-green-500 text-white font-bold">
               Sign Up
             </button>
             <p className="mt-8 hover:underline decoration-indigo-500">
