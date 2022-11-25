@@ -22,7 +22,9 @@ const PlayerModal = ({
 
   const getLikePlayersTikTok = async () => {
     console.log("in GraphQL function");
-    const GRAPHQLENDPOINT = `https://us-west-2.aws.data.mongodb-api.com/app/reinvent-zxcbu/endpoint/playerGraphQL?name=${displayedPlayer.short_name}&ID=${displayedPlayer._id}`;
+    console.log("PLAYER ID: ", displayedPlayer._id);
+    console.log("PLAYER NAME: ", displayedPlayer.short_name);
+    const GRAPHQLENDPOINT = `https://us-west-2.aws.data.mongodb-api.com/app/reinvent-zxcbu/endpoint/masterGraphQL?name=${displayedPlayer.short_name}&ID=${displayedPlayer._id}`;
     const response = await (await fetch(GRAPHQLENDPOINT)).json();
     console.log("TIKTOK", response.data.tiktok_trends[0].video.playAddr);
     setLikePlayers(response.data.moreLikeThis);
@@ -32,7 +34,7 @@ const PlayerModal = ({
   };
 
   const getLikePlayers = async () => {
-    console.log(displayedPlayer._id);
+    console.log("PLAYER ID: ", displayedPlayer._id);
 
     const ENDPOINT = `https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-xxklh/endpoint/likePlayers?arg=${displayedPlayer._id}`;
     const response = await (await fetch(ENDPOINT)).json();
