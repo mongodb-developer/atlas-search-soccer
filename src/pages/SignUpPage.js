@@ -67,6 +67,7 @@ const SignUpPage = ({ setSignedUp }) => {
               type="text"
               name="name"
               id="namel"
+              autoComplete="off"
               value={form.name}
               placeholder="Your name"
               {...register("name")}
@@ -86,6 +87,7 @@ const SignUpPage = ({ setSignedUp }) => {
               type="text"
               name="email"
               id="email"
+              autoComplete="off"
               value={form.email}
               placeholder="Your email"
               {...register("email")}
@@ -105,6 +107,7 @@ const SignUpPage = ({ setSignedUp }) => {
               type="password"
               name="password"
               id="password"
+              autoComplete="off"
               placeholder="Super secret password"
               value={form.password}
               onInput={onFormInputChange}
