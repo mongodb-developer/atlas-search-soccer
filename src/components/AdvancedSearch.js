@@ -28,8 +28,12 @@ const AdvancedSearch = ({
   clubs,
   countries,
   positions,
-  dob,
-  setDob,
+  dobStart,
+  setDobStart,
+  dobEnd,
+  setDobEnd,
+  showCalendarCode,
+  setShowCalendarCode,
   setSubmitted,
   countryBuckets,
   clubBuckets,
@@ -131,8 +135,15 @@ const AdvancedSearch = ({
               max={150000}
               step={1000}
             />
-            <div className="px-2 w-full p-4 border-4 border-indigo-900 rounded-lg text-white">
-              <Calendar dob={dob} setDob={setDob} />
+            <div className="px-2 w-full p-4 border-4 border-indigo-900 rounded-lg text-white space-y-4 ">
+              <Calendar
+                dobStart={dobStart}
+                setDobStart={setDobStart}
+                dobEnd={dobEnd}
+                setDobEnd={setDobEnd}
+                showCalendarCode={showCalendarCode}
+                setShowCalendarCode={setShowCalendarCode}
+              />
             </div>
           </div>
         </div>
@@ -150,7 +161,7 @@ const AdvancedSearch = ({
             skillMoves={skillMoves}
             defending={defending}
             salary={salary}
-            dob={dob}
+            dobStart={dobStart}
             functionScore={functionScore}
           />
         </div>

@@ -57,8 +57,12 @@ const App = () => {
     positions,
     clubs,
     countries,
-    dob,
-    setDob,
+    dobStart,
+    setDobStart,
+    dobEnd,
+    setDobEnd,
+    showCalendarCode,
+    setShowCalendarCode,
     setDreamTeam,
     playersFound,
     setPlayersFound,
@@ -248,8 +252,12 @@ const App = () => {
             positions={positions}
             clubs={clubs}
             countries={countries}
-            dob={dob}
-            setDob={setDob}
+            dobStart={dobStart}
+            setDobStart={setDobStart}
+            dobEnd={dobEnd}
+            setDobEnd={setDobEnd}
+            setShowCalendarCode={setShowCalendarCode}
+            showCalendarCode={showCalendarCode}
             operator={operator}
             setSubmitted={setSubmitted}
             countryBuckets={countryBuckets}

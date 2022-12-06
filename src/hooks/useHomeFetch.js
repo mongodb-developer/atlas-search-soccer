@@ -20,7 +20,9 @@ export const useHomeFetch = () => {
   const [pace, setPace] = useState([0]);
   const [countries, setCountries] = useState([]);
   const [clubs, setClubs] = useState([]);
-  const [dob, setDob] = useState(new Date(1970, 12, 1));
+  const [dobStart, setDobStart] = useState(new Date(1970, 12, 1));
+  const [dobEnd, setDobEnd] = useState(new Date(2012, 1, 4));
+  const [showCalendarCode, setShowCalendarCode] = useState(false);
   const [positions, setPositions] = useState([]);
   const [playersFound, setPlayersFound] = useState(true);
   const [maxPages, setMaxPages] = useState(1);
@@ -106,7 +108,9 @@ export const useHomeFetch = () => {
       skillMoves: skillMoves[0],
       defending: defending[0],
       pace: pace[0],
-      dob: new Date(dob),
+      dobStart: new Date(dobStart),
+      dobEnd: new Date(dobEnd),
+      checkDob: showCalendarCode,
       salary: salary[0],
       positions: positions,
       functionScore: functionScore,
@@ -158,7 +162,8 @@ export const useHomeFetch = () => {
       skillMoves: skillMoves[0],
       defending: defending[0],
       pace: pace[0],
-      dob: new Date(dob),
+      dobStart: new Date(dobStart),
+      dobEnd: new Date(dobEnd),
       salary: salary[0],
       positions: positions,
     };
@@ -256,8 +261,12 @@ export const useHomeFetch = () => {
     setCountries,
     clubs,
     setClubs,
-    dob,
-    setDob,
+    dobStart,
+    setDobStart,
+    dobEnd,
+    setDobEnd,
+    showCalendarCode,
+    setShowCalendarCode,
     playersFound,
     setPlayersFound,
     countryBuckets,

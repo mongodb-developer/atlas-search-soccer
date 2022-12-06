@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import styled from "styled-components";
 const Styles = styled.div`
@@ -15,6 +17,9 @@ const Styles = styled.div`
     color: var(--medGray);
     font-family: "Lexend Deca", sans-serif;
     font-weight: 200;
+    /* margin-top: 8px; */
+    padding-top: 8px;
+    pa
   }
 
   input {
@@ -31,19 +36,63 @@ const Styles = styled.div`
   }
 `;
 
-const Calendar = ({ dob, setDob }) => {
+const Calendar = ({
+  showCalendarCode,
+  setShowCalendarCode,
+  dobStart,
+  setDobStart,
+  dobEnd,
+  setDobEnd,
+}) => {
+  const initialStart = new Date(1970, 12, 1);
+  const initialEnd = new Date(2012, 1, 4);
+
+  useEffect(() => {
+    if (
+      dobStart.getTime() !== initialStart.getTime() ||
+      dobEnd.getTime() !== initialEnd.getTime()
+    ) {
+      setShowCalendarCode(true);
+    } else setShowCalendarCode(false);
+
+    // eslint-disable-next-line
+  }, [dobEnd, dobStart]);
+
+  let calendarObject = {
+    range: {
+      path: "dob",
+      gte: new Date(dobStart),
+      lte: new Date(dobEnd),
+    },
+  };
+  const calendarString = JSON.stringify(calendarObject, null, 2);
+
   return (
     <div>
       <Styles>
-        <h2>Date of Birth</h2>
+        <h2>Date of birth not before:</h2>
         <DatePicker
-          selected={dob}
-          onChange={(date) => setDob(date)}
+          selected={dobStart}
+          onChange={(date) => setDobStart(date)}
           dateFormat="MM/dd/yyyy"
           maxDate={new Date()}
           showYearDropdown
           scrollableYearDropdown
         />
+        <h2>Date of birth not after:</h2>
+        <DatePicker
+          selected={dobEnd}
+          onChange={(date) => setDobEnd(date)}
+          dateFormat="MM/dd/yyyy"
+          maxDate={new Date()}
+          showYearDropdown
+          scrollableYearDropdown
+        />
+        {showCalendarCode && (
+          <SyntaxHighlighter language="javascript" style={atomDark}>
+            {calendarString}
+          </SyntaxHighlighter>
+        )}
       </Styles>
     </div>
   );
