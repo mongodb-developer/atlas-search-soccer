@@ -4,6 +4,7 @@ import DeviceIdentifier from "react-device-identifier";
 import { useHomeFetch } from "./hooks/useHomeFetch";
 import PlayerGrid from "./components/PlayerGrid";
 import NoPlayersFound from "./components/NoPlayersFound";
+import DatasetMsg from "./images/PlayerData.png";
 import Pagination from "./components/Pagination";
 
 import DreamTeamGrid from "./components/DreamTeamGrid";
@@ -286,6 +287,15 @@ const App = () => {
             setHighlightCard={setHighlightCard}
             highlightCard={highlightCard}
           />
+
+          <div className="sticky bottom-4 float-right w-40 p-2 bg-black rounded-3xl bg-opacity-50">
+            {" "}
+            <img
+              src={DatasetMsg}
+              alt="message"
+              className="rounded-full  mx-auto"
+            ></img>
+          </div>
         </div>
         {showPlayerModal ? (
           <PlayerModal
