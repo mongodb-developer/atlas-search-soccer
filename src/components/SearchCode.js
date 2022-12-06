@@ -10,7 +10,7 @@ const SearchCode = ({ searchTerm, operator, functionScore }) => {
       index: "<INDEXNAME>",
       text: {
         query: searchTerm,
-        path: "name_long",
+        path: "long_name",
         fuzzy: { maxEdits: 2 },
       },
     };
@@ -19,7 +19,7 @@ const SearchCode = ({ searchTerm, operator, functionScore }) => {
         index: "<INDEXNAME>",
         text: {
           query: searchTerm,
-          path: "name_long",
+          path: "long_name",
           fuzzy: { maxEdits: 2 },
           score: {
             function: {
@@ -44,7 +44,7 @@ const SearchCode = ({ searchTerm, operator, functionScore }) => {
       index: "<INDEXNAME>",
       wildcard: {
         query: searchTerm,
-        path: "name_long",
+        path: "long_name",
         allowAnalyzedField: true,
       },
     };
@@ -54,7 +54,7 @@ const SearchCode = ({ searchTerm, operator, functionScore }) => {
         index: "<INDEXNAME>",
         wildcard: {
           query: searchTerm,
-          path: "name_long",
+          path: "long_name",
           allowAnalyzedField: true,
           score: {
             function: {
@@ -79,7 +79,7 @@ const SearchCode = ({ searchTerm, operator, functionScore }) => {
       index: "autocompleteIndex",
       autocomplete: {
         query: searchTerm,
-        path: "name_long",
+        path: "long_name",
         fuzzy: { maxEdits: 1 },
       },
     };

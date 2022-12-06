@@ -16,7 +16,9 @@ const SearchAggregation = ({
   skillMoves,
   defending,
   salary,
-  dob, // TO DO - DEAL WITH DOB !!!!!!!!!!!!!!!!!!!!!!!
+  dobStart, // TO DO - DEAL WITH DOB !!!!!!!!!!!!!!!!!!!!!!!
+  dobEnd,
+  showCalendarCode,
 }) => {
   let basicSearchObject = getBasicObject(operator, searchTerm, functionScore); // get basicSearchObject score is included
 
@@ -44,6 +46,7 @@ const SearchAggregation = ({
   const shouldArrayValues = [
     { name: "age", value: age[0] },
     { name: "wage_eur", value: salary[0] },
+    // { name: "dob", value: }
   ];
   const mustArrayValues = [
     { name: "overall", value: overall[0] },
@@ -53,7 +56,12 @@ const SearchAggregation = ({
     { name: "defending", value: defending[0] },
   ];
   const filterArray = getFilterArray(positions, clubs, countries);
-  const shouldArray = getShouldArray(shouldArrayValues);
+  const shouldArray = getShouldArray(
+    shouldArrayValues,
+    showCalendarCode,
+    dobStart,
+    dobEnd
+  );
   const mustArray = getMustArray(mustArrayValues);
 
   let compoundString = "";
@@ -268,7 +276,12 @@ const removeFunctionScoreAttribute = (basicObject, operator) => {
   return basicObject;
 };
 
-const getShouldArray = (shouldArrayValues) => {
+const getShouldArray = (
+  shouldArrayValues,
+  showCalendarCode,
+  dobStart,
+  dobEnd
+) => {
   let shouldArray = [];
   for (let i = 0; i < shouldArrayValues.length; i++) {
     if (shouldArrayValues[i].value !== 0) {
@@ -279,6 +292,16 @@ const getShouldArray = (shouldArrayValues) => {
         },
       });
     }
+  }
+
+  if (showCalendarCode) {
+    shouldArray.push({
+      range: {
+        path: "dob",
+        gte: dobStart,
+        lte: dobEnd,
+      },
+    });
   }
 
   return shouldArray;

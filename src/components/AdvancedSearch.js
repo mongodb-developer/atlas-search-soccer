@@ -163,6 +163,8 @@ const AdvancedSearch = ({
             salary={salary}
             dobStart={dobStart}
             functionScore={functionScore}
+            dobEnd={dobEnd}
+            showCalendarCode={showCalendarCode}
           />
         </div>
       </div>

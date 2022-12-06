@@ -70,7 +70,7 @@ const Calendar = ({
   return (
     <div>
       <Styles>
-        <h2>Date of birth not before:</h2>
+        <h2>Date of birth between:</h2>
         <DatePicker
           selected={dobStart}
           onChange={(date) => setDobStart(date)}
@@ -79,7 +79,7 @@ const Calendar = ({
           showYearDropdown
           scrollableYearDropdown
         />
-        <h2>Date of birth not after:</h2>
+        <h2>and:</h2>
         <DatePicker
           selected={dobEnd}
           onChange={(date) => setDobEnd(date)}
