@@ -46,7 +46,6 @@ const SearchAggregation = ({
   const shouldArrayValues = [
     { name: "age", value: age[0] },
     { name: "wage_eur", value: salary[0] },
-    // { name: "dob", value: }
   ];
   const mustArrayValues = [
     { name: "overall", value: overall[0] },
@@ -55,13 +54,15 @@ const SearchAggregation = ({
     { name: "pace", value: pace[0] },
     { name: "defending", value: defending[0] },
   ];
-  const filterArray = getFilterArray(positions, clubs, countries);
-  const shouldArray = getShouldArray(
-    shouldArrayValues,
+  const filterArray = getFilterArray(
+    positions,
+    clubs,
+    countries,
     showCalendarCode,
     dobStart,
     dobEnd
   );
+  const shouldArray = getShouldArray(shouldArrayValues);
   const mustArray = getMustArray(mustArrayValues);
 
   let compoundString = "";
@@ -276,12 +277,7 @@ const removeFunctionScoreAttribute = (basicObject, operator) => {
   return basicObject;
 };
 
-const getShouldArray = (
-  shouldArrayValues,
-  showCalendarCode,
-  dobStart,
-  dobEnd
-) => {
+const getShouldArray = (shouldArrayValues) => {
   let shouldArray = [];
   for (let i = 0; i < shouldArrayValues.length; i++) {
     if (shouldArrayValues[i].value !== 0) {
@@ -292,16 +288,6 @@ const getShouldArray = (
         },
       });
     }
-  }
-
-  if (showCalendarCode) {
-    shouldArray.push({
-      range: {
-        path: "dob",
-        gte: dobStart,
-        lte: dobEnd,
-      },
-    });
   }
 
   return shouldArray;
@@ -323,7 +309,14 @@ const getMustArray = (mustArrayValues) => {
   return mustArray;
 };
 
-const getFilterArray = (positions, clubs, countries) => {
+const getFilterArray = (
+  positions,
+  clubs,
+  countries,
+  showCalendarCode,
+  dobStart,
+  dobEnd
+) => {
   let filterArray = [];
 
   if (positions.length > 0) {
@@ -347,6 +340,16 @@ const getFilterArray = (positions, clubs, countries) => {
       text: {
         query: countries,
         path: "nationality_name",
+      },
+    });
+  }
+
+  if (showCalendarCode) {
+    filterArray.push({
+      range: {
+        path: "dob",
+        gte: dobStart,
+        lte: dobEnd,
       },
     });
   }
