@@ -152,7 +152,7 @@ const App = () => {
         <div className="flex justify-evenly px-4 py-2 bg-red-700 items-center  my-2">
           <img src={goalie} className="w-16" alt="outline"></img>
           <div className=" text-white text-xl text-center uppercase">
-            Best Played on Desktops
+            Best Played on Desktop
           </div>
 
           <img src={player} className="w-16" alt="outline"></img>
@@ -160,7 +160,7 @@ const App = () => {
       </MobileView>
       <div className="flex mx-20 w-full justify-around items-center">
         <div
-          className="flex flex-col text-lg text-mongo-400 font-bold w-1/5"
+          className="flex flex-col text-lg text-mongo-400 font-bold w-1/5 cursor-pointer"
           onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
         >
           <img
