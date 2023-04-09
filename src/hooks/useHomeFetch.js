@@ -80,13 +80,13 @@ export const useHomeFetch = () => {
     console.log("MAX PAGES: ", response.maxPages);
     setMaxPages(response.maxPages);
 
-    if (playersJSON && playersJSON.length > 0) {
+    if (playersJSON?.length > 0) {
       setShowPlayerChoices(true);
       setPlayersFound(true);
       setPlayers(playersJSON);
       console.log("PLAYERSJSON: ", playersJSON);
       setPlayersFound(true);
-    } else if (playersJSON.length === 0) {
+    } else if (playersJSON?.length === 0) {
       // setShowPlayerChoices(false);   // show player choices but is only NoPlayersFound
       setPlayersFound(false);
       setPlayers(playersJSON);
