@@ -121,3 +121,7 @@ Here you'll find the endpoints for the backend search queries using the `$search
 
 <p>Also please join our online <a href="https://developer.mongodb.com/community/forums/">MongoDB Community</a> to interact with our product and engineering teams along with thousands of other MongoDB and Realm users. 
 <br/><br/>Have fun and happy coding!</p></h4>
+
+## Disclaimer
+
+Use at your own risk; not a supported MongoDB product
