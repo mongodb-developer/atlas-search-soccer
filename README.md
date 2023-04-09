@@ -51,7 +51,7 @@ So give it a shot, and you'll be an Atlas Search pro in no time!
 
 - React
 - Tailwind CSS
-- MongoDB Realm for backend HTTPs endpoints and webhooks
+- Atlas App Services for backend HTTPs endpoints and webhooks
 - A [FIFA22 player dataset](https://www.kaggle.com/datasets/bryanb/fifa-player-stats-database)
 
 <p><em>Currently this app is not suitable for mobile, but feel free to send a PR.</em> 😊</p>
