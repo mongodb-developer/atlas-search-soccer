@@ -10,7 +10,7 @@
     "npm": "^8.12.1",
     "react": "^18.1.0",
     "react-datepicker": "^4.8.0",
-    "react-device-identifier": "^0.3.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.1.0",
     "react-icons": "^4.4.0",
     "react-outside-click-handler": "^1.3.0",
