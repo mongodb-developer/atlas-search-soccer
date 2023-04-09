@@ -10,7 +10,7 @@ Well, now there's this app for that. <a href="https://www.atlassearchsoccer.com"
     <img src="readmeImages/soccerDemo.gif" width="400"  />
 </p>
 
-Teaming up MongoDB Atlas Search with an extensive player dataset, you can scour across the over 22,000 players in the database based on a variety of search parameters and data types:
+Teaming up MongoDB Atlas Search with an extensive player dataset, you can scout across the over 22,000 players in the database based on a variety of search parameters and data types:
 
 - player name
 - player position
@@ -47,7 +47,7 @@ So give it a shot, and you'll be an Atlas Search pro in no time!
     <img src="readmeImages/football-is-life-ted-lasso.gif" width="400"  />
 </p>
 <h6>Game Notes 📝</h6>
-<p>This application is hosted entirely by MongoDB Atlas was created using:</p>
+<p>This application hosted entirely by MongoDB Atlas was created using:</p>
 
 - React
 - Tailwind CSS
