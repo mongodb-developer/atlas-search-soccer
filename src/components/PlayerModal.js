@@ -109,7 +109,7 @@ const PlayerModal = ({
           {displayedPlayer.player_traits}
         </div>
 
-        <div
+        <button
           className="absolute bottom-0 left-0 ml-3 mb-3"
           onClick={() => {
             setShowPlayerModal(false);
@@ -128,8 +128,8 @@ const PlayerModal = ({
               clipRule="evenodd"
             />
           </svg>
-        </div>
-        <div
+        </button>
+        <button
           className="absolute bottom-0 right-0 mr-3 mb-3"
           onClick={() => {
             addPlayerToTeam(displayedPlayer, position2Fill);
@@ -149,7 +149,7 @@ const PlayerModal = ({
               clipRule="evenodd"
             />
           </svg>
-        </div>
+        </button>
       </div>
       <LikePlayersSection players={likePlayers} />
       <div className=" mt-6 mx-4 ">

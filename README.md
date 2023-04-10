@@ -10,7 +10,7 @@ Well, now there's this app for that. <a href="https://www.atlassearchsoccer.com"
     <img src="readmeImages/soccerDemo.gif" width="400"  />
 </p>
 
-Teaming up MongoDB Atlas Search with an extensive player dataset, you can scour across the over 22,000 players in the database based on a variety of search parameters and data types:
+Teaming up MongoDB Atlas Search with an extensive player dataset, you can scout across the over 22,000 players in the database based on a variety of search parameters and data types:
 
 - player name
 - player position
@@ -47,11 +47,11 @@ So give it a shot, and you'll be an Atlas Search pro in no time!
     <img src="readmeImages/football-is-life-ted-lasso.gif" width="400"  />
 </p>
 <h6>Game Notes 📝</h6>
-<p>This application is hosted entirely by MongoDB Atlas was created using:</p>
+<p>This application hosted entirely by MongoDB Atlas was created using:</p>
 
 - React
 - Tailwind CSS
-- MongoDB Realm for backend HTTPs endpoints and webhooks
+- Atlas App Services for backend HTTPs endpoints and webhooks
 - A [FIFA22 player dataset](https://www.kaggle.com/datasets/bryanb/fifa-player-stats-database)
 
 <p><em>Currently this app is not suitable for mobile, but feel free to send a PR.</em> 😊</p>
@@ -121,3 +121,7 @@ Here you'll find the endpoints for the backend search queries using the `$search
 
 <p>Also please join our online <a href="https://developer.mongodb.com/community/forums/">MongoDB Community</a> to interact with our product and engineering teams along with thousands of other MongoDB and Realm users. 
 <br/><br/>Have fun and happy coding!</p></h4>
+
+## Disclaimer
+
+Use at your own risk; not a supported MongoDB product

@@ -30,7 +30,7 @@ const PlayerCard = ({
           className={
             parent === "PlayerGrid"
               ? "relative justify-center rounded-xl border border-gray-800 text-center shadow-xl p-6 text-white border-solid transition duration-500 transform hover:scale-110"
-              : "relative justify-center bg-opacity-75 border border-gray-800 text-center rounded-2xl text-white shadow-xl p-6 border-solid bg-black transition duration-500 transform hover:scale-110"
+              : "relative justify-center cursor-pointer bg-opacity-75 border border-gray-800 text-center rounded-2xl text-white shadow-xl p-6 border-solid bg-black transition duration-500 transform hover:scale-110"
           }
         >
           <div className="">{player?.long_name}</div>
@@ -68,7 +68,7 @@ const PlayerCard = ({
 
               <div className="mt-6 w-4/5 mx-auto border-t border-green-400">
                 {" "}
-                <div
+                <button
                   className="absolute bottom-0 left-0"
                   onClick={() => {
                     setShowPlayerModal(true);
@@ -89,8 +89,8 @@ const PlayerCard = ({
                       clipRule="evenodd"
                     />
                   </svg>
-                </div>
-                <div
+                </button>
+                <button
                   className="absolute bottom-0 right-0 flex items-end"
                   onClick={() => {
                     addPlayerToTeam(player, position2Fill);
@@ -109,7 +109,7 @@ const PlayerCard = ({
                       clipRule="evenodd"
                     />
                   </svg>
-                </div>
+                </button>
               </div>
             </>
           )}
@@ -123,8 +123,8 @@ const PlayerCard = ({
           }}
           className={
             highlightCard === spot
-              ? "relative justify-center text-center h-64 shadow-xl p-6 border-solid bg-gradient-to-r text-white from-black to-blue-900  transition duration-500 transform hover:scale-110"
-              : "relative justify-center bg-opacity-75 text-center text-white bg-black shadow-xl p-6 transition duration-500 transform hover:scale-110"
+              ? "relative justify-center cursor-pointer text-center h-64 shadow-xl p-6 border-solid bg-gradient-to-r text-white from-black to-blue-900  transition duration-500 transform hover:scale-110"
+              : "relative justify-center cursor-pointer bg-opacity-75 text-center text-white bg-black shadow-xl p-6 transition duration-500 transform hover:scale-110"
           }
         >
           <div className="">UNKNOWN</div>

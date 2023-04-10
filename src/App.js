@@ -1,6 +1,6 @@
 // Dependencies
 import React, { useEffect, useState } from "react";
-import DeviceIdentifier from "react-device-identifier";
+import { MobileView } from 'react-device-detect';
 import { useHomeFetch } from "./hooks/useHomeFetch";
 import PlayerGrid from "./components/PlayerGrid";
 import NoPlayersFound from "./components/NoPlayersFound";
@@ -148,19 +148,19 @@ const App = () => {
       <h2 className="text-center text-xl text-mongo-400 pt-4">
         Build Your Soccer Dream Team ⚽
       </h2>
-      <DeviceIdentifier isMobile={true} isTablet={true}>
+      <MobileView>
         <div className="flex justify-evenly px-4 py-2 bg-red-700 items-center  my-2">
           <img src={goalie} className="w-16" alt="outline"></img>
           <div className=" text-white text-xl text-center uppercase">
-            Best Played on Desktops
+            Best Played on Desktop
           </div>
 
           <img src={player} className="w-16" alt="outline"></img>
         </div>
-      </DeviceIdentifier>
+      </MobileView>
       <div className="flex mx-20 w-full justify-around items-center">
         <div
-          className="flex flex-col text-lg text-mongo-400 font-bold w-1/5"
+          className="flex flex-col text-lg text-mongo-400 font-bold w-1/5 cursor-pointer"
           onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
         >
           <img

@@ -43,7 +43,7 @@ const AutoSuggestions = ({
                     <div className="pl-8 my-4 w-3/5 text-lg">
                       {player.long_name}
                     </div>
-                    <div
+                    <button
                       className="ml-10 text-3xl my-auto"
                       onClick={() => {
                         setDisplayedPlayer(player);
@@ -52,8 +52,8 @@ const AutoSuggestions = ({
                       }}
                     >
                       🔍
-                    </div>
-                    <div
+                    </button>
+                    <button
                       className="ml-10 text-3xl my-auto "
                       onClick={() => {
                         addPlayerToTeam(player, position2Fill);
@@ -61,7 +61,7 @@ const AutoSuggestions = ({
                     >
                       {" "}
                       💚
-                    </div>
+                    </button>
                   </div>
                 </div>
               );
