@@ -307,7 +307,7 @@ const getFilterArray = (positions, clubs, countries) => {
     filterArray.push({
       text: {
         query: positions,
-        path: "player_positions_array",
+        path: "player_positions",
       },
     });
   }
