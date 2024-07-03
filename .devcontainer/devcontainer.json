@@ -3,13 +3,17 @@
     "waitFor": "",
     "updateContentCommand": "",
     "postCreateCommand": "",
-    "postAttachCommand": "server": "npm install && npm start",
+    "postAttachCommand": "npm install && npm start",
     "customizations": {
       "codespaces": {
         "openFiles": [
           "src/index.js"
         ]
-      }
+      },
+      "vscode": {
+		"extensions": {
+			"-github.vscode-pull-request-github"
+		}
+	   }
     },
-  }
-  
+}
