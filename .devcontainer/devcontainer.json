@@ -5,15 +5,10 @@
     "postCreateCommand": "",
     "postAttachCommand": "npm install && npm start",
     "customizations": {
-      "codespaces": {
-        "openFiles": [
-          "src/index.js"
-        ]
-      },
-      "vscode": {
-		"extensions": {
-			"-github.vscode-pull-request-github"
-		}
-	   }
+        "vscode": {
+            "extensions": [
+                "-github.vscode-pull-request-github"
+            ]
+        }
     },
 }
