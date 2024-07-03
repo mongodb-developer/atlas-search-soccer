@@ -1,11 +1,9 @@
 {
     "image": "mcr.microsoft.com/devcontainers/universal:2",
-    "waitFor": "updateContentCommand",
-    "updateContentCommand": "npm install && npm start",
+    "waitFor": "",
+    "updateContentCommand": "",
     "postCreateCommand": "",
-    "postAttachCommand": {
-      "server": "npm install && npm start",
-    },
+    "postAttachCommand": "server": "npm install && npm start",
     "customizations": {
       "codespaces": {
         "openFiles": [
