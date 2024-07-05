@@ -1,0 +1,14 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "waitFor": "",
+    "updateContentCommand": "",
+    "postCreateCommand": "",
+    "postAttachCommand": "npm install && npm start",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "-github.vscode-pull-request-github"
+            ]
+        }
+    },
+}
